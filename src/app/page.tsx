@@ -1,34 +1,48 @@
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-// Categorías destacadas para la grilla visual
 const categories = [
   {
     name: "Pollo Fresco",
-    desc: "Entero, trozado o sin menudos. La mejor calidad del mercado.",
+    desc: "Entero, trozado o sin menudos.",
     href: "/productos?cat=pollo",
-    label: "01",
+    num: "01",
   },
   {
     name: "Cortes Especiales",
-    desc: "Pechuga, muslo, alas y más. Listos para cocinar.",
+    desc: "Pechuga, muslo, alas y más.",
     href: "/productos?cat=cortes",
-    label: "02",
+    num: "02",
   },
   {
     name: "Papas & Hamburguesas",
-    desc: "Congelados de primera línea para tu mesa.",
+    desc: "Congelados de primera línea.",
     href: "/productos?cat=papas-fritas",
-    label: "03",
+    num: "03",
   },
   {
     name: "Despensa",
-    desc: "Aceite, rebozador, carbón, sal y condimentos.",
+    desc: "Aceite, rebozador, carbón, sal.",
     href: "/productos?cat=despensa",
-    label: "04",
+    num: "04",
   },
+];
+
+const marqueePhrases = [
+  "Pollo Fresco",
+  "·",
+  "Saavedra",
+  "·",
+  "Buenos Aires",
+  "·",
+  "Calidad Garantizada",
+  "·",
+  "Entrega en CABA",
+  "·",
+  "Cortes Especiales",
+  "·",
 ];
 
 export default function HomePage() {
@@ -36,147 +50,251 @@ export default function HomePage() {
     <>
       <Navbar />
 
-      {/* ── 1. HERO full-viewport ─────────────────────────────────────────── */}
-      <section className="relative flex h-screen min-h-[640px] flex-col items-start justify-end overflow-hidden bg-[#08234e] pt-20">
-        {/* Ruido / textura sutil */}
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
-          }}
-        />
+      {/* ── HERO ─────────────────────────────────────────────────────────────── */}
+      <section className="relative min-h-screen bg-[#f1ead0] pt-20">
+        <div className="flex min-h-[calc(100vh-80px)] flex-col lg:flex-row">
 
-        {/* Círculo decorativo */}
-        <div className="pointer-events-none absolute -right-32 top-1/2 h-[700px] w-[700px] -translate-y-1/2 rounded-full border border-[#f1ead0]/[0.06]" />
-        <div className="pointer-events-none absolute -right-16 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full border border-[#f1ead0]/[0.06]" />
+          {/* Columna izquierda — texto */}
+          <div className="flex flex-1 flex-col justify-between px-6 py-16 md:px-14 lg:py-20 xl:px-20">
+            {/* Tag superior */}
+            <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-[#08234e]/40">
+              <span className="h-px w-8 bg-[#08234e]/30" />
+              Pollería · Saavedra · Buenos Aires
+            </p>
 
-        {/* Contenido */}
-        <div className="relative z-10 w-full px-6 pb-20 md:px-16 lg:px-24">
-          {/* Tag */}
-          <p className="mb-6 inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.25em] text-[#f1ead0]/40">
-            <span className="h-px w-8 bg-[#f1ead0]/40" />
-            Saavedra · Buenos Aires
-          </p>
+            {/* Headline central */}
+            <div className="my-auto py-12">
+              <h1
+                className="font-display font-black text-[#08234e] leading-[0.92]"
+                style={{
+                  fontSize: "clamp(3.8rem, 8.5vw, 8.5rem)",
+                  letterSpacing: "-0.04em",
+                }}
+              >
+                La mejor
+                <br />
+                <span className="text-[#08234e]/20">pollería</span>
+                <br />
+                de Buenos
+                <br />
+                Aires.
+              </h1>
 
-          {/* Headline principal */}
-          <h1
-            className="max-w-5xl font-display font-black text-[#f1ead0] leading-none"
-            style={{
-              fontSize: "clamp(3rem, 9vw, 8rem)",
-              letterSpacing: "-0.03em",
-            }}
-          >
-            El sabor que
-            <br />
-            <span className="text-[#f1ead0]/30">conocés</span> y
-            <br />
-            confiás.
-          </h1>
+              <p className="mt-8 max-w-md text-base leading-relaxed text-[#08234e]/55 md:text-lg">
+                Pollo fresco de primera calidad, cortes especiales y más.
+                Pedidos online con entrega en CABA y Vicente López.
+              </p>
 
-          {/* CTA row */}
-          <div className="mt-12 flex flex-wrap items-center gap-6">
-            <Link
-              href="/productos"
-              className="group flex items-center gap-3 rounded-full bg-[#f1ead0] px-8 py-4 font-semibold text-[#08234e] transition-all duration-300 hover:bg-white"
-            >
-              Ver Productos
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-            <Link
-              href="/nosotros"
-              className="text-sm font-medium uppercase tracking-[0.12em] text-[#f1ead0]/50 transition-colors hover:text-[#f1ead0]"
-            >
-              Quiénes somos
-            </Link>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Link
+                  href="/productos"
+                  className="group flex items-center gap-3 rounded-full bg-[#08234e] px-7 py-3.5 text-sm font-semibold text-[#f1ead0] transition-all hover:opacity-85"
+                >
+                  Ver Productos
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  href="/nosotros"
+                  className="text-sm font-medium text-[#08234e]/40 underline underline-offset-4 transition-colors hover:text-[#08234e]"
+                >
+                  Quiénes somos
+                </Link>
+              </div>
+            </div>
+
+            {/* Stats inferiores */}
+            <div className="flex flex-wrap gap-10 border-t border-[#08234e]/10 pt-8">
+              {[
+                { val: "15+", label: "Años de trayectoria" },
+                { val: "500+", label: "Clientes satisfechos" },
+                { val: "CABA", label: "y Vicente López" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div
+                    className="font-display font-black text-[#08234e]"
+                    style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)", letterSpacing: "-0.03em" }}
+                  >
+                    {s.val}
+                  </div>
+                  <div className="mt-0.5 text-xs uppercase tracking-[0.15em] text-[#08234e]/40">
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 right-8 flex items-center gap-3 text-[#f1ead0]/30">
-          <span className="text-[10px] uppercase tracking-[0.2em]">Scroll</span>
-          <ChevronDown className="h-4 w-4 animate-bounce" />
+          {/* Columna derecha — bloque navy con tipografía decorativa */}
+          <div className="relative flex w-full items-end justify-start overflow-hidden bg-[#08234e] lg:w-[42%]">
+            {/* Tipografía decorativa de fondo */}
+            <span
+              className="pointer-events-none absolute -bottom-10 -left-4 select-none font-display font-black leading-none text-[#f1ead0]/[0.05]"
+              style={{ fontSize: "clamp(10rem, 22vw, 22rem)", letterSpacing: "-0.05em" }}
+              aria-hidden
+            >
+              PR
+            </span>
+
+            {/* Contenido derecho */}
+            <div className="relative z-10 p-10 pb-14 md:p-14 lg:p-16">
+              {/* Badge "Pedí ahora" */}
+              <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#f1ead0]/20 px-4 py-2">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-[#f1ead0]/70">
+                  Abierto · Recibimos pedidos
+                </span>
+              </div>
+
+              <p
+                className="font-display font-bold text-[#f1ead0] leading-tight"
+                style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.8rem)", letterSpacing: "-0.02em" }}
+              >
+                Pedí online,
+                <br />
+                recibís hoy.
+              </p>
+
+              <p className="mt-4 text-sm leading-relaxed text-[#f1ead0]/50">
+                Hacé tu pedido en minutos y se lo enviamos directo
+                al WhatsApp del negocio.
+              </p>
+
+              <Link
+                href="/productos"
+                className="mt-8 flex w-fit items-center gap-3 rounded-full bg-[#f1ead0] px-6 py-3 text-sm font-semibold text-[#08234e] transition-all hover:bg-white"
+              >
+                Hacer un pedido
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+
+              {/* Divisor + zona */}
+              <div className="mt-10 border-t border-[#f1ead0]/10 pt-8">
+                <p className="text-[10px] uppercase tracking-[0.2em] text-[#f1ead0]/30">
+                  Cobertura
+                </p>
+                <p className="mt-2 text-sm font-medium text-[#f1ead0]/60">
+                  CABA — Vicente López
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── 2. INTRO — texto editorial ───────────────────────────────────── */}
-      <section className="bg-[#f1ead0] px-6 py-24 md:px-16 lg:px-24">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 gap-12 md:grid-cols-[1fr_2fr]">
+      {/* ── MARQUEE ──────────────────────────────────────────────────────────── */}
+      <div className="overflow-hidden bg-[#08234e] py-5">
+        <div
+          className="flex whitespace-nowrap"
+          style={{ animation: "marquee 30s linear infinite" }}
+        >
+          {[...marqueePhrases, ...marqueePhrases, ...marqueePhrases, ...marqueePhrases].map(
+            (phrase, i) => (
+              <span
+                key={i}
+                className={
+                  phrase === "·"
+                    ? "mx-6 font-display text-2xl font-black text-[#f1ead0]/30"
+                    : "mx-6 font-display text-2xl font-black uppercase tracking-wide text-[#f1ead0]"
+                }
+              >
+                {phrase}
+              </span>
+            )
+          )}
+        </div>
+      </div>
+
+      {/* ── INTRO EDITORIAL ──────────────────────────────────────────────────── */}
+      <section className="bg-[#f1ead0] px-6 py-24 md:px-14 xl:px-20">
+        <div className="mx-auto max-w-[1400px] grid grid-cols-1 gap-16 lg:grid-cols-[1fr_1.8fr] lg:items-end">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#08234e]/40">
               Nuestro compromiso
             </p>
+            <div
+              className="mt-4 font-display font-black leading-none text-[#08234e]/8"
+              style={{ fontSize: "clamp(5rem, 12vw, 10rem)", letterSpacing: "-0.05em" }}
+              aria-hidden
+            >
+              15
+              <br />
+              años
+            </div>
           </div>
           <div>
             <h2
               className="font-display font-bold text-[#08234e] leading-tight"
-              style={{ fontSize: "clamp(1.8rem, 4vw, 3.5rem)", letterSpacing: "-0.02em" }}
+              style={{ fontSize: "clamp(1.8rem, 3.5vw, 3rem)", letterSpacing: "-0.025em" }}
             >
-              Más de 15 años llevando pollo fresco y de calidad a las mesas de
-              Buenos Aires.
+              Más de 15 años llevando pollo
+              fresco y de calidad a las mesas
+              de Buenos Aires.
             </h2>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#08234e]/60">
-              En Pollo Rey seleccionamos cuidadosamente cada producto para
-              garantizarte frescura, sabor y el precio justo. Con cobertura en
-              CABA y Vicente López, tu pedido llega sin complicaciones.
+            <p className="mt-6 text-base leading-relaxed text-[#08234e]/55">
+              En Pollo Rey seleccionamos cada producto para garantizarte frescura,
+              sabor y el precio justo. Con cobertura en CABA y Vicente López,
+              tu pedido llega sin complicaciones.
             </p>
             <Link
               href="/nosotros"
-              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-[#08234e] underline underline-offset-4 transition-opacity hover:opacity-60"
+              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[#08234e] underline underline-offset-4 transition-opacity hover:opacity-50"
             >
-              Conocer más
-              <ArrowRight className="h-3.5 w-3.5" />
+              Conocer más <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── 3. GRILLA DE CATEGORÍAS ──────────────────────────────────────── */}
-      <section className="bg-[#08234e] px-6 py-24 md:px-16 lg:px-24">
-        <div className="max-w-[1400px] mx-auto">
-          {/* Header */}
-          <div className="mb-16 flex flex-wrap items-end justify-between gap-6">
+      {/* ── CATEGORÍAS ───────────────────────────────────────────────────────── */}
+      <section className="bg-[#08234e] px-6 py-24 md:px-14 xl:px-20">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
             <h2
               className="font-display font-bold text-[#f1ead0] leading-none"
-              style={{ fontSize: "clamp(2rem, 5vw, 4rem)", letterSpacing: "-0.02em" }}
+              style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)", letterSpacing: "-0.03em" }}
             >
-              Nuestros
-              <br />
-              <span className="text-[#f1ead0]/30">productos</span>
+              Nuestros productos
             </h2>
             <Link
               href="/productos"
-              className="flex items-center gap-2 rounded-full border border-[#f1ead0]/20 px-6 py-2.5 text-sm text-[#f1ead0]/70 transition-all hover:border-[#f1ead0]/60 hover:text-[#f1ead0]"
+              className="flex items-center gap-2 rounded-full border border-[#f1ead0]/20 px-6 py-2.5 text-sm text-[#f1ead0]/60 transition-all hover:border-[#f1ead0] hover:text-[#f1ead0]"
             >
-              Ver todos
-              <ArrowRight className="h-3.5 w-3.5" />
+              Ver todos <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
 
-          {/* Grid de categorías */}
-          <div className="grid grid-cols-1 gap-px bg-[#f1ead0]/10 border border-[#f1ead0]/10 sm:grid-cols-2">
-            {categories.map((cat) => (
+          {/* Grid 2x2 */}
+          <div className="grid grid-cols-1 border border-[#f1ead0]/10 sm:grid-cols-2">
+            {categories.map((cat, i) => (
               <Link
                 key={cat.name}
                 href={cat.href}
-                className="group relative flex flex-col justify-between bg-[#08234e] p-10 transition-colors duration-300 hover:bg-[#f1ead0]/5"
+                className="group relative flex flex-col justify-between overflow-hidden border-[#f1ead0]/10 p-10 transition-colors duration-300 hover:bg-[#f1ead0]/[0.04]"
+                style={{
+                  borderRight: i % 2 === 0 ? "1px solid rgba(241,234,208,0.10)" : undefined,
+                  borderBottom: i < 2 ? "1px solid rgba(241,234,208,0.10)" : undefined,
+                }}
               >
-                {/* Número */}
-                <span className="font-display text-[80px] font-black leading-none text-[#f1ead0]/[0.06] transition-all duration-500 group-hover:text-[#f1ead0]/10">
-                  {cat.label}
+                {/* Número de fondo */}
+                <span
+                  className="select-none font-display font-black leading-none text-[#f1ead0]/[0.05] transition-all duration-500 group-hover:text-[#f1ead0]/[0.09]"
+                  style={{ fontSize: "6rem", letterSpacing: "-0.05em" }}
+                  aria-hidden
+                >
+                  {cat.num}
                 </span>
 
-                {/* Info */}
-                <div className="mt-6">
-                  <h3 className="font-display text-2xl font-bold text-[#f1ead0]">
+                <div className="mt-8">
+                  <h3
+                    className="font-display font-bold text-[#f1ead0] leading-tight"
+                    style={{ fontSize: "clamp(1.3rem, 2.5vw, 1.8rem)" }}
+                  >
                     {cat.name}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[#f1ead0]/50">
-                    {cat.desc}
-                  </p>
-                  <div className="mt-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-[#f1ead0]/40 transition-colors group-hover:text-[#f1ead0]/70">
+                  <p className="mt-2 text-sm text-[#f1ead0]/45">{cat.desc}</p>
+                  <div className="mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-[#f1ead0]/30 transition-colors group-hover:text-[#f1ead0]/70">
                     Explorar
-                    <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
+                    <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
               </Link>
@@ -185,88 +303,70 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 4. SPLIT — Calidad / entrega ─────────────────────────────────── */}
-      <section className="bg-[#f1ead0]">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2">
-          {/* Izquierda — fondo blanco */}
-          <div className="flex flex-col justify-center px-10 py-20 md:px-16 lg:px-24 bg-white">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#08234e]/40">
-              Por qué elegirnos
-            </p>
-            <h2
-              className="mt-6 font-display font-bold text-[#08234e] leading-tight"
-              style={{ fontSize: "clamp(1.8rem, 3vw, 2.8rem)", letterSpacing: "-0.02em" }}
-            >
-              Calidad que
-              <br />se ve y se siente.
-            </h2>
-            <ul className="mt-8 space-y-5">
-              {[
-                "Pollo de primera selección",
-                "Control de calidad diario",
-                "Precios justos y transparentes",
-                "Atención personalizada",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span className="h-px w-6 bg-[#08234e]/40" />
-                  <span className="text-sm text-[#08234e]/70">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+      {/* ── SPLIT CALIDAD / ENTREGA ───────────────────────────────────────────── */}
+      <section className="grid grid-cols-1 md:grid-cols-2">
+        {/* Blanco — calidad */}
+        <div className="flex flex-col justify-center bg-white px-10 py-20 md:px-14 xl:px-20">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#08234e]/35">
+            Por qué elegirnos
+          </p>
+          <h2
+            className="mt-6 font-display font-bold text-[#08234e] leading-tight"
+            style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", letterSpacing: "-0.025em" }}
+          >
+            Calidad que
+            <br />se ve y se siente.
+          </h2>
+          <ul className="mt-10 space-y-4">
+            {[
+              "Pollo de primera selección",
+              "Control de calidad diario",
+              "Precios justos y transparentes",
+              "Atención personalizada",
+            ].map((item) => (
+              <li key={item} className="flex items-center gap-4">
+                <span className="h-px w-6 shrink-0 bg-[#08234e]/25" />
+                <span className="text-sm text-[#08234e]/65">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          {/* Derecha — fondo navy */}
-          <div className="flex flex-col justify-center bg-[#08234e] px-10 py-20 md:px-16 lg:px-24">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#f1ead0]/40">
-              Zona de cobertura
-            </p>
-            <h2
-              className="mt-6 font-display font-bold text-[#f1ead0] leading-tight"
-              style={{ fontSize: "clamp(1.8rem, 3vw, 2.8rem)", letterSpacing: "-0.02em" }}
-            >
-              Entrega en
-              <br />todo CABA y
-              <br />Vicente López.
-            </h2>
-            <p className="mt-6 text-sm leading-relaxed text-[#f1ead0]/50">
-              Hacé tu pedido online y lo recibís en el día. Rápido, simple y
-              sin salir de tu casa.
-            </p>
-            <Link
-              href="/productos"
-              className="mt-8 inline-flex w-fit items-center gap-3 rounded-full bg-[#f1ead0] px-7 py-3.5 text-sm font-semibold text-[#08234e] transition-all hover:bg-white"
-            >
-              Hacer un pedido
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+        {/* Navy — entrega */}
+        <div className="flex flex-col justify-center bg-[#08234e] px-10 py-20 md:px-14 xl:px-20">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#f1ead0]/35">
+            Zona de cobertura
+          </p>
+          <h2
+            className="mt-6 font-display font-bold text-[#f1ead0] leading-tight"
+            style={{ fontSize: "clamp(1.8rem, 3vw, 2.6rem)", letterSpacing: "-0.025em" }}
+          >
+            Entrega en CABA
+            <br />y Vicente López.
+          </h2>
+          <p className="mt-6 text-sm leading-relaxed text-[#f1ead0]/50">
+            Hacé tu pedido online y lo recibís en el día.
+            Rápido, simple y sin salir de tu casa.
+          </p>
+          <Link
+            href="/productos"
+            className="mt-10 inline-flex w-fit items-center gap-3 rounded-full bg-[#f1ead0] px-7 py-3.5 text-sm font-semibold text-[#08234e] transition-all hover:bg-white"
+          >
+            Hacer un pedido <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
 
-      {/* ── 5. MARQUEE — texto en movimiento ─────────────────────────────── */}
-      <section className="overflow-hidden border-y border-[#08234e]/10 bg-[#f1ead0] py-5">
-        <div className="flex animate-[marquee_20s_linear_infinite] whitespace-nowrap">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <span
-              key={i}
-              className="mx-8 font-display text-4xl font-black uppercase tracking-tight text-[#08234e]/10"
-            >
-              Pollo Rey · Saavedra · Buenos Aires · Pollo Fresco ·
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* ── 6. NEWSLETTER ───────────────────────────────────────────────── */}
-      <section className="bg-[#f1ead0] px-6 py-24 md:px-16 lg:px-24">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center">
+      {/* ── NEWSLETTER ───────────────────────────────────────────────────────── */}
+      <section className="bg-[#f1ead0] px-6 py-24 md:px-14 xl:px-20">
+        <div className="mx-auto max-w-[1400px] grid grid-cols-1 gap-12 md:grid-cols-2 md:items-center">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#08234e]/40">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#08234e]/35">
               Mantenete informado
             </p>
             <h2
               className="mt-4 font-display font-bold text-[#08234e] leading-tight"
-              style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", letterSpacing: "-0.02em" }}
+              style={{ fontSize: "clamp(2rem, 4vw, 3rem)", letterSpacing: "-0.025em" }}
             >
               Ofertas y novedades
               <br />en tu correo.
@@ -277,11 +377,11 @@ export default function HomePage() {
               type="email"
               placeholder="tu@email.com"
               required
-              className="flex-1 rounded-full border border-[#08234e]/20 bg-white px-6 py-3.5 text-sm text-[#08234e] placeholder:text-[#08234e]/30 focus:border-[#08234e] focus:outline-none"
+              className="flex-1 rounded-full border border-[#08234e]/15 bg-white px-6 py-4 text-sm text-[#08234e] placeholder:text-[#08234e]/30 focus:border-[#08234e]/50 focus:outline-none"
             />
             <button
               type="submit"
-              className="rounded-full bg-[#08234e] px-7 py-3.5 text-sm font-semibold text-[#f1ead0] transition-all hover:opacity-80 active:scale-95"
+              className="rounded-full bg-[#08234e] px-8 py-4 text-sm font-semibold text-[#f1ead0] transition-all hover:opacity-80"
             >
               Suscribirme
             </button>
