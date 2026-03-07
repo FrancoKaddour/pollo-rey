@@ -1,15 +1,15 @@
 import Link from "next/link";
-import { MapPin, Phone, Instagram, Facebook } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const whatsappPhone = process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? "549XXXXXXXXXX";
 
-const navLinks = [
+const col1 = [
   { href: "/productos", label: "Productos" },
   { href: "/nosotros", label: "Nosotros" },
   { href: "/contacto", label: "Contacto" },
 ];
 
-const categoryLinks = [
+const col2 = [
   { href: "/productos?cat=pollo", label: "Pollo Fresco" },
   { href: "/productos?cat=cortes", label: "Cortes" },
   { href: "/productos?cat=papas-fritas", label: "Papas Fritas" },
@@ -20,147 +20,122 @@ const categoryLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-brand-navy text-brand-cream/80">
-      {/* CTA superior */}
-      <div className="border-b border-white/10 bg-brand-dark">
-        <div className="container-site py-10">
-          <div className="flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
-            <div>
-              <h2 className="font-display text-2xl font-bold text-brand-cream">
-                ¿Listo para hacer tu pedido?
-              </h2>
-              <p className="mt-1 text-brand-cream/70">
-                Enviamos a CABA y Vicente López. Respondemos rápido.
-              </p>
-            </div>
+    <footer className="bg-[#08234e]">
+      {/* CTA grande */}
+      <div className="border-b border-[#f1ead0]/10 px-6 py-20 md:px-16 lg:px-24">
+        <div className="max-w-[1400px] mx-auto flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <h2
+            className="font-display font-black text-[#f1ead0] leading-none"
+            style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)", letterSpacing: "-0.03em" }}
+          >
+            ¿Hacemos
+            <br />
+            <span className="text-[#f1ead0]/25">el pedido?</span>
+          </h2>
+          <div className="flex flex-col gap-4 md:items-end">
             <a
-              href={`https://wa.me/${whatsappPhone}?text=${encodeURIComponent("Hola! Quiero hacer un pedido a Pollo Rey")}`}
+              href={`https://wa.me/${whatsappPhone}?text=${encodeURIComponent(
+                "Hola! Quiero hacer un pedido a Pollo Rey."
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 rounded-lg bg-[#25D366] px-6 py-3 font-semibold text-white shadow-lg transition-all hover:bg-[#1ebe57] active:scale-95"
+              className="group inline-flex items-center gap-3 rounded-full bg-[#f1ead0] px-8 py-4 font-semibold text-[#08234e] transition-all hover:bg-white"
             >
-              <WhatsAppIcon />
               Pedir por WhatsApp
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Contenido principal */}
-      <div className="container-site py-14">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Marca */}
-          <div className="lg:col-span-1">
-            <div className="font-display text-2xl font-extrabold tracking-tight text-brand-cream">
-              <span className="text-brand-gold">POLLO</span> REY
-            </div>
-            <p className="mt-4 text-sm leading-relaxed text-brand-cream/60">
-              La mejor pollería de Saavedra. Pollo fresco y cortes de primera
-              calidad, con entrega en CABA y Vicente López.
+            <p className="text-xs text-[#f1ead0]/30">
+              Cobertura: CABA y Vicente López
             </p>
-            {/* Redes */}
-            <div className="mt-6 flex gap-3">
-              <a
-                href="#"
-                aria-label="Instagram"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-brand-cream/70 transition-colors hover:bg-white/20 hover:text-brand-cream"
-              >
-                <Instagram className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                aria-label="Facebook"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-brand-cream/70 transition-colors hover:bg-white/20 hover:text-brand-cream"
-              >
-                <Facebook className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-
-          {/* Navegación */}
-          <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-brand-cream/40">
-              Navegación
-            </h3>
-            <ul className="space-y-3">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm transition-colors hover:text-brand-cream"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Categorías */}
-          <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-brand-cream/40">
-              Productos
-            </h3>
-            <ul className="space-y-3">
-              {categoryLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm transition-colors hover:text-brand-cream"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contacto */}
-          <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-brand-cream/40">
-              Contacto
-            </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-sm">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-gold" />
-                <span>Saavedra, Buenos Aires, Argentina</span>
-              </li>
-              <li className="flex items-center gap-3 text-sm">
-                <Phone className="h-4 w-4 shrink-0 text-brand-gold" />
-                <a
-                  href={`https://wa.me/${whatsappPhone}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors hover:text-brand-cream"
-                >
-                  WhatsApp
-                </a>
-              </li>
-            </ul>
-            <div className="mt-6">
-              <p className="text-xs text-brand-cream/40">Horario de atención</p>
-              <p className="mt-1 text-sm">Lun–Sáb: 8:00 – 20:00</p>
-            </div>
           </div>
         </div>
       </div>
 
-      {/* Copyright */}
-      <div className="border-t border-white/10">
-        <div className="container-site flex flex-col items-center justify-between gap-3 py-6 text-xs text-brand-cream/30 sm:flex-row">
+      {/* Links */}
+      <div className="px-6 py-16 md:px-16 lg:px-24">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-2 gap-10 sm:grid-cols-4">
+          {/* Marca */}
+          <div className="col-span-2 sm:col-span-1">
+            <div
+              className="font-display font-black text-[#f1ead0]"
+              style={{ fontSize: "1.5rem", letterSpacing: "-0.03em" }}
+            >
+              POLLO
+              <span className="text-[#f1ead0]/30"> REY</span>
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-[#f1ead0]/40">
+              Saavedra, Buenos Aires.
+              <br />
+              Lun–Sáb: 8:00 – 20:00
+            </p>
+          </div>
+
+          {/* Nav */}
+          <div>
+            <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#f1ead0]/30">
+              Empresa
+            </p>
+            <ul className="space-y-3">
+              {col1.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="text-sm text-[#f1ead0]/60 transition-colors hover:text-[#f1ead0]"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Productos */}
+          <div>
+            <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#f1ead0]/30">
+              Productos
+            </p>
+            <ul className="space-y-3">
+              {col2.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="text-sm text-[#f1ead0]/60 transition-colors hover:text-[#f1ead0]"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Redes */}
+          <div>
+            <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#f1ead0]/30">
+              Seguinos
+            </p>
+            <ul className="space-y-3">
+              {["Instagram", "Facebook"].map((r) => (
+                <li key={r}>
+                  <a
+                    href="#"
+                    className="text-sm text-[#f1ead0]/60 transition-colors hover:text-[#f1ead0]"
+                  >
+                    {r}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom bar */}
+      <div className="border-t border-[#f1ead0]/10 px-6 py-6 md:px-16 lg:px-24">
+        <div className="max-w-[1400px] mx-auto flex flex-col items-center justify-between gap-2 text-[11px] text-[#f1ead0]/20 sm:flex-row">
           <span>© {new Date().getFullYear()} Pollo Rey. Todos los derechos reservados.</span>
-          <span>Hecho con ❤️ en Buenos Aires</span>
+          <span>Buenos Aires, Argentina</span>
         </div>
       </div>
     </footer>
-  );
-}
-
-function WhatsAppIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
-      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.124 1.533 5.854L0 24l6.335-1.51A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.37l-.36-.213-3.755.896.953-3.65-.234-.375A9.818 9.818 0 1112 21.818z" />
-    </svg>
   );
 }

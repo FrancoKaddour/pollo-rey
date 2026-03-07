@@ -1,7 +1,7 @@
 "use client";
 
 import { useCartStore } from "@/store/cartStore";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingBag } from "lucide-react";
 
 export function CartIcon() {
   const { toggleCart, totalItems } = useCartStore();
@@ -11,11 +11,11 @@ export function CartIcon() {
     <button
       onClick={toggleCart}
       aria-label={`Carrito (${count} productos)`}
-      className="relative flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-brand-cream"
+      className="relative flex h-10 w-10 items-center justify-center text-[#f1ead0] transition-opacity hover:opacity-70"
     >
-      <ShoppingCart className="h-5 w-5 text-brand-navy" strokeWidth={1.8} />
+      <ShoppingBag className="h-5 w-5" strokeWidth={1.6} />
       {count > 0 && (
-        <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-brand-red text-[10px] font-bold text-white">
+        <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#f1ead0] text-[9px] font-black text-[#08234e]">
           {count > 9 ? "9+" : count}
         </span>
       )}
