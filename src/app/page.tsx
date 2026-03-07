@@ -37,7 +37,7 @@ export default function HomePage() {
       <Navbar />
 
       {/* ── 1. HERO full-viewport ─────────────────────────────────────────── */}
-      <section className="relative flex h-screen min-h-[640px] flex-col items-start justify-end overflow-hidden bg-[#08234e]">
+      <section className="relative flex h-screen min-h-[640px] flex-col items-start justify-end overflow-hidden bg-[#08234e] pt-20">
         {/* Ruido / textura sutil */}
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.04]"

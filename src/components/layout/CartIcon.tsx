@@ -11,11 +11,11 @@ export function CartIcon() {
     <button
       onClick={toggleCart}
       aria-label={`Carrito (${count} productos)`}
-      className="relative flex h-10 w-10 items-center justify-center text-[#f1ead0] transition-opacity hover:opacity-70"
+      className="relative flex h-10 w-10 items-center justify-center text-[#08234e] transition-opacity hover:opacity-60"
     >
       <ShoppingBag className="h-5 w-5" strokeWidth={1.6} />
       {count > 0 && (
-        <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#f1ead0] text-[9px] font-black text-[#08234e]">
+        <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#08234e] text-[9px] font-black text-[#f1ead0]">
           {count > 9 ? "9+" : count}
         </span>
       )}
