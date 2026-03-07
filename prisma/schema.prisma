@@ -1,0 +1,119 @@
+// Pollo Rey — Schema MVP
+// Prisma 7 — URL de conexión en prisma.config.ts (no en este archivo)
+// SQLite para desarrollo → cambiar a PostgreSQL en Vercel Postgres
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// ─── CATEGORÍAS ──────────────────────────────────
+model Category {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  description String?
+  imageUrl    String?
+  order       Int       @default(0)
+  active      Boolean   @default(true)
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("categories")
+}
+
+// ─── PRODUCTOS ───────────────────────────────────
+model Product {
+  id           String      @id @default(cuid())
+  name         String
+  slug         String      @unique
+  description  String?
+  price        Float
+  comparePrice Float?
+  imageUrl     String      @default("")
+  categoryId   String
+  category     Category    @relation(fields: [categoryId], references: [id])
+  active       Boolean     @default(true)
+  featured     Boolean     @default(false)
+  unit         String      @default("unidad")
+  orderItems   OrderItem[]
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  @@index([categoryId])
+  @@index([slug])
+  @@map("products")
+}
+
+// ─── PEDIDOS ─────────────────────────────────────
+model Order {
+  id           String      @id @default(cuid())
+  customerName String
+  phone        String
+  notes        String?
+  zone         String?
+  status       String      @default("PENDING")
+  total        Float
+  items        OrderItem[]
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("orders")
+}
+
+// ─── ITEMS DEL PEDIDO ────────────────────────────
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+  unitPrice Float
+  subtotal  Float
+
+  @@map("order_items")
+}
+
+// ─── PROMOCIONES ─────────────────────────────────
+model Promotion {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  imageUrl    String?
+  badgeText   String?
+  active      Boolean  @default(true)
+  startDate   DateTime
+  endDate     DateTime
+  createdAt   DateTime @default(now())
+
+  @@map("promotions")
+}
+
+// ─── NEWSLETTER ──────────────────────────────────
+model Newsletter {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  @@map("newsletter")
+}
+
+// ─── ADMIN ───────────────────────────────────────
+model AdminUser {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+
+  @@map("admin_users")
+}
