@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -68,22 +69,16 @@ export function Navbar() {
 
           {/* CENTER — logo */}
           <div className="flex justify-center">
-            <Link
-              href="/"
-              className="group flex items-baseline gap-0 transition-opacity hover:opacity-60"
-            >
-              <span
-                className="font-display text-2xl font-black text-[#08234e]"
-                style={{ letterSpacing: "-0.05em" }}
-              >
-                POLLO
-              </span>
-              <span
-                className="font-display text-2xl font-black text-[#08234e]/25"
-                style={{ letterSpacing: "-0.05em" }}
-              >
-                REY
-              </span>
+            <Link href="/" className="transition-opacity hover:opacity-70">
+              <Image
+                src="/Logo.png"
+                alt="Pollo Rey"
+                width={120}
+                height={44}
+                className="object-contain"
+                style={{ mixBlendMode: "multiply" }}
+                priority
+              />
             </Link>
           </div>
 
@@ -104,13 +99,16 @@ export function Navbar() {
 
         {/* ── Mobile nav (logo left, burger right) ── */}
         <div className="flex h-16 items-center justify-between px-5 md:hidden">
-          <Link href="/" className="flex items-baseline">
-            <span className="font-display text-xl font-black text-[#08234e]" style={{ letterSpacing: "-0.05em" }}>
-              POLLO
-            </span>
-            <span className="font-display text-xl font-black text-[#08234e]/25" style={{ letterSpacing: "-0.05em" }}>
-              REY
-            </span>
+          <Link href="/" className="transition-opacity hover:opacity-70">
+            <Image
+              src="/Logo.png"
+              alt="Pollo Rey"
+              width={100}
+              height={36}
+              className="object-contain"
+              style={{ mixBlendMode: "multiply" }}
+              priority
+            />
           </Link>
           <div className="flex items-center gap-2">
             <CartIcon />

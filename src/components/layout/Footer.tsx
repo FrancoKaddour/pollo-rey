@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const whatsappPhone = process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? "549XXXXXXXXXX";
 
@@ -12,16 +13,16 @@ export function Footer() {
 
           {/* LEFT — Logo grande */}
           <div>
-            <Link href="/" className="group inline-block">
-              <div
-                className="font-display font-black uppercase text-[#f1ead0] leading-[0.85] transition-opacity group-hover:opacity-70"
-                style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", letterSpacing: "-0.04em" }}
-              >
-                POLLO<br />
-                <span className="text-[#f1ead0]/30">REY</span>
-              </div>
+            <Link href="/" className="group inline-block transition-opacity hover:opacity-70">
+              <Image
+                src="/Red_and_White_Minimalist_Fried_Chicken_Logo__1_-removebg-preview.png"
+                alt="Pollo Rey"
+                width={160}
+                height={180}
+                className="object-contain brightness-0 invert"
+              />
             </Link>
-            <p className="mt-5 font-sans text-sm leading-relaxed text-[#f1ead0]/40">
+            <p className="mt-4 font-sans text-sm leading-relaxed text-[#f1ead0]/40">
               Saavedra, Buenos Aires.
               <br />
               Lun–Sáb: 8:00 – 20:00

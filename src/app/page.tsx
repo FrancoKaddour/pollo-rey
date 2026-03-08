@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -75,33 +76,21 @@ export default async function HomePage() {
 
         {/* ── Centro: imagen circular + CTA ── */}
         <div className="relative z-10 flex flex-col items-center">
-          {/* Círculo con grid overlay */}
+          {/* Círculo navy externo (borde) + círculo cream interno con imagen */}
           <div
-            className="relative overflow-hidden rounded-full bg-[#08234e] shadow-[0_20px_60px_rgba(8,35,78,0.30)]"
-            style={{
-              width: "clamp(220px, 32vw, 460px)",
-              height: "clamp(220px, 32vw, 460px)",
-            }}
+            className="relative rounded-full bg-[#08234e] p-3 shadow-[0_20px_60px_rgba(8,35,78,0.35)]"
+            style={{ width: "clamp(240px, 34vw, 480px)", height: "clamp(240px, 34vw, 480px)" }}
           >
-            {/* Placeholder interior */}
-            <div className="flex h-full w-full items-center justify-center">
-              <span
-                className="select-none font-display font-black text-[#f1ead0]"
-                style={{ fontSize: "clamp(4rem, 11vw, 11rem)", opacity: 0.07, letterSpacing: "-0.05em" }}
-              >
-                PR
-              </span>
+            {/* Círculo interno cream */}
+            <div className="relative h-full w-full overflow-hidden rounded-full bg-[#f1ead0]">
+              <Image
+                src="/Red_and_White_Minimalist_Fried_Chicken_Logo__1_-removebg-preview.png"
+                alt="Pollo Rey"
+                fill
+                className="object-contain p-3"
+                priority
+              />
             </div>
-
-            {/* Grid overlay (tiles PP-style) */}
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage:
-                  "linear-gradient(rgba(241,234,208,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(241,234,208,0.18) 1px, transparent 1px)",
-                backgroundSize: "55px 55px",
-              }}
-            />
           </div>
 
           {/* Pill CTA */}
@@ -116,14 +105,20 @@ export default async function HomePage() {
 
       {/* ── 2. MARQUEE ────────────────────────────────────────────────────────── */}
       <div className="overflow-hidden bg-[#08234e] py-3.5">
-        <div className="flex" style={{ animation: "marquee 20s linear infinite" }}>
-          {Array.from({ length: 3 }).flatMap((_, d) =>
-            ["POLLO FRESCO", "·", "SAAVEDRA", "·", "BUENOS AIRES", "·", "DELIVERY", "·", "CALIDAD GARANTIZADA", "·", "CORTES FRESCOS", "·"].map(
+        {/* Exactamente 2 copias → translateX(-50%) loops sin salto */}
+        <div
+          className="flex w-max"
+          style={{ animation: "marquee 24s linear infinite" }}
+        >
+          {[0, 1].flatMap((d) =>
+            ["POLLO FRESCO", "★", "SAAVEDRA", "★", "BUENOS AIRES", "★", "DELIVERY", "★", "CALIDAD GARANTIZADA", "★", "CORTES FRESCOS", "★"].map(
               (item, i) => (
                 <span
                   key={`${d}-${i}`}
-                  className={`shrink-0 px-4 font-display text-sm font-black uppercase tracking-widest ${
-                    item === "·" ? "text-[#f1ead0]/25" : "text-[#f1ead0]"
+                  className={`shrink-0 px-5 font-display font-black uppercase tracking-widest ${
+                    item === "★"
+                      ? "text-[#f1ead0]/25 text-sm"
+                      : "text-[#f1ead0] text-sm"
                   }`}
                 >
                   {item}
