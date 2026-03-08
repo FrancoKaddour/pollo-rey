@@ -34,6 +34,9 @@
   --duration-fast:   150ms;
   --duration-normal: 300ms;
   --duration-slow:   600ms;
+
+  /* Colores extra */
+  --color-brand-yellow: #ffd600;
 }
 
 /* ─── Variables CSS globales ─────────────────────────────────────────────── */
@@ -101,12 +104,43 @@ h1, h2, h3, h4, h5, h6 {
   to   { transform: translateX(-50%); }
 }
 
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-12px) rotate(2deg); }
+  66%       { transform: translateY(-6px) rotate(-1.5deg); }
+}
+
 .animate-fade-up {
   animation: fadeUp var(--duration-slow) ease-out forwards;
 }
 
 .animate-fade-in {
   animation: fadeIn var(--duration-normal) ease-out forwards;
+}
+
+/* ─── Scrollbar hide utility ────────────────────────────────────────────── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Mission cards hover (Pretty Patty yellow shadow) ──────────────────── */
+.card-mission {
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  border: 1px solid rgba(8, 35, 78, 0.12);
+}
+.card-mission:hover {
+  transform: translateY(-5px);
+  box-shadow: 6px 6px 0px 0px var(--color-brand-yellow);
+  border-color: #08234e;
 }
 
 /* ─── Scrollbar custom (solo desktop) ────────────────────────────────────── */

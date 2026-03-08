@@ -149,19 +149,19 @@ export function Navbar() {
     <>
       <header className="fixed left-0 right-0 top-0 z-50 bg-[#f1ead0] shadow-[0_1px_0_rgba(8,35,78,0.08)]">
         <nav ref={navRef} className="relative">
-          <div className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 md:px-12">
+          <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6 md:px-12">
 
             {/* ── Logo ── */}
-            <Link href="/" className="group flex items-baseline gap-0.5 shrink-0">
+            <Link href="/" className="group flex items-baseline gap-0 shrink-0">
               <span
-                className="font-display text-2xl font-black text-[#08234e] transition-opacity group-hover:opacity-70"
-                style={{ letterSpacing: "-0.04em" }}
+                className="font-display text-xl font-black text-[#08234e] transition-opacity group-hover:opacity-60"
+                style={{ letterSpacing: "-0.05em" }}
               >
                 POLLO
               </span>
               <span
-                className="font-display text-2xl font-black text-[#08234e]/35 transition-opacity group-hover:opacity-70"
-                style={{ letterSpacing: "-0.04em" }}
+                className="font-display text-xl font-black text-[#08234e]/30 transition-opacity group-hover:opacity-60"
+                style={{ letterSpacing: "-0.05em" }}
               >
                 REY
               </span>
@@ -177,7 +177,7 @@ export function Navbar() {
                     "flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium uppercase tracking-[0.1em] transition-colors",
                     dropdownOpen
                       ? "text-[#08234e] bg-[#08234e]/6"
-                      : "text-[#08234e]/55 hover:text-[#08234e] hover:bg-[#08234e]/5"
+                      : "text-[#08234e]/50 hover:text-[#08234e] hover:bg-[#08234e]/5"
                   )}
                 >
                   Productos
@@ -212,7 +212,7 @@ export function Navbar() {
             <div className="flex items-center gap-3">
               <Link
                 href="/productos"
-                className="hidden rounded-full bg-[#08234e] px-5 py-2 text-sm font-semibold text-[#f1ead0] transition-opacity hover:opacity-80 md:block"
+                className="hidden rounded-full bg-[#08234e] px-5 py-2 text-xs font-bold uppercase tracking-[0.1em] text-[#f1ead0] transition-opacity hover:opacity-75 md:block"
               >
                 Hacer Pedido
               </Link>
