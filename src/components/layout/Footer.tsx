@@ -15,11 +15,12 @@ export function Footer() {
           <div>
             <Link href="/" className="group inline-block transition-opacity hover:opacity-70">
               <Image
-                src="/Red_and_White_Minimalist_Fried_Chicken_Logo__1_-removebg-preview.png"
+                src="/Logo.png"
                 alt="Pollo Rey"
-                width={160}
-                height={180}
-                className="object-contain brightness-0 invert"
+                width={0}
+                height={0}
+                sizes="300px"
+                className="h-14 w-auto object-contain brightness-0 invert"
               />
             </Link>
             <p className="mt-4 font-sans text-sm leading-relaxed text-[#f1ead0]/40">

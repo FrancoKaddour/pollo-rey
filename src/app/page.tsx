@@ -76,25 +76,27 @@ export default async function HomePage() {
 
         {/* ── Centro: forma arco/puerta + CTA ── */}
         <div className="relative z-10 flex flex-col items-center">
-          {/* Marco externo navy — forma arco (borde) */}
+          {/* Marco externo navy — forma arco, sin padding interno = borde al ras */}
           <div
-            className="relative bg-[#08234e] p-[10px] shadow-[0_24px_64px_rgba(8,35,78,0.35)]"
+            className="relative shadow-[0_24px_64px_rgba(8,35,78,0.35)]"
             style={{
               width: "clamp(200px, 26vw, 360px)",
               height: "clamp(230px, 30vw, 420px)",
               borderRadius: "9999px 9999px 0 0",
+              padding: "10px",
+              background: "#08234e",
             }}
           >
-            {/* Interior cream — misma forma arco */}
+            {/* Interior — misma forma arco, imagen llena hasta el borde */}
             <div
-              className="relative h-full w-full overflow-hidden bg-[#f1ead0]"
+              className="relative h-full w-full overflow-hidden"
               style={{ borderRadius: "9999px 9999px 0 0" }}
             >
               <Image
                 src="/Red_and_White_Minimalist_Fried_Chicken_Logo__1_-removebg-preview.png"
                 alt="Pollo Rey"
                 fill
-                className="object-contain"
+                className="object-cover object-top"
                 priority
               />
             </div>
