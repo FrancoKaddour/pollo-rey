@@ -1,8 +1,20 @@
+import path from "path";
 import { PrismaClient } from "@/generated/prisma/client";
 import { PrismaLibSql } from "@prisma/adapter-libsql";
 
+function resolveDbUrl(raw: string): string {
+  // Convert relative file: URLs to absolute with forward slashes (required for libSQL on Windows)
+  if (raw.startsWith("file:./") || raw.startsWith("file:../")) {
+    const rel = raw.slice("file:".length);
+    const abs = path.resolve(process.cwd(), rel).replace(/\\/g, "/");
+    return "file:///" + abs.replace(/^\/+/, "");
+  }
+  return raw;
+}
+
 function createPrismaClient() {
-  const url = process.env.DATABASE_URL ?? "file:./prisma/dev.db";
+  const raw = process.env.DATABASE_URL ?? "file:./dev.db";
+  const url = resolveDbUrl(raw);
   const adapter = new PrismaLibSql({ url });
   return new PrismaClient({ adapter });
 }

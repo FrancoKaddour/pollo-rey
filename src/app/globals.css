@@ -65,6 +65,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* ─── Tipografía ─────────────────────────────────────────────────────────── */
@@ -107,6 +108,16 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes marquee-reverse {
   from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* Pixel-perfect seamless marquee — left: 0 → -trackW | right: -trackW → 0 */
+@keyframes marquee-band-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(var(--marquee-shift)); }
+}
+@keyframes marquee-band-right {
+  from { transform: translateX(var(--marquee-shift)); }
   to   { transform: translateX(0); }
 }
 
