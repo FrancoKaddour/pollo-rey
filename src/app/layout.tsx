@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Syne } from "next/font/google";
+import { Inter, Syne, Paytone_One } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -12,6 +12,13 @@ const syne = Syne({
   variable: "--font-syne",
   subsets: ["latin"],
   weight: ["400", "600", "700", "800"],
+  display: "swap",
+});
+
+const paytoneOne = Paytone_One({
+  variable: "--font-paytone",
+  subsets: ["latin"],
+  weight: "400",
   display: "swap",
 });
 
@@ -70,7 +77,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es-AR" suppressHydrationWarning>
-      <body className={`${inter.variable} ${syne.variable} antialiased`}>
+      <body className={`${inter.variable} ${syne.variable} ${paytoneOne.variable} antialiased`}>
         {children}
       </body>
     </html>

@@ -11,7 +11,7 @@ export default function StoreLayout({
     <>
       <Navbar />
       <CartDrawer />
-      <main className="min-h-screen pt-16 md:pt-20">{children}</main>
+      <main className="min-h-screen pt-16 md:pt-[72px]">{children}</main>
       <Footer />
     </>
   );
