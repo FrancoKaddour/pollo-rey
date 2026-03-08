@@ -74,20 +74,27 @@ export default async function HomePage() {
           TU POLLERÍA DE BARRIO EN SAAVEDRA
         </h1>
 
-        {/* ── Centro: imagen circular + CTA ── */}
+        {/* ── Centro: forma arco/puerta + CTA ── */}
         <div className="relative z-10 flex flex-col items-center">
-          {/* Círculo navy externo (borde) + círculo cream interno con imagen */}
+          {/* Marco externo navy — forma arco (borde) */}
           <div
-            className="relative rounded-full bg-[#08234e] p-3 shadow-[0_20px_60px_rgba(8,35,78,0.35)]"
-            style={{ width: "clamp(240px, 34vw, 480px)", height: "clamp(240px, 34vw, 480px)" }}
+            className="relative bg-[#08234e] p-[10px] shadow-[0_24px_64px_rgba(8,35,78,0.35)]"
+            style={{
+              width: "clamp(200px, 26vw, 360px)",
+              height: "clamp(230px, 30vw, 420px)",
+              borderRadius: "9999px 9999px 0 0",
+            }}
           >
-            {/* Círculo interno cream */}
-            <div className="relative h-full w-full overflow-hidden rounded-full bg-[#f1ead0]">
+            {/* Interior cream — misma forma arco */}
+            <div
+              className="relative h-full w-full overflow-hidden bg-[#f1ead0]"
+              style={{ borderRadius: "9999px 9999px 0 0" }}
+            >
               <Image
                 src="/Red_and_White_Minimalist_Fried_Chicken_Logo__1_-removebg-preview.png"
                 alt="Pollo Rey"
                 fill
-                className="object-contain p-3"
+                className="object-contain"
                 priority
               />
             </div>
@@ -218,25 +225,28 @@ export default async function HomePage() {
 
         <div className="relative mx-auto max-w-[1200px]">
           <div className="grid items-center gap-12 md:grid-cols-2">
-            {/* Foto del equipo (placeholder) */}
-            <div className="relative overflow-hidden rounded-2xl bg-[#08234e]/10" style={{ aspectRatio: "4/3" }}>
-              <div className="flex h-full w-full items-center justify-center">
-                <span
-                  className="select-none font-display font-black text-[#08234e]"
-                  style={{ fontSize: "clamp(5rem, 15vw, 12rem)", opacity: 0.06 }}
-                >
-                  PR
-                </span>
-              </div>
-              {/* Grid overlay sobre la foto */}
+            {/* Logo del equipo — forma arco */}
+            <div className="flex justify-center">
               <div
-                className="absolute inset-0"
+                className="relative bg-[#08234e] p-3"
                 style={{
-                  backgroundImage:
-                    "linear-gradient(rgba(8,35,78,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(8,35,78,0.08) 1px, transparent 1px)",
-                  backgroundSize: "50px 50px",
+                  width: "clamp(180px, 22vw, 320px)",
+                  height: "clamp(210px, 26vw, 380px)",
+                  borderRadius: "9999px 9999px 0 0",
                 }}
-              />
+              >
+                <div
+                  className="relative h-full w-full overflow-hidden bg-[#f1ead0]"
+                  style={{ borderRadius: "9999px 9999px 0 0" }}
+                >
+                  <Image
+                    src="/Red_and_White_Minimalist_Fried_Chicken_Logo__1_-removebg-preview.png"
+                    alt="Pollo Rey"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Texto */}

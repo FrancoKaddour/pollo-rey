@@ -71,12 +71,11 @@ export function Navbar() {
           <div className="flex justify-center">
             <Link href="/" className="transition-opacity hover:opacity-70">
               <Image
-                src="/Logo.png"
+                src="/Red_and_White_Minimalist_Fried_Chicken_Logo__1_-removebg-preview.png"
                 alt="Pollo Rey"
-                width={120}
-                height={44}
+                width={56}
+                height={64}
                 className="object-contain"
-                style={{ mixBlendMode: "multiply" }}
                 priority
               />
             </Link>
@@ -101,12 +100,11 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between px-5 md:hidden">
           <Link href="/" className="transition-opacity hover:opacity-70">
             <Image
-              src="/Logo.png"
+              src="/Red_and_White_Minimalist_Fried_Chicken_Logo__1_-removebg-preview.png"
               alt="Pollo Rey"
-              width={100}
-              height={36}
+              width={44}
+              height={50}
               className="object-contain"
-              style={{ mixBlendMode: "multiply" }}
               priority
             />
           </Link>
