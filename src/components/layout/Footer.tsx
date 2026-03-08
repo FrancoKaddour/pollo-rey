@@ -11,38 +11,42 @@ export function Footer() {
       <div className="mx-auto max-w-[1400px] px-6 py-14 md:px-12 md:py-20">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:items-start">
 
-          {/* LEFT — Logo grande */}
-          <div>
+          {/* LEFT — Logo + datos centrados */}
+          <div className="flex flex-col items-center text-center md:items-center">
             <Link href="/" className="group inline-block transition-opacity hover:opacity-70">
               <Image
-                src="/Logo.png"
+                src="/Logo-crop.png"
                 alt="Pollo Rey"
-                width={0}
-                height={0}
-                sizes="300px"
-                className="h-14 w-auto object-contain brightness-0 invert"
+                width={300}
+                height={185}
+                className="h-36 w-auto object-contain brightness-0 invert"
               />
             </Link>
             <p className="mt-4 font-sans text-sm leading-relaxed text-[#f1ead0]/40">
               Saavedra, Buenos Aires.
-              <br />
+            </p>
+            <p className="font-sans text-sm leading-relaxed text-[#f1ead0]/40">
               Lun–Sáb: 8:00 – 20:00
             </p>
           </div>
 
-          {/* CENTER — Nav columns */}
-          <div className="grid grid-cols-2 gap-8 md:justify-self-center">
+          {/* CENTER — Nav columns con headers */}
+          <div className="grid grid-cols-2 gap-10 md:justify-self-center">
             <div>
+              <p className="mb-4 font-sans text-[0.6rem] font-black uppercase tracking-[0.25em] text-[#f1ead0]/25">
+                Páginas
+              </p>
               <ul className="space-y-3">
                 {[
                   { href: "/nosotros", label: "NOSOTROS" },
                   { href: "/productos", label: "MENÚ" },
                   { href: "/contacto", label: "CONTACTO" },
+                  { href: "/cuenta", label: "MI CUENTA" },
                 ].map((l) => (
                   <li key={l.href}>
                     <Link
                       href={l.href}
-                      className="font-display text-sm font-black uppercase tracking-widest text-[#f1ead0]/70 transition-colors hover:text-[#f1ead0]"
+                      className="font-display text-sm font-black uppercase tracking-widest text-[#f1ead0]/60 transition-colors hover:text-[#f1ead0]"
                     >
                       {l.label}
                     </Link>
@@ -51,15 +55,20 @@ export function Footer() {
               </ul>
             </div>
             <div>
+              <p className="mb-4 font-sans text-[0.6rem] font-black uppercase tracking-[0.25em] text-[#f1ead0]/25">
+                Servicios
+              </p>
               <ul className="space-y-3">
                 {[
                   { href: "/productos", label: "DELIVERY" },
                   { href: "/contacto", label: "UBICACIÓN" },
+                  { href: "/productos", label: "PROMOS" },
+                  { href: "/cuenta", label: "MIS PUNTOS" },
                 ].map((l) => (
-                  <li key={l.href}>
+                  <li key={l.label}>
                     <Link
                       href={l.href}
-                      className="font-display text-sm font-black uppercase tracking-widest text-[#f1ead0]/70 transition-colors hover:text-[#f1ead0]"
+                      className="font-display text-sm font-black uppercase tracking-widest text-[#f1ead0]/60 transition-colors hover:text-[#f1ead0]"
                     >
                       {l.label}
                     </Link>

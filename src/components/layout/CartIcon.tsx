@@ -11,7 +11,7 @@ export function CartIcon() {
     <button
       onClick={toggleCart}
       aria-label={`Carrito (${count} productos)`}
-      className="relative flex h-10 w-10 items-center justify-center rounded-full border border-[#08234e]/20 bg-white text-[#08234e] transition-all hover:border-[#08234e] hover:bg-[#08234e] hover:text-[#f1ead0]"
+      className="relative flex h-10 w-10 items-center justify-center rounded-full border border-black bg-transparent text-black transition-all hover:border-[#CC1414] hover:text-[#CC1414]"
     >
       <ShoppingBag className="h-5 w-5" strokeWidth={1.6} />
       {count > 0 && (
