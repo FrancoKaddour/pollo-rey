@@ -1,34 +1,26 @@
 import Link from "next/link";
 import Image from "next/image";
-import { prisma } from "@/lib/prisma";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/cart/CartDrawer";
-import { ProductCarousel } from "@/components/home/ProductCarousel";
-import type { Product } from "@/types";
+import { PromoCarousel } from "@/components/home/PromoCarousel";
+import { ExperienceForm } from "@/components/home/ExperienceForm";
+import { NewsletterSection } from "@/components/home/NewsletterSection";
+import { MarqueeBand } from "@/components/ui/MarqueeBand";
+import { MenuSection } from "@/components/home/MenuSection";
+import { LoyaltySection } from "@/components/home/LoyaltySection";
 
 // ─── Filas del texto diagonal del hero ───────────────────────────────────────
 const HERO_TEXT_SOLID = "POLLO FRESCO · SAAVEDRA · BUENOS AIRES · CALIDAD · DELIVERY ·";
 const HERO_TEXT_GHOST = "POLLERÍA DE BARRIO · CORTES FRESCOS · HUEVOS · DESPENSA · CABA ·";
 
 export default async function HomePage() {
-  let featuredProducts: Product[] = [];
 
-  try {
-    const rows = await prisma.product.findMany({
-      where: { featured: true, active: true },
-      take: 8,
-      include: { category: true },
-    });
-    featuredProducts = rows as unknown as Product[];
-  } catch {
-    /* graceful fallback */
-  }
-
-  // 10 filas alternadas sólido/ghost
-  const bgRows = Array.from({ length: 10 }, (_, i) => ({
+  // 4 filas alternadas sólido/ghost, dirección alterna
+  const bgRows = Array.from({ length: 4 }, (_, i) => ({
     text: i % 2 === 0 ? HERO_TEXT_SOLID : HERO_TEXT_GHOST,
     solid: i % 2 === 0,
+    reverse: i % 2 !== 0,
   }));
 
   return (
@@ -38,30 +30,35 @@ export default async function HomePage() {
 
       {/* ── 1. HERO ───────────────────────────────────────────────────────────── */}
       <section
-        className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#f1ead0] pt-[72px]"
+        className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#f1ead0] pt-[88px]"
         aria-label="Hero"
       >
-        {/* ── Background: texto diagonal denso (desktop) ── */}
+        {/* ── Background: marquees inclinados (desktop) ── */}
         <div
-          className="pointer-events-none absolute inset-0 hidden overflow-hidden md:block"
+          className="pointer-events-none absolute inset-0 hidden md:flex md:flex-col md:justify-center"
           aria-hidden
-          style={{ transform: "rotate(-9deg) scale(1.65)" }}
+          style={{ transform: "rotate(-6deg) scale(1.65)" }}
         >
           {bgRows.map((row, i) => (
-            <div
-              key={i}
-              className="whitespace-nowrap font-display font-black uppercase leading-[1.05]"
-              style={
-                row.solid
-                  ? { color: "#08234e", fontSize: "clamp(3.5rem, 7vw, 7.5rem)", letterSpacing: "-0.02em" }
-                  : {
-                      color: "rgba(8,35,78,0.14)",
-                      fontSize: "clamp(3.5rem, 7vw, 7.5rem)",
-                      letterSpacing: "-0.02em",
-                    }
-              }
-            >
-              {row.text}&nbsp;&nbsp;&nbsp;{row.text}&nbsp;&nbsp;&nbsp;{row.text}
+            <div key={i} style={{ overflow: "hidden", paddingTop: "0.2em", marginTop: "-0.2em" }}>
+              <div
+                className="flex w-max font-display font-black uppercase"
+                style={{
+                  animation: `${row.reverse ? "marquee-reverse" : "marquee"} 180s linear infinite`,
+                  color: row.solid ? "#08234e" : "transparent",
+                  WebkitTextStroke: row.solid ? "0px" : "1.5px #08234e",
+                  fontSize: "clamp(2rem, 3.6vw, 4.2rem)",
+                  letterSpacing: "-0.02em",
+                  lineHeight: "1",
+                }}
+              >
+                <span className="shrink-0 whitespace-nowrap">
+                  {row.text} {row.text} {row.text}{" "}
+                </span>
+                <span className="shrink-0 whitespace-nowrap" aria-hidden>
+                  {row.text} {row.text} {row.text}{" "}
+                </span>
+              </div>
             </div>
           ))}
         </div>
@@ -76,31 +73,15 @@ export default async function HomePage() {
 
         {/* ── Centro: forma arco/puerta + CTA ── */}
         <div className="relative z-10 flex flex-col items-center">
-          {/* Marco externo navy — forma arco, sin padding interno = borde al ras */}
-          <div
-            className="relative shadow-[0_24px_64px_rgba(8,35,78,0.35)]"
-            style={{
-              width: "clamp(200px, 26vw, 360px)",
-              height: "clamp(230px, 30vw, 420px)",
-              borderRadius: "9999px 9999px 0 0",
-              padding: "10px",
-              background: "#08234e",
-            }}
-          >
-            {/* Interior — misma forma arco, imagen llena hasta el borde */}
-            <div
-              className="relative h-full w-full overflow-hidden"
-              style={{ borderRadius: "9999px 9999px 0 0" }}
-            >
-              <Image
-                src="/Red_and_White_Minimalist_Fried_Chicken_Logo__1_-removebg-preview.png"
-                alt="Pollo Rey"
-                fill
-                className="object-cover object-top"
-                priority
-              />
-            </div>
-          </div>
+          <Image
+            src="/IMGhero2.png"
+            alt="Pollo Rey"
+            width={520}
+            height={640}
+            className="object-contain -mt-8"
+            style={{ width: "clamp(300px, 38vw, 520px)", height: "auto" }}
+            priority
+          />
 
           {/* Pill CTA */}
           <Link
@@ -112,143 +93,71 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── 2. MARQUEE ────────────────────────────────────────────────────────── */}
-      <div className="overflow-hidden bg-[#08234e] py-3.5">
-        {/* Exactamente 2 copias → translateX(-50%) loops sin salto */}
-        <div
-          className="flex w-max"
-          style={{ animation: "marquee 24s linear infinite" }}
-        >
-          {[0, 1].flatMap((d) =>
-            ["POLLO FRESCO", "★", "SAAVEDRA", "★", "BUENOS AIRES", "★", "DELIVERY", "★", "CALIDAD GARANTIZADA", "★", "CORTES FRESCOS", "★"].map(
-              (item, i) => (
-                <span
-                  key={`${d}-${i}`}
-                  className={`shrink-0 px-5 font-display font-black uppercase tracking-widest ${
-                    item === "★"
-                      ? "text-[#f1ead0]/25 text-sm"
-                      : "text-[#f1ead0] text-sm"
-                  }`}
-                >
-                  {item}
-                </span>
-              )
-            )
-          )}
-        </div>
-      </div>
-
-      {/* ── 3. PRODUCTOS — carrusel 3 items (PP-style) ────────────────────────── */}
-      <section className="bg-[#f1ead0] px-6 py-20 md:px-12">
+      {/* ── 3. PROMOCIONES — carrusel 3 items estilo PP ───────────────────────── */}
+      <section className="overflow-hidden bg-[#f1ead0] px-6 py-20 md:px-12">
         <div className="mx-auto max-w-[1400px]">
           <h2
-            className="mb-14 text-center font-display font-black uppercase text-[#08234e]"
-            style={{ fontSize: "clamp(1.8rem, 4vw, 3.5rem)", letterSpacing: "-0.04em" }}
+            className="mb-14 text-center font-display font-black uppercase text-[#08234e] leading-none"
+            style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)", letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "center" }}
           >
-            LO MÁS PEDIDO
+            NUESTRAS PROMOS<span className="text-[#CC1414]">.</span>
           </h2>
-
-          <ProductCarousel products={featuredProducts} />
-
-          <div className="mt-16 flex justify-center">
-            <Link
-              href="/productos"
-              className="rounded-full border-2 border-[#08234e] px-10 py-3.5 font-display text-sm font-black uppercase tracking-widest text-[#08234e] transition-colors hover:bg-[#08234e] hover:text-[#f1ead0]"
-            >
-              VER MENÚ COMPLETO
-            </Link>
-          </div>
+          <PromoCarousel />
         </div>
       </section>
 
-      {/* ── 4. BANNER "HACER PEDIDO" (PP ORDER NOW style — rojo, overflow) ─────── */}
-      <section
-        className="relative overflow-hidden bg-[#E5351A]"
-        style={{ height: "clamp(80px, 11vw, 120px)" }}
+      {/* ── 4. BANNER "HACER PEDIDO" — rojo ──────────────────────────────────── */}
+      <MarqueeBand
+        direction="left"
+        speed={90}
+        className="bg-[#CC1414]"
+        style={{ height: "clamp(140px, 16vw, 200px)" }}
       >
-        {/* Texto MASIVO blanco que overflowea arriba y abajo */}
-        <div
-          className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden"
-          aria-hidden
+        <span
+          className="shrink-0 select-none font-display font-black italic uppercase text-white"
+          style={{ fontSize: "clamp(110px, 13vw, 160px)", letterSpacing: "-0.04em", lineHeight: 0.85, marginRight: "clamp(2rem, 3vw, 3.5rem)" }}
         >
-          <span
-            className="select-none whitespace-nowrap font-display font-black uppercase text-white"
-            style={{
-              fontSize: "clamp(6rem, 18vw, 18rem)",
-              letterSpacing: "-0.04em",
-              lineHeight: 1,
-            }}
-          >
-            HACER PEDIDO
-          </span>
-        </div>
+          HACER PEDIDO
+        </span>
+        <Link
+          href="/productos"
+          className="shrink-0 rounded-full border-2 border-white bg-transparent px-7 py-3 font-display text-sm font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-[#CC1414]"
+          style={{ whiteSpace: "nowrap", marginRight: "clamp(2rem, 3vw, 3.5rem)" }}
+        >
+          ORDENAR AHORA
+        </Link>
+        <span
+          className="shrink-0 select-none font-display font-black italic uppercase text-white"
+          style={{ fontSize: "clamp(110px, 13vw, 160px)", letterSpacing: "-0.04em", lineHeight: 0.85, marginRight: "clamp(2rem, 3vw, 3.5rem)" }}
+        >
+          POLLO REY
+        </span>
+        <Link
+          href="/productos"
+          className="shrink-0 rounded-full border-2 border-white bg-transparent px-7 py-3 font-display text-sm font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-[#CC1414]"
+          style={{ whiteSpace: "nowrap", marginRight: "clamp(2rem, 3vw, 3.5rem)" }}
+        >
+          ORDENAR AHORA
+        </Link>
+      </MarqueeBand>
 
-        {/* Pill izquierda */}
-        <div className="absolute left-5 top-1/2 z-10 -translate-y-1/2 md:left-14">
-          <Link
-            href="/productos"
-            className="block rounded-full border-2 border-white px-5 py-2.5 font-display text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-[#E5351A]"
-          >
-            HACER PEDIDO
-          </Link>
-        </div>
-
-        {/* Pill derecha */}
-        <div className="absolute right-5 top-1/2 z-10 -translate-y-1/2 md:right-14">
-          <Link
-            href="/productos"
-            className="block rounded-full border-2 border-white px-5 py-2.5 font-display text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-[#E5351A]"
-          >
-            HACER PEDIDO
-          </Link>
-        </div>
-      </section>
+      {/* ── 4b. MENÚ — tabs + slider estilo Pretty Patty ─────────────────────── */}
+      <MenuSection />
 
       {/* ── 5. NOSOTROS / EQUIPO ──────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-[#f1ead0] px-6 py-20 md:px-12">
-        {/* Texto diagonal de fondo — más sutil */}
-        <div
-          className="pointer-events-none absolute inset-0 hidden overflow-hidden opacity-[0.06] md:block"
-          aria-hidden
-          style={{ transform: "rotate(-9deg) scale(1.5)" }}
-        >
-          {Array.from({ length: 6 }, (_, i) => (
-            <div
-              key={i}
-              className="whitespace-nowrap font-display font-black uppercase text-[#08234e] leading-[1.05]"
-              style={{ fontSize: "clamp(3rem, 6vw, 6rem)" }}
-            >
-              {i % 2 === 0 ? "NUESTRO EQUIPO · BARRIO SAAVEDRA · " : "15 AÑOS · CALIDAD · "}
-              {i % 2 === 0 ? "NUESTRO EQUIPO · BARRIO SAAVEDRA · " : "15 AÑOS · CALIDAD · "}
-              {i % 2 === 0 ? "NUESTRO EQUIPO · BARRIO SAAVEDRA · " : "15 AÑOS · CALIDAD · "}
-            </div>
-          ))}
-        </div>
-
-        <div className="relative mx-auto max-w-[1200px]">
+<div className="relative mx-auto max-w-[1200px]">
           <div className="grid items-center gap-12 md:grid-cols-2">
-            {/* Logo del equipo — forma arco */}
+            {/* Imagen hero */}
             <div className="flex justify-center">
-              <div
-                className="relative bg-[#08234e] p-3"
-                style={{
-                  width: "clamp(180px, 22vw, 320px)",
-                  height: "clamp(210px, 26vw, 380px)",
-                  borderRadius: "9999px 9999px 0 0",
-                }}
-              >
-                <div
-                  className="relative h-full w-full overflow-hidden bg-[#f1ead0]"
-                  style={{ borderRadius: "9999px 9999px 0 0" }}
-                >
-                  <Image
-                    src="/Red_and_White_Minimalist_Fried_Chicken_Logo__1_-removebg-preview.png"
-                    alt="Pollo Rey"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </div>
+              <Image
+                src="/IMGhero.png"
+                alt="Pollo Rey"
+                width={520}
+                height={640}
+                className="object-contain -mt-8"
+                style={{ width: "clamp(200px, 28vw, 420px)", height: "auto" }}
+              />
             </div>
 
             {/* Texto */}
@@ -257,10 +166,10 @@ export default async function HomePage() {
                 Sobre nosotros
               </p>
               <h2
-                className="font-display font-black uppercase text-[#08234e] leading-[0.88]"
-                style={{ fontSize: "clamp(2rem, 4.5vw, 4rem)", letterSpacing: "-0.04em" }}
+                className="font-display font-black uppercase text-[#08234e] leading-[0.85]"
+                style={{ fontSize: "clamp(2.8rem, 5.5vw, 5.5rem)", letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "left" }}
               >
-                TU POLLERÍA DE BARRIO EN SAAVEDRA.
+                TU POLLERÍA DE BARRIO EN SAAVEDRA<span className="text-[#CC1414]">.</span>
               </h2>
               <p className="mt-6 text-sm leading-relaxed text-[#08234e]/55">
                 Somos una pollería familiar con más de 15 años en Saavedra, CABA.
@@ -270,7 +179,7 @@ export default async function HomePage() {
               </p>
               <Link
                 href="/nosotros"
-                className="mt-8 inline-block rounded-full bg-[#08234e] px-8 py-3.5 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-opacity hover:opacity-80"
+                className="mt-8 inline-block rounded-full border-2 border-[#08234e] bg-transparent px-8 py-3.5 font-display text-sm font-black uppercase tracking-widest text-[#08234e] transition-colors hover:bg-[#08234e] hover:text-[#f1ead0]"
               >
                 CONOCENOS
               </Link>
@@ -279,54 +188,64 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── 6. SEGUNDO BANNER — azul navy ─────────────────────────────────────── */}
-      <section
-        className="relative overflow-hidden bg-[#08234e]"
-        style={{ height: "clamp(80px, 11vw, 120px)" }}
+      {/* ── Checkered band ── */}
+      <div
+        aria-hidden
+        style={{
+          width: "100%",
+          height: "clamp(140px, 16vw, 200px)",
+          backgroundImage: "repeating-conic-gradient(#08234e 0% 25%, #f1ead0 0% 50%)",
+          /* tile = height/3 → always exactly 3 complete rows at any viewport */
+          backgroundSize: "clamp(47px, 5.33vw, 67px) clamp(47px, 5.33vw, 67px)",
+        }}
+      />
+
+      {/* ── 5b. CALIFICÁ TU EXPERIENCIA ──────────────────────────────────────── */}
+      <ExperienceForm />
+
+      {/* ── 6. SEGUNDO BANNER — navy ──────────────────────────────────────────── */}
+      <MarqueeBand
+        direction="right"
+        speed={90}
+        className="bg-[#08234e]"
+        style={{ height: "clamp(140px, 16vw, 200px)" }}
       >
-        <div
-          className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden"
-          aria-hidden
+        <span
+          className="shrink-0 select-none font-display font-black italic uppercase text-[#f1ead0]"
+          style={{ fontSize: "clamp(110px, 13vw, 160px)", letterSpacing: "-0.04em", lineHeight: 0.85, marginRight: "clamp(2rem, 3vw, 3.5rem)" }}
         >
-          <span
-            className="select-none whitespace-nowrap font-display font-black uppercase text-[#f1ead0]"
-            style={{
-              fontSize: "clamp(6rem, 18vw, 18rem)",
-              letterSpacing: "-0.04em",
-              lineHeight: 1,
-            }}
-          >
-            POLLO FRESCO
-          </span>
-        </div>
-
-        <div className="absolute left-5 top-1/2 z-10 -translate-y-1/2 md:left-14">
-          <Link
-            href="/productos?cat=pollo"
-            className="block rounded-full border-2 border-[#f1ead0] px-5 py-2.5 font-display text-xs font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#f1ead0] hover:text-[#08234e]"
-          >
-            VER CATÁLOGO
-          </Link>
-        </div>
-
-        <div className="absolute right-5 top-1/2 z-10 -translate-y-1/2 md:right-14">
-          <Link
-            href="/productos?cat=pollo"
-            className="block rounded-full border-2 border-[#f1ead0] px-5 py-2.5 font-display text-xs font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#f1ead0] hover:text-[#08234e]"
-          >
-            POLLO FRESCO
-          </Link>
-        </div>
-      </section>
+          POLLO FRESCO
+        </span>
+        <Link
+          href="/productos?cat=pollo"
+          className="shrink-0 rounded-full border-2 border-[#f1ead0] bg-transparent px-7 py-3 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#f1ead0] hover:text-[#08234e]"
+          style={{ whiteSpace: "nowrap", marginRight: "clamp(2rem, 3vw, 3.5rem)" }}
+        >
+          VER CATÁLOGO
+        </Link>
+        <span
+          className="shrink-0 select-none font-display font-black italic uppercase text-[#f1ead0]"
+          style={{ fontSize: "clamp(110px, 13vw, 160px)", letterSpacing: "-0.04em", lineHeight: 0.85, marginRight: "clamp(2rem, 3vw, 3.5rem)" }}
+        >
+          CORTES FRESCOS
+        </span>
+        <Link
+          href="/productos?cat=pollo"
+          className="shrink-0 rounded-full border-2 border-[#f1ead0] bg-transparent px-7 py-3 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#f1ead0] hover:text-[#08234e]"
+          style={{ whiteSpace: "nowrap", marginRight: "clamp(2rem, 3vw, 3.5rem)" }}
+        >
+          VER CATÁLOGO
+        </Link>
+      </MarqueeBand>
 
       {/* ── 7. CATEGORÍAS ─────────────────────────────────────────────────────── */}
-      <section className="bg-[#f1ead0] px-6 py-20 md:px-12">
+      <section className="overflow-hidden bg-[#f1ead0] px-6 py-20 md:px-12">
         <div className="mx-auto max-w-[1400px]">
           <h2
-            className="mb-10 font-display font-black uppercase text-[#08234e]"
-            style={{ fontSize: "clamp(1.8rem, 4vw, 3.5rem)", letterSpacing: "-0.04em" }}
+            className="mb-10 text-center font-display font-black uppercase text-[#08234e] leading-none"
+            style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)", letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "center" }}
           >
-            TODO LO QUE NECESITÁS.
+            TODO LO QUE NECESITÁS<span className="text-[#CC1414]">.</span>
           </h2>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {[
@@ -355,6 +274,23 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── 8. LOYALTY — Sumá puntos ──────────────────────────────────────────── */}
+      <LoyaltySection />
+
+      {/* ── Checkered band ── */}
+      <div
+        aria-hidden
+        style={{
+          width: "100%",
+          height: "clamp(140px, 16vw, 200px)",
+          backgroundImage: "repeating-conic-gradient(#08234e 0% 25%, #f1ead0 0% 50%)",
+          backgroundSize: "clamp(47px, 5.33vw, 67px) clamp(47px, 5.33vw, 67px)",
+        }}
+      />
+
+      {/* ── 9. NEWSLETTER ─────────────────────────────────────────────────────── */}
+      <NewsletterSection />
 
       <Footer />
     </>
