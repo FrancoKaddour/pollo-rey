@@ -1,17 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { Plus, ShoppingBag } from "lucide-react";
+import { Plus, Check } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 import { formatPrice } from "@/lib/utils";
 import type { Product } from "@/types";
 
-interface ProductCardProps {
-  product: Product;
-}
-
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product }: { product: Product }) {
   const addItem = useCartStore((s) => s.addItem);
+  const [added, setAdded] = useState(false);
+
+  const hasDiscount = product.comparePrice && product.comparePrice > product.price;
+  const discountPct = hasDiscount
+    ? Math.round(((product.comparePrice! - product.price) / product.comparePrice!) * 100)
+    : 0;
 
   const handleAdd = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -23,96 +26,100 @@ export function ProductCard({ product }: ProductCardProps) {
       imageUrl: product.imageUrl,
       unit: product.unit,
     });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1500);
   };
-
-  const hasDiscount =
-    product.comparePrice && product.comparePrice > product.price;
-  const discountPct = hasDiscount
-    ? Math.round(((product.comparePrice! - product.price) / product.comparePrice!) * 100)
-    : 0;
 
   return (
     <Link
       href={`/productos/${product.slug}`}
-      className="group relative flex flex-col overflow-hidden rounded-2xl bg-white border border-[#08234e]/8 transition-shadow hover:shadow-[0_8px_32px_rgba(8,35,78,0.1)]"
+      className="group flex flex-col overflow-hidden rounded-2xl border-2 border-[#08234e]/10 bg-white transition-all duration-200 hover:-translate-y-1.5 hover:border-[#08234e] hover:shadow-[6px_6px_0px_0px_#08234e]"
     >
-      {/* Imagen */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-[#f1ead0]">
+      {/* Image area */}
+      <div
+        className="relative flex items-end justify-end overflow-hidden bg-[#08234e]/[0.06]"
+        style={{ height: 180 }}
+      >
         {product.imageUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={product.imageUrl}
             alt={product.name}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center">
-            <span
-              className="font-display font-black text-[#08234e]/8 select-none"
-              style={{ fontSize: "clamp(3rem, 8vw, 5rem)" }}
-            >
-              PR
-            </span>
-          </div>
+          <span
+            className="pointer-events-none absolute bottom-2 right-4 select-none font-display font-black italic uppercase text-[#08234e]/10 transition-all group-hover:text-[#08234e]/15"
+            style={{ fontSize: "5rem", lineHeight: 1 }}
+          >
+            {product.name.charAt(0)}
+          </span>
         )}
 
         {/* Badges */}
-        <div className="absolute left-3 top-3 flex flex-col gap-1.5">
+        <div className="absolute left-3 top-3 z-10 flex flex-col gap-1.5">
           {product.featured && (
-            <span className="rounded-full bg-[#08234e] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#f1ead0]">
+            <span className="rounded-full bg-[#08234e] px-2.5 py-0.5 font-display text-[10px] font-black uppercase tracking-wide text-[#f1ead0]">
               Destacado
             </span>
           )}
           {hasDiscount && (
-            <span className="rounded-full bg-red-500 px-2.5 py-0.5 text-[10px] font-bold text-white">
+            <span className="rounded-full bg-[#CC1414] px-2.5 py-0.5 font-display text-[10px] font-black text-white">
               -{discountPct}%
             </span>
           )}
         </div>
-
-        {/* Add button overlay */}
-        <button
-          onClick={handleAdd}
-          aria-label={`Agregar ${product.name} al carrito`}
-          className="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-[#08234e] text-[#f1ead0] opacity-0 shadow-lg transition-all duration-200 hover:scale-110 group-hover:opacity-100"
-        >
-          <Plus className="h-4 w-4" strokeWidth={2.5} />
-        </button>
       </div>
 
       {/* Info */}
-      <div className="flex flex-1 flex-col p-4">
-        <p className="mb-1 text-xs font-medium uppercase tracking-[0.12em] text-[#08234e]/35">
-          {product.unit}
-        </p>
-        <h3 className="font-display text-sm font-bold leading-snug text-[#08234e] group-hover:opacity-75 transition-opacity">
+      <div className="flex flex-1 flex-col p-5">
+        <h3
+          className="font-display font-black uppercase text-[#08234e]"
+          style={{ fontSize: "0.95rem", letterSpacing: "-0.02em" }}
+        >
           {product.name}
         </h3>
 
         {product.description && (
-          <p className="mt-1 text-xs leading-relaxed text-[#08234e]/45 line-clamp-2">
+          <p className="mt-2 flex-1 text-xs leading-relaxed text-[#08234e]/50 line-clamp-2">
             {product.description}
           </p>
         )}
 
-        <div className="mt-auto pt-3 flex items-end justify-between gap-2">
+        {/* Price + add */}
+        <div className="mt-4 flex items-center justify-between border-t border-[#08234e]/8 pt-4">
           <div>
-            <p className="font-display text-lg font-black text-[#08234e] leading-none">
-              {formatPrice(product.price)}
+            <p
+              className="font-display uppercase text-[#08234e]/40"
+              style={{ fontSize: "0.65rem", letterSpacing: "0.08em" }}
+            >
+              {product.unit}
             </p>
-            {hasDiscount && (
-              <p className="mt-0.5 text-xs text-[#08234e]/35 line-through">
-                {formatPrice(product.comparePrice!)}
+            <div className="flex items-baseline gap-2">
+              <p
+                className="font-display font-black text-[#CC1414]"
+                style={{ fontSize: "1.1rem", letterSpacing: "-0.03em" }}
+              >
+                {formatPrice(product.price)}
               </p>
-            )}
+              {hasDiscount && (
+                <p className="text-xs text-[#08234e]/30 line-through">
+                  {formatPrice(product.comparePrice!)}
+                </p>
+              )}
+            </div>
           </div>
 
           <button
             onClick={handleAdd}
-            className="flex items-center gap-1.5 rounded-full bg-[#08234e]/6 px-3 py-1.5 text-xs font-semibold text-[#08234e] transition-colors hover:bg-[#08234e] hover:text-[#f1ead0] md:hidden"
+            aria-label={`Agregar ${product.name}`}
+            className={`flex h-10 w-10 items-center justify-center rounded-full border-2 transition-all ${
+              added
+                ? "border-[#CC1414] bg-[#CC1414] text-white"
+                : "border-[#08234e] bg-transparent text-[#08234e] hover:bg-[#08234e] hover:text-[#f1ead0]"
+            }`}
           >
-            <ShoppingBag className="h-3 w-3" />
-            Agregar
+            {added ? <Check className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
           </button>
         </div>
       </div>
