@@ -75,7 +75,7 @@ export function Navbar() {
                 transition={{ type: "spring", stiffness: 400, damping: 14 }}
               >
                 <Image
-                  src="/Logo-crop.png"
+                  src="/logo.png"
                   alt="Pollo Rey"
                   width={300}
                   height={185}
@@ -119,7 +119,7 @@ export function Navbar() {
               transition={{ type: "spring", stiffness: 400, damping: 14 }}
             >
               <Image
-                src="/Logo-crop.png"
+                src="/logo.png"
                 alt="Pollo Rey"
                 width={300}
                 height={185}

@@ -57,7 +57,7 @@ export default function LoginPage() {
           <div className="bg-[#4467a9] px-8 pt-10 pb-8 text-center">
             <Link href="/" className="inline-block">
               <Image
-                src="/Logo-crop.png"
+                src="/logo.png"
                 alt="Pollo Rey"
                 width={200}
                 height={123}

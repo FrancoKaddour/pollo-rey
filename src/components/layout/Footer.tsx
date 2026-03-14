@@ -17,7 +17,7 @@ export function Footer() {
           <div className="flex flex-col items-center text-center md:items-center">
             <Link href="/" className="group inline-block transition-opacity hover:opacity-70">
               <Image
-                src="/Logo-crop.png"
+                src="/logo.png"
                 alt="Pollo Rey"
                 width={300}
                 height={185}

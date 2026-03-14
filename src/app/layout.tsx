@@ -80,7 +80,7 @@ const jsonLd = {
   description:
     "Pollería de barrio en Saavedra, CABA. Pollo fresco, cortes especiales, papas fritas y más. Pedidos por WhatsApp.",
   url: "https://pollorey.com.ar",
-  logo: "https://pollorey.com.ar/Logo-crop.png",
+  logo: "https://pollorey.com.ar/logo.png",
   image: "https://pollorey.com.ar/images/brand/og-image.svg",
   telephone: process.env.NEXT_PUBLIC_WHATSAPP_PHONE
     ? `+${process.env.NEXT_PUBLIC_WHATSAPP_PHONE}`

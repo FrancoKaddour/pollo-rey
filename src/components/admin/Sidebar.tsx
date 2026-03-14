@@ -48,7 +48,7 @@ export function Sidebar({ userName, userEmail, pendingOrders = 0 }: SidebarProps
       <div className="flex items-center gap-3 px-5 py-6 border-b border-white/10">
         <Link href="/" className="flex-1">
           <Image
-            src="/Logo-crop.png"
+            src="/logo.png"
             alt="Pollo Rey"
             width={120}
             height={74}

@@ -7,7 +7,7 @@ export default function NotFound() {
       {/* Logo */}
       <Link href="/">
         <Image
-          src="/Logo-crop.png"
+          src="/logo.png"
           alt="Pollo Rey"
           width={300}
           height={185}
