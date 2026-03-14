@@ -40,14 +40,14 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          "fixed left-0 right-0 top-0 z-50 transition-shadow duration-300",
+          "fixed left-0 right-0 top-0 z-50 transition-shadow duration-300 overflow-visible",
           scrolled
             ? "bg-[#f1ead0] shadow-[0_2px_20px_rgba(8,35,78,0.10)]"
             : "bg-[#f1ead0]"
         )}
       >
         {/* ── Desktop nav (3-column grid: left links | center logo | right actions) ── */}
-        <div className="mx-auto hidden h-[112px] max-w-[1400px] grid-cols-3 items-center px-8 md:grid">
+        <div className="mx-auto hidden h-[88px] max-w-[1400px] grid-cols-3 items-center px-8 md:grid">
 
           {/* LEFT — nav links */}
           <nav className="flex items-center gap-1">
@@ -112,7 +112,7 @@ export function Navbar() {
         </div>
 
         {/* ── Mobile nav (logo left, burger right) ── */}
-        <div className="flex h-28 items-center justify-between px-5 md:hidden">
+        <div className="flex h-20 items-center justify-between px-5 md:hidden">
           <Link href="/">
             <motion.div
               whileHover={{ scale: 1.07 }}
