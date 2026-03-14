@@ -40,14 +40,14 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          "fixed left-0 right-0 top-0 z-50 transition-shadow duration-300 overflow-visible",
+          "fixed left-0 right-0 top-0 z-50 transition-shadow duration-300",
           scrolled
             ? "bg-[#f1ead0] shadow-[0_2px_20px_rgba(8,35,78,0.10)]"
             : "bg-[#f1ead0]"
         )}
       >
         {/* ── Desktop nav (3-column grid: left links | center logo | right actions) ── */}
-        <div className="mx-auto hidden h-[60px] max-w-[1400px] grid-cols-3 items-center px-8 md:grid overflow-visible">
+        <div className="mx-auto hidden h-[72px] max-w-[1400px] grid-cols-3 items-center px-8 md:grid">
 
           {/* LEFT — nav links */}
           <nav className="flex items-center gap-1">
@@ -79,7 +79,7 @@ export function Navbar() {
                   alt="Pollo Rey"
                   width={300}
                   height={185}
-                  className="h-36 w-auto object-contain [mix-blend-mode:multiply]"
+                  className="h-16 w-auto object-contain [mix-blend-mode:multiply]"
                   priority
                 />
               </motion.div>
@@ -112,7 +112,7 @@ export function Navbar() {
         </div>
 
         {/* ── Mobile nav (logo left, burger right) ── */}
-        <div className="flex h-14 items-center justify-between px-5 md:hidden overflow-visible">
+        <div className="flex h-16 items-center justify-between px-5 md:hidden">
           <Link href="/">
             <motion.div
               whileHover={{ scale: 1.07 }}
@@ -123,7 +123,7 @@ export function Navbar() {
                 alt="Pollo Rey"
                 width={300}
                 height={185}
-                className="h-28 w-auto object-contain [mix-blend-mode:multiply] sm:h-32"
+                className="h-12 w-auto object-contain [mix-blend-mode:multiply] sm:h-14"
                 priority
               />
             </motion.div>
