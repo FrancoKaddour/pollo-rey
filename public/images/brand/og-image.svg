@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#f1ead0"/>
+
+  <!-- Checkered bottom band -->
+  <pattern id="check" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+    <rect width="30" height="30" fill="#08234e"/>
+    <rect x="30" y="30" width="30" height="30" fill="#08234e"/>
+  </pattern>
+  <rect y="570" width="1200" height="60" fill="url(#check)"/>
+
+  <!-- Red left accent bar -->
+  <rect x="0" y="0" width="12" height="570" fill="#CC1414"/>
+
+  <!-- Main title: POLLO REY -->
+  <text
+    x="80"
+    y="240"
+    font-family="Arial Black, sans-serif"
+    font-weight="900"
+    font-size="160"
+    fill="#08234e"
+    letter-spacing="-8"
+    transform="scale(1.12, 1) translate(-48, 0)"
+  >POLLO REY</text>
+
+  <!-- Red dot after title -->
+  <circle cx="1120" cy="220" r="14" fill="#CC1414"/>
+
+  <!-- Subtitle -->
+  <text
+    x="80"
+    y="330"
+    font-family="Arial, sans-serif"
+    font-weight="700"
+    font-size="36"
+    fill="#08234e"
+    letter-spacing="6"
+    opacity="0.5"
+  >POLLERÍA DE BARRIO · SAAVEDRA · BUENOS AIRES</text>
+
+  <!-- Divider line -->
+  <rect x="80" y="360" width="120" height="4" fill="#CC1414"/>
+
+  <!-- Tagline -->
+  <text
+    x="80"
+    y="430"
+    font-family="Arial, sans-serif"
+    font-weight="400"
+    font-size="28"
+    fill="#08234e"
+    opacity="0.55"
+  >Pollo fresco todos los días · Precios justos · Delivery</text>
+
+  <!-- URL -->
+  <text
+    x="80"
+    y="530"
+    font-family="Arial, sans-serif"
+    font-weight="700"
+    font-size="22"
+    fill="#08234e"
+    opacity="0.35"
+    letter-spacing="2"
+  >pollorey.com.ar</text>
+</svg>

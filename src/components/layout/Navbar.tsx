@@ -58,8 +58,8 @@ export function Navbar() {
                 className={cn(
                   "rounded-full px-4 py-2 font-sans text-sm font-medium uppercase tracking-[0.12em] transition-colors hover:text-[#CC1414]",
                   pathname === link.href || pathname.startsWith(link.href + "/")
-                    ? "text-black"
-                    : "text-black"
+                    ? "font-bold text-[#08234e] underline underline-offset-4 decoration-[#CC1414] decoration-2"
+                    : "text-black/70"
                 )}
               >
                 {link.label}
@@ -69,15 +69,20 @@ export function Navbar() {
 
           {/* CENTER — logo */}
           <div className="flex justify-center">
-            <Link href="/" className="transition-opacity hover:opacity-70">
-              <Image
-                src="/Logo-crop.png"
-                alt="Pollo Rey"
-                width={300}
-                height={185}
-                className="h-16 w-auto object-contain [mix-blend-mode:multiply]"
-                priority
-              />
+            <Link href="/">
+              <motion.div
+                whileHover={{ scale: 1.07 }}
+                transition={{ type: "spring", stiffness: 400, damping: 14 }}
+              >
+                <Image
+                  src="/Logo-crop.png"
+                  alt="Pollo Rey"
+                  width={300}
+                  height={185}
+                  className="h-16 w-auto object-contain [mix-blend-mode:multiply]"
+                  priority
+                />
+              </motion.div>
             </Link>
           </div>
 
@@ -108,15 +113,20 @@ export function Navbar() {
 
         {/* ── Mobile nav (logo left, burger right) ── */}
         <div className="flex h-20 items-center justify-between px-5 md:hidden">
-          <Link href="/" className="transition-opacity hover:opacity-70">
-            <Image
-              src="/Logo-crop.png"
-              alt="Pollo Rey"
-              width={300}
-              height={185}
-              className="h-10 w-auto object-contain [mix-blend-mode:multiply]"
-              priority
-            />
+          <Link href="/">
+            <motion.div
+              whileHover={{ scale: 1.07 }}
+              transition={{ type: "spring", stiffness: 400, damping: 14 }}
+            >
+              <Image
+                src="/Logo-crop.png"
+                alt="Pollo Rey"
+                width={300}
+                height={185}
+                className="h-10 w-auto object-contain [mix-blend-mode:multiply] sm:h-12"
+                priority
+              />
+            </motion.div>
           </Link>
           <div className="flex items-center gap-2">
             <CartIcon />
@@ -147,7 +157,7 @@ export function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.26 }}
-              className="fixed right-0 top-0 bottom-0 z-50 flex w-72 flex-col bg-[#f1ead0] px-6 pt-20 pb-8 shadow-2xl"
+              className="fixed right-0 top-0 bottom-0 z-50 flex w-full max-w-[85vw] flex-col bg-[#f1ead0] px-6 pt-20 pb-8 shadow-2xl sm:max-w-[320px]"
             >
               <button
                 onClick={() => setMobileOpen(false)}

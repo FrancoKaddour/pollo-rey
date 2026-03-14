@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Syne, Paytone_One } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -50,7 +53,7 @@ export const metadata: Metadata = {
       "Pollo fresco y cortes especiales. Pedidos online con entrega en CABA y Vicente López.",
     images: [
       {
-        url: "/images/brand/og-image.jpg",
+        url: "/images/brand/og-image.svg",
         width: 1200,
         height: 630,
         alt: "Pollo Rey — Pollería Premium",
@@ -70,6 +73,56 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FoodEstablishment",
+  name: "Pollo Rey",
+  description:
+    "Pollería de barrio en Saavedra, CABA. Pollo fresco, cortes especiales, papas fritas y más. Pedidos por WhatsApp.",
+  url: "https://pollorey.com.ar",
+  logo: "https://pollorey.com.ar/Logo-crop.png",
+  image: "https://pollorey.com.ar/images/brand/og-image.svg",
+  telephone: process.env.NEXT_PUBLIC_WHATSAPP_PHONE
+    ? `+${process.env.NEXT_PUBLIC_WHATSAPP_PHONE}`
+    : undefined,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Saavedra",
+    addressRegion: "Ciudad Autónoma de Buenos Aires",
+    addressCountry: "AR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -34.5526,
+    longitude: -58.4857,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "08:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Sunday"],
+      opens: "08:00",
+      closes: "14:00",
+    },
+  ],
+  priceRange: "$$",
+  servesCuisine: "Pollo",
+  hasMap: "https://maps.google.com/?q=Saavedra,CABA,Argentina",
+  areaServed: [
+    { "@type": "City", name: "Ciudad Autónoma de Buenos Aires" },
+    { "@type": "City", name: "Vicente López" },
+  ],
+  sameAs: [
+    // "https://www.instagram.com/pollorey",
+    // "https://www.facebook.com/pollorey",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -77,6 +130,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es-AR" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}', { page_path: window.location.pathname });
+              `}
+            </Script>
+          </>
+        )}
+      </head>
       <body className={`${inter.variable} ${syne.variable} ${paytoneOne.variable} antialiased`}>
         {children}
       </body>

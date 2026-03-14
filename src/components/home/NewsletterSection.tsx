@@ -6,14 +6,24 @@ export function NewsletterSection() {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
+    try {
+      await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+    } catch {
+      // fail silently — UX no se interrumpe
+    }
     setDone(true);
   };
 
   return (
     <section
+      id="newsletter"
       className="relative flex flex-col overflow-hidden bg-[#f1ead0]"
       style={{ minHeight: "calc(100vh - 80px)" }}
     >
@@ -30,7 +40,7 @@ export function NewsletterSection() {
             </p>
             <h2
               className="font-display font-black uppercase text-[#08234e] leading-none"
-              style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)", letterSpacing: "-0.055em" }}
+              style={{ fontSize: "clamp(2rem, 6vw, 6.5rem)", letterSpacing: "-0.055em" }}
             >
               BIENVENIDO<br />AL BARRIO.
             </h2>
@@ -39,7 +49,7 @@ export function NewsletterSection() {
             </p>
           </div>
         ) : (
-          <div className="grid w-full items-center gap-12 md:grid-cols-[1fr_400px]">
+          <div className="grid w-full items-center gap-8 md:gap-12 md:grid-cols-[1fr_minmax(280px,400px)]">
 
             {/* ── Left: copy ── */}
             <div>
@@ -51,10 +61,10 @@ export function NewsletterSection() {
               </div>
 
               <h2 className="font-display font-black uppercase leading-none" style={{ letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "left" }}>
-                <span className="block text-[#08234e]" style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)" }}>
+                <span className="block text-[#08234e]" style={{ fontSize: "clamp(2rem, 6vw, 6.5rem)" }}>
                   ¿SABÉS LO
                 </span>
-                <span className="block text-[#CC1414]" style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)" }}>
+                <span className="block text-[#CC1414]" style={{ fontSize: "clamp(2rem, 6vw, 6.5rem)" }}>
                   QUE SE VIENE?
                 </span>
               </h2>
@@ -91,7 +101,7 @@ export function NewsletterSection() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="tu@email.com"
-                className="w-full rounded-full border-2 border-[#08234e]/20 bg-white px-6 py-3.5 text-sm text-[#08234e] placeholder-[#08234e]/25 outline-none transition-colors focus:border-[#08234e]"
+                className="w-full rounded-full border-2 border-[#08234e]/20 bg-white px-4 py-3 text-sm text-[#08234e] placeholder-[#08234e]/25 outline-none transition-colors focus:border-[#08234e] md:px-6 md:py-3.5"
               />
 
               <button

@@ -23,7 +23,7 @@ export function LoyaltySection() {
   return (
     <section className="bg-[#f1ead0] px-6 py-20 md:px-12 overflow-hidden">
       <div className="mx-auto max-w-[1400px]">
-        <div className="grid items-center gap-12 md:grid-cols-2 md:gap-20">
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-20">
 
           {/* ── Izquierda: phone mockup ── */}
           <div className="flex justify-end md:justify-center md:pl-8">
@@ -34,8 +34,8 @@ export function LoyaltySection() {
                 viewBox="0 0 500 500"
                 style={{
                   position: "absolute",
-                  width: "clamp(280px, 36vw, 460px)",
-                  height: "clamp(280px, 36vw, 460px)",
+                  width: "clamp(200px, 50vw, 460px)",
+                  height: "clamp(200px, 50vw, 460px)",
                   zIndex: 0,
                   overflow: "visible",
                 }}
@@ -53,7 +53,7 @@ export function LoyaltySection() {
                 width={540}
                 height={830}
                 className="object-contain drop-shadow-2xl relative"
-                style={{ width: "clamp(320px, 42vw, 540px)", height: "auto", zIndex: 1 }}
+                style={{ width: "clamp(220px, 55vw, 540px)", height: "auto", zIndex: 1 }}
               />
             </div>
           </div>
@@ -75,7 +75,7 @@ export function LoyaltySection() {
             <h2
               className="font-display font-black uppercase text-[#08234e] leading-[0.88]"
               style={{
-                fontSize: "clamp(2.6rem, 5vw, 5.2rem)",
+                fontSize: "clamp(1.9rem, 5vw, 5.2rem)",
                 letterSpacing: "-0.055em",
                 transform: "scaleX(1.18)",
                 transformOrigin: "left",
@@ -119,19 +119,27 @@ export function LoyaltySection() {
               ))}
             </div>
 
+            {/* Próximamente badge */}
+            <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#08234e]/15 bg-white px-4 py-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#CC1414] animate-pulse" />
+              <span className="text-[0.65rem] font-black uppercase tracking-widest text-[#08234e]/40">
+                PRÓXIMAMENTE
+              </span>
+            </div>
+
             {/* CTA */}
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-4 flex flex-wrap gap-3 sm:flex-nowrap">
               <Link
-                href="/cuenta"
+                href="/#newsletter"
                 className="rounded-full bg-[#08234e] px-8 py-3.5 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#CC1414]"
               >
-                CREAR MI CUENTA
+                QUIERO SER EL PRIMERO
               </Link>
               <Link
-                href="/cuenta"
+                href="/contacto"
                 className="rounded-full border-2 border-[#08234e]/30 bg-transparent px-8 py-3.5 font-display text-sm font-black uppercase tracking-widest text-[#08234e] transition-colors hover:border-[#08234e] hover:bg-[#08234e] hover:text-[#f1ead0]"
               >
-                VER MIS PUNTOS
+                CONTACTANOS
               </Link>
             </div>
           </div>

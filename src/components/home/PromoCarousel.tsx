@@ -5,7 +5,29 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { formatPrice } from "@/lib/utils";
 
-const PROMOS = [
+// ─── Tipos ────────────────────────────────────────────────────────────────────
+export interface DbPromo {
+  id: string;
+  title: string;
+  description: string | null;
+  imageUrl: string | null;
+  badgeText: string | null;
+  startDate: Date;
+  endDate: Date;
+}
+
+interface UnifiedPromo {
+  id: string | number;
+  badge: string;
+  name: string;
+  note?: string;
+  includes?: string[];
+  price?: number;
+  imageUrl?: string;
+}
+
+// ─── Fallback hardcodeado ─────────────────────────────────────────────────────
+const FALLBACK_PROMOS: UnifiedPromo[] = [
   {
     id: 1,
     badge: "×2",
@@ -72,34 +94,43 @@ const PROMOS = [
   },
 ];
 
-const CARD_W = 300; // layout width of each card in px
-const STEP = 265;   // center-to-center distance between adjacent cards
+function toUnified(p: DbPromo): UnifiedPromo {
+  const endDate = new Date(p.endDate);
+  const note = p.description
+    ? p.description
+    : `Válido hasta el ${endDate.toLocaleDateString("es-AR", { day: "numeric", month: "long" })}`;
+  return {
+    id: p.id,
+    badge: p.badgeText || "★",
+    name: p.title,
+    note,
+    imageUrl: p.imageUrl || undefined,
+  };
+}
 
-/** Scale per offset distance from center */
+const CARD_W = 300;
+const STEP = 265;
 const SCALE: Record<number, number> = { 0: 1, 1: 0.82, 2: 0.68 };
-
-/**
- * 5 visible cards (-2…+2) + invisible ±3 staging areas = 7 slots.
- * Key by card index → React always moves each card exactly 1 step.
- */
 const RENDER_OFFSETS = [-3, -2, -1, 0, 1, 2, 3] as const;
 
-/** Map a slot number to a card index (wraps around the list). */
 function cardAt(slot: number, len: number): number {
   return ((slot % len) + len) % len;
 }
 
-export function PromoCarousel() {
-  /**
-   * rawIdx: unbounded integer that represents the current "position" on
-   * an infinite tape. Never wraps — this eliminates all jump artefacts.
-   */
+interface Props {
+  dbPromos?: DbPromo[];
+}
+
+export function PromoCarousel({ dbPromos }: Props) {
+  const promos: UnifiedPromo[] =
+    dbPromos && dbPromos.length > 0 ? dbPromos.map(toUnified) : FALLBACK_PROMOS;
+
   const [rawIdx, setRawIdx] = useState(0);
   const viewportRef = useRef<HTMLDivElement>(null);
-  const [cx, setCx] = useState(0); // measured container centre X
-  const len = PROMOS.length;
+  const [cx, setCx] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  const len = promos.length;
 
-  /* Keep cx in sync with container width */
   useEffect(() => {
     const el = viewportRef.current;
     if (!el) return;
@@ -112,11 +143,8 @@ export function PromoCarousel() {
 
   const prev = () => setRawIdx((i) => i - 1);
   const next = () => setRawIdx((i) => i + 1);
-
-  /** Logical card index shown at the centre slot */
   const activeCardIdx = ((rawIdx % len) + len) % len;
 
-  /** Navigate to a specific card via the shortest circular path */
   const goTo = (target: number) => {
     const current = ((rawIdx % len) + len) % len;
     let diff = target - current;
@@ -127,37 +155,34 @@ export function PromoCarousel() {
 
   return (
     <div className="relative">
-      {/* ── Viewport ── */}
+      {/* Viewport */}
       <div
         ref={viewportRef}
         className="relative overflow-hidden"
-        style={{ height: 430 }}
+        style={{ height: "clamp(300px, 55vh, 430px)" }}
+        onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+        onTouchEnd={(e) => {
+          if (touchStartX.current === null) return;
+          const delta = touchStartX.current - e.changedTouches[0].clientX;
+          if (Math.abs(delta) > 40) delta > 0 ? next() : prev();
+          touchStartX.current = null;
+        }}
       >
         {RENDER_OFFSETS.map((offset) => {
           const slot = rawIdx + offset;
           const cardIdx = cardAt(slot, len);
-          const promo = PROMOS[cardIdx];
+          const promo = promos[cardIdx];
           const isActive = offset === 0;
           const absOff = Math.abs(offset);
-
-          /* ±3 are invisible staging areas; ±2 and ±1 are visible side cards */
           const opacity = cx > 0 ? (absOff >= 3 ? 0 : isActive ? 1 : 0.42) : 0;
           const scale = SCALE[absOff] ?? 0.55;
 
           return (
             <div
-              /**
-               * KEY = card index.
-               * This is the core fix: React keeps the same DOM node for
-               * card N regardless of which slot it occupies. The transform
-               * animates the card from its old slot to its new slot — always
-               * exactly one step, no teleporting.
-               */
               key={cardIdx}
               style={{
                 position: "absolute",
                 bottom: 0,
-                /* All cards share the same base left; translateX does the work */
                 left: cx - CARD_W / 2,
                 width: CARD_W,
                 transform: `translateX(${offset * STEP}px) scale(${scale})`,
@@ -175,7 +200,6 @@ export function PromoCarousel() {
           );
         })}
 
-        {/* ── Arrows (inside viewport so they stay vertically centred) ── */}
         <button
           onClick={prev}
           aria-label="Anterior"
@@ -192,9 +216,9 @@ export function PromoCarousel() {
         </button>
       </div>
 
-      {/* ── Dots ── */}
+      {/* Dots */}
       <div className="mt-10 flex justify-center gap-2">
-        {PROMOS.map((_, i) => (
+        {promos.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
@@ -206,7 +230,7 @@ export function PromoCarousel() {
         ))}
       </div>
 
-      {/* ── Bottom CTA ── */}
+      {/* CTA */}
       <div className="mt-10 flex justify-center">
         <Link
           href="/productos"
@@ -219,67 +243,102 @@ export function PromoCarousel() {
   );
 }
 
-/* ─────────────────────────────────────────
-   PromoCard — fixed size, parent scales it
-───────────────────────────────────────── */
-function PromoCard({ promo }: { promo: (typeof PROMOS)[0] }) {
+// ─── PromoCard ────────────────────────────────────────────────────────────────
+function PromoCard({ promo }: { promo: UnifiedPromo }) {
   return (
     <div className="flex flex-col items-center text-center" style={{ width: CARD_W }}>
-      {/* Badge */}
-      <div
-        className="flex items-center justify-center rounded-full bg-[#08234e] font-display font-black text-[#f1ead0]"
-        style={{
-          width: 118,
-          height: 118,
-          fontSize: "1.85rem",
-          letterSpacing: "-0.03em",
-          marginBottom: "1.15rem",
-        }}
-      >
-        {promo.badge}
-      </div>
+      {/* Badge circle */}
+      {promo.imageUrl ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={promo.imageUrl}
+          alt={promo.name}
+          className="rounded-full object-cover"
+          style={{ width: 118, height: 118, marginBottom: "1.15rem" }}
+          onError={(e) => {
+            e.currentTarget.style.display = "none";
+          }}
+        />
+      ) : (
+        <div
+          className="flex items-center justify-center rounded-full bg-[#08234e] font-display font-black text-[#f1ead0]"
+          style={{
+            width: 118,
+            height: 118,
+            fontSize: "1.85rem",
+            letterSpacing: "-0.03em",
+            marginBottom: "1.15rem",
+          }}
+        >
+          {promo.badge}
+        </div>
+      )}
 
       {/* Name */}
       <h3
         className="font-display font-black uppercase text-[#08234e]"
-        style={{ fontSize: "1.85rem", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: "0.45rem" }}
+        style={{ fontSize: "clamp(1.3rem, 4vw, 1.85rem)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: "0.45rem" }}
       >
         {promo.name}
       </h3>
 
       {/* Note */}
-      <p
-        className="font-display font-black uppercase text-[#08234e]/40"
-        style={{ fontSize: "0.63rem", letterSpacing: "0.18em", marginBottom: "0.75rem" }}
-      >
-        {promo.note}
-      </p>
+      {promo.note && (
+        <p
+          className="font-display font-black uppercase text-[#08234e]/40"
+          style={{ fontSize: "0.63rem", letterSpacing: "0.18em", marginBottom: "0.75rem" }}
+        >
+          {promo.note}
+        </p>
+      )}
 
-      {/* Divider */}
       <div className="w-10 border-t-2 border-[#08234e]/15" style={{ marginBottom: "0.75rem" }} />
 
-      {/* Includes */}
-      <div style={{ marginBottom: "0.9rem", width: "100%" }}>
-        <p className="font-black uppercase tracking-wider text-[#08234e]" style={{ fontSize: "0.78rem", letterSpacing: "0.12em", marginBottom: "0.4rem" }}>
-          INCLUYE
-        </p>
-        <ul className="inline-flex flex-col items-start gap-0.5">
-          {promo.includes.map((item, i) => (
-            <li key={i} className="flex items-baseline gap-1.5 text-[#08234e]" style={{ fontSize: "0.82rem", lineHeight: 1.45 }}>
-              <span className="shrink-0 font-black text-[#CC1414]" style={{ fontSize: "0.5rem" }}>▸</span>
-              <span className="font-medium">{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {/* Includes list (hardcoded promos) */}
+      {promo.includes && promo.includes.length > 0 && (
+        <div style={{ marginBottom: "0.9rem", width: "100%" }}>
+          <p
+            className="font-black uppercase tracking-wider text-[#08234e]"
+            style={{ fontSize: "0.78rem", letterSpacing: "0.12em", marginBottom: "0.4rem" }}
+          >
+            INCLUYE
+          </p>
+          <ul className="inline-flex flex-col items-start gap-0.5">
+            {promo.includes.map((item, i) => (
+              <li
+                key={i}
+                className="flex items-baseline gap-1.5 text-[#08234e]"
+                style={{ fontSize: "0.82rem", lineHeight: 1.45 }}
+              >
+                <span className="shrink-0 font-black text-[#CC1414]" style={{ fontSize: "0.5rem" }}>
+                  ▸
+                </span>
+                <span className="font-medium">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
-      {/* Price */}
-      <p
-        className="font-display font-black text-[#CC1414]"
-        style={{ fontSize: "2.1rem", letterSpacing: "-0.04em" }}
-      >
-        {formatPrice(promo.price)}
-      </p>
+      {/* Price (hardcoded promos only) */}
+      {promo.price && (
+        <p
+          className="font-display font-black text-[#CC1414]"
+          style={{ fontSize: "clamp(1.5rem, 4vw, 2.1rem)", letterSpacing: "-0.04em" }}
+        >
+          {formatPrice(promo.price)}
+        </p>
+      )}
+
+      {/* DB promo — consultá precio CTA */}
+      {!promo.price && !promo.includes && (
+        <Link
+          href="/productos"
+          className="rounded-full border-2 border-[#08234e] bg-transparent px-5 py-2 font-display text-xs font-black uppercase tracking-widest text-[#08234e] transition-colors hover:bg-[#08234e] hover:text-[#f1ead0]"
+        >
+          VER PROMO →
+        </Link>
+      )}
     </div>
   );
 }

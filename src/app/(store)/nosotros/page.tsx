@@ -1,8 +1,22 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Leaf, Tag, MapPin, Heart } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { MarqueeBand } from "@/components/ui/MarqueeBand";
 import { SEOCarousel } from "@/components/nosotros/SEOCarousel";
+
+export const metadata: Metadata = {
+  title: "Quiénes Somos — Pollo Rey | Pollería de Barrio en Saavedra",
+  description:
+    "Conocé la historia de Pollo Rey, la pollería de Saavedra que nació para estar en tu mesa. Pollo fresco todos los días, precios justos y atención del barrio.",
+  openGraph: {
+    title: "Quiénes Somos — Pollo Rey",
+    description:
+      "La historia detrás de la pollería más fresca de Saavedra, Buenos Aires.",
+    url: "https://pollorey.com.ar/nosotros",
+    images: [{ url: "/images/brand/og-image.svg", width: 1200, height: 630 }],
+  },
+};
 
 // ─── Valores de la marca ──────────────────────────────────────────────────────
 const VALUES: { icon: LucideIcon; title: string; desc: string }[] = [
@@ -63,7 +77,7 @@ export default function NosotrosPage() {
           <h1
             className="font-display font-black uppercase text-[#08234e] leading-none"
             style={{
-              fontSize: "clamp(2.8rem, 6vw, 5.5rem)",
+              fontSize: "clamp(2rem, 5vw, 5.5rem)",
               letterSpacing: "-0.055em",
               transform: "scaleX(1.18)",
               transformOrigin: "center",
@@ -84,7 +98,7 @@ export default function NosotrosPage() {
 
       {/* ── 2. HISTORIA SPLIT ─────────────────────────────────────────────────── */}
       <section className="overflow-hidden bg-[#f1ead0] px-6 py-16 md:px-12 md:py-24">
-        <div className="mx-auto grid max-w-[1400px] gap-12 md:grid-cols-2 md:items-center md:gap-20">
+        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-10 md:grid-cols-2 md:items-center md:gap-20">
 
           {/* Texto */}
           <div>
@@ -126,7 +140,7 @@ export default function NosotrosPage() {
             <div className="mt-8 flex items-center gap-4">
               <Link
                 href="/productos"
-                className="rounded-full bg-[#08234e] px-7 py-3 font-display text-xs font-black uppercase tracking-widest text-[#f1ead0] transition-all hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#CC1414]"
+                className="rounded-full border-2 border-[#08234e] bg-[#08234e] px-7 py-3 font-display text-xs font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#f1ead0] hover:text-[#08234e]"
               >
                 Ver productos
               </Link>
@@ -160,7 +174,7 @@ export default function NosotrosPage() {
             </div>
 
             {/* Sticker flotante */}
-            <div className="absolute -bottom-4 -left-4 flex h-24 w-24 flex-col items-center justify-center rounded-full border-2 border-[#08234e] bg-[#f1ead0] text-center shadow-[4px_4px_0px_0px_#08234e] md:h-28 md:w-28">
+            <div className="absolute -bottom-4 -left-4 flex h-20 w-20 flex-col items-center justify-center rounded-full border-2 border-[#08234e] bg-[#f1ead0] text-center shadow-[4px_4px_0px_0px_#08234e] sm:h-24 sm:w-24 md:h-28 md:w-28">
               <span
                 className="font-display font-black uppercase text-[#08234e] leading-none"
                 style={{ fontSize: "0.55rem", letterSpacing: "0.1em" }}
@@ -319,7 +333,7 @@ export default function NosotrosPage() {
           </div>
 
           {/* Grid de fotos: 2 grandes + 4 pequeñas */}
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-6">
             {PHOTOS.map((photo, i) => (
               <div
                 key={i}
@@ -377,8 +391,8 @@ export default function NosotrosPage() {
           </blockquote>
 
           <div
-            className="mx-auto mt-8 space-y-4 text-left font-sans text-[#08234e]/60 leading-relaxed"
-            style={{ fontSize: "clamp(0.9rem, 1.2vw, 1rem)", maxWidth: "52ch" }}
+            className="mx-auto mt-8 space-y-4 text-center font-sans text-[#08234e]/60 leading-relaxed"
+            style={{ fontSize: "clamp(0.9rem, 1.2vw, 1rem)", maxWidth: "72ch" }}
           >
             <p>
               Sabemos que elegir dónde comprar importa. Y sabemos que cuando la economía aprieta,
@@ -398,7 +412,7 @@ export default function NosotrosPage() {
           <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link
               href="/productos"
-              className="rounded-full bg-[#08234e] px-8 py-3.5 font-display text-xs font-black uppercase tracking-widest text-[#f1ead0] transition-all hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#CC1414]"
+              className="rounded-full border-2 border-[#08234e] bg-[#08234e] px-8 py-3.5 font-display text-xs font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#f1ead0] hover:text-[#08234e]"
             >
               Explorar catálogo
             </Link>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight, Minus, Plus, ShoppingBag, ArrowLeft } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 import { formatPrice } from "@/lib/utils";
@@ -68,16 +69,18 @@ export function ProductDetailClient({ product, related }: Props) {
       </div>
 
       {/* Main content */}
-      <div className="mx-auto max-w-[1400px] px-6 py-10 md:px-12">
-        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12">
+        <div className="grid gap-6 py-6 md:gap-8 md:py-8 lg:h-[calc(100svh-88px-3rem)] lg:grid-cols-2 lg:gap-16 lg:items-stretch lg:py-10">
           {/* Image */}
-          <div className="relative aspect-square overflow-hidden rounded-3xl bg-[#f1ead0]">
+          <div className="relative aspect-square overflow-hidden rounded-3xl bg-[#f1ead0] lg:aspect-auto lg:h-full">
             {product.imageUrl ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+              <Image
                 src={product.imageUrl}
                 alt={product.name}
-                className="h-full w-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center">
@@ -102,7 +105,7 @@ export function ProductDetailClient({ product, related }: Props) {
           </div>
 
           {/* Info */}
-          <div className="flex flex-col">
+          <div className="flex flex-col lg:justify-center lg:overflow-y-auto">
             {product.category && (
               <Link
                 href={`/productos?cat=${product.category.slug}`}
@@ -114,7 +117,7 @@ export function ProductDetailClient({ product, related }: Props) {
 
             <h1
               className="font-display font-black text-[#08234e] leading-none"
-              style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", letterSpacing: "-0.03em" }}
+              style={{ fontSize: "clamp(1.5rem, 4vw, 3rem)", letterSpacing: "-0.03em" }}
             >
               {product.name}
             </h1>
@@ -129,7 +132,7 @@ export function ProductDetailClient({ product, related }: Props) {
 
             {/* Precio */}
             <div className="mt-6 flex items-baseline gap-3">
-              <span className="font-display text-4xl font-black text-[#08234e]">
+              <span className="font-display text-2xl font-black text-[#08234e] sm:text-3xl md:text-4xl">
                 {formatPrice(product.price)}
               </span>
               {hasDiscount && (
@@ -191,7 +194,7 @@ export function ProductDetailClient({ product, related }: Props) {
 
         {/* Related products */}
         {related.length > 0 && (
-          <div className="mt-20">
+          <div className="mt-20 pb-16 md:pb-24">
             <h2 className="mb-6 font-display text-xl font-black text-[#08234e]">
               También te puede interesar
             </h2>

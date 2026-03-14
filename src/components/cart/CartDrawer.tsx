@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Minus, Plus, Trash2, ShoppingBag } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
@@ -52,7 +53,7 @@ export function CartDrawer() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.3, ease: "easeInOut" }}
-            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-[420px] flex-col bg-[#f1ead0] shadow-[-12px_0_40px_rgba(8,35,78,0.12)]"
+            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-[95vw] flex-col bg-[#f1ead0] shadow-[-12px_0_40px_rgba(8,35,78,0.12)] sm:max-w-[420px]"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-[#08234e]/10 px-6 py-5">
@@ -110,11 +111,12 @@ export function CartDrawer() {
                         {/* Imagen placeholder */}
                         <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-[#08234e]/6">
                           {product.imageUrl ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img
+                            <Image
                               src={product.imageUrl}
                               alt={product.name}
-                              className="h-full w-full object-cover"
+                              fill
+                              className="object-cover"
+                              sizes="64px"
                             />
                           ) : (
                             <div className="flex h-full w-full items-center justify-center text-[#08234e]/20 text-xs font-bold">

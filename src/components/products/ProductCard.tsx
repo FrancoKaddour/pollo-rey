@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Plus, Check } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 import { formatPrice } from "@/lib/utils";
@@ -38,19 +39,20 @@ export function ProductCard({ product }: { product: Product }) {
       {/* Image area */}
       <div
         className="relative flex items-end justify-end overflow-hidden bg-[#08234e]/[0.06]"
-        style={{ height: 180 }}
+        style={{ height: "clamp(130px, 30vw, 180px)" }}
       >
         {product.imageUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={product.imageUrl}
             alt={product.name}
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
           />
         ) : (
           <span
             className="pointer-events-none absolute bottom-2 right-4 select-none font-display font-black italic uppercase text-[#08234e]/10 transition-all group-hover:text-[#08234e]/15"
-            style={{ fontSize: "5rem", lineHeight: 1 }}
+            style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)", lineHeight: 1 }}
           >
             {product.name.charAt(0)}
           </span>

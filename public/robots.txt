@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Bloquear admin
+Disallow: /admin/
+Disallow: /api/
+Disallow: /login
+
+Sitemap: https://pollorey.com.ar/sitemap.xml

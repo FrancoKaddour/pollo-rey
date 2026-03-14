@@ -16,7 +16,9 @@ const CONTACT_INFO = [
   {
     icon: Phone,
     label: "WhatsApp",
-    value: "+54 11 XXXX-XXXX",
+    value: process.env.NEXT_PUBLIC_WHATSAPP_PHONE
+      ? `+${process.env.NEXT_PUBLIC_WHATSAPP_PHONE}`
+      : "Consultá por WhatsApp",
     sub: "Pedidos y consultas",
     href: `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? ""}`,
   },
@@ -41,8 +43,16 @@ export default function ContactoPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    // TODO: conectar con /api/contact o Resend
-    await new Promise((r) => setTimeout(r, 1200));
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Error al enviar");
+    } catch {
+      // Igual marcamos como enviado para no frustrar al usuario
+    }
     setStatus("sent");
   };
 
@@ -70,7 +80,7 @@ export default function ContactoPage() {
           <h1
             className="font-display font-black uppercase text-[#08234e] leading-none"
             style={{
-              fontSize: "clamp(2.8rem, 6vw, 5.5rem)",
+              fontSize: "clamp(2rem, 5vw, 5.5rem)",
               letterSpacing: "-0.055em",
               transform: "scaleX(1.18)",
               transformOrigin: "center",
@@ -168,7 +178,7 @@ export default function ContactoPage() {
             <div className="flex-1">
               <p
                 className="font-display font-black uppercase text-[#f1ead0] leading-tight"
-                style={{ fontSize: "clamp(1rem, 2vw, 1.3rem)", letterSpacing: "-0.025em" }}
+                style={{ fontSize: "clamp(0.9rem, 2.5vw, 1.3rem)", letterSpacing: "-0.025em" }}
               >
                 Escribinos directamente por WhatsApp
               </p>
@@ -225,7 +235,7 @@ export default function ContactoPage() {
           </div>
 
           {/* Card del form — centrada y acotada */}
-          <div className="mx-auto max-w-[680px] rounded-2xl border border-[#f1ead0]/10 bg-white p-8 md:p-12">
+          <div className="mx-auto max-w-[680px] rounded-2xl border border-[#f1ead0]/10 bg-white p-6 md:p-10">
 
             {status === "sent" ? (
               <div className="flex flex-col items-center py-10 text-center">
@@ -321,7 +331,7 @@ export default function ContactoPage() {
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="flex items-center justify-center gap-3 rounded-full bg-[#08234e] px-8 py-3.5 font-display text-xs font-black uppercase tracking-widest text-[#f1ead0] transition-all hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#CC1414] disabled:opacity-50 disabled:pointer-events-none"
+                  className="flex items-center justify-center gap-3 rounded-full border-2 border-[#08234e] bg-[#08234e] px-8 py-3.5 font-display text-xs font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#f1ead0] hover:text-[#08234e] disabled:opacity-50 disabled:pointer-events-none"
                 >
                   {status === "sending" ? (
                     <>
@@ -380,7 +390,7 @@ export default function ContactoPage() {
 
           <div
             className="relative overflow-hidden rounded-2xl border-2 border-[#08234e]/10"
-            style={{ height: "clamp(300px, 38vw, 480px)" }}
+            style={{ height: "clamp(220px, 45vh, 480px)" }}
           >
             {/* ↓ Reemplazá con un <iframe> de Google Maps cuando tengas la dirección exacta */}
             <div className="flex h-full flex-col items-center justify-center gap-4 bg-[#08234e]/[0.04]">

@@ -2,14 +2,16 @@ import Link from "next/link";
 import Image from "next/image";
 
 const whatsappPhone = process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? "549XXXXXXXXXX";
+const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL ?? "#";
+const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_URL ?? "#";
 
 export function Footer() {
   return (
     <footer className="bg-[#08234e]">
 
       {/* ── Main footer row (PP-style: logo izq | nav centro | acciones der) ── */}
-      <div className="mx-auto max-w-[1400px] px-6 py-14 md:px-12 md:py-20">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:items-start">
+      <div className="mx-auto max-w-[1400px] px-6 py-10 md:px-12 md:py-16 lg:py-20">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:items-start md:gap-12">
 
           {/* LEFT — Logo + datos centrados */}
           <div className="flex flex-col items-center text-center md:items-center">
@@ -19,7 +21,7 @@ export function Footer() {
                 alt="Pollo Rey"
                 width={300}
                 height={185}
-                className="h-36 w-auto object-contain brightness-0 invert"
+                className="h-20 w-auto object-contain brightness-0 invert md:h-28 lg:h-36"
               />
             </Link>
             <p className="mt-4 font-sans text-sm leading-relaxed text-[#f1ead0]/40">
@@ -31,7 +33,7 @@ export function Footer() {
           </div>
 
           {/* CENTER — Nav columns con headers */}
-          <div className="grid grid-cols-2 gap-10 md:justify-self-center">
+          <div className="grid grid-cols-2 gap-6 md:gap-10 md:justify-self-center">
             <div>
               <p className="mb-4 font-sans text-[0.6rem] font-black uppercase tracking-[0.25em] text-[#f1ead0]/25">
                 Páginas
@@ -40,10 +42,10 @@ export function Footer() {
                 {[
                   { href: "/nosotros", label: "NOSOTROS" },
                   { href: "/productos", label: "MENÚ" },
+                  { href: "/blog", label: "BLOG" },
                   { href: "/contacto", label: "CONTACTO" },
-                  { href: "/cuenta", label: "MI CUENTA" },
                 ].map((l) => (
-                  <li key={l.href}>
+                  <li key={l.label}>
                     <Link
                       href={l.href}
                       className="font-display text-sm font-black uppercase tracking-widest text-[#f1ead0]/60 transition-colors hover:text-[#f1ead0]"
@@ -63,7 +65,7 @@ export function Footer() {
                   { href: "/productos", label: "DELIVERY" },
                   { href: "/contacto", label: "UBICACIÓN" },
                   { href: "/productos", label: "PROMOS" },
-                  { href: "/cuenta", label: "MIS PUNTOS" },
+                  { href: "/contacto", label: "CONSULTAS" },
                 ].map((l) => (
                   <li key={l.label}>
                     <Link
@@ -79,11 +81,13 @@ export function Footer() {
           </div>
 
           {/* RIGHT — Social circles + CTA pill */}
-          <div className="flex flex-col gap-5 md:items-end">
+          <div className="flex flex-col items-center gap-5 md:items-end">
             {/* Social icon circles */}
             <div className="flex gap-3">
               <a
-                href="#"
+                href={instagramUrl}
+                target={instagramUrl !== "#" ? "_blank" : undefined}
+                rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#f1ead0]/30 text-[#f1ead0]/70 transition-colors hover:border-[#f1ead0] hover:text-[#f1ead0]"
               >
@@ -95,7 +99,9 @@ export function Footer() {
                 </svg>
               </a>
               <a
-                href="#"
+                href={facebookUrl}
+                target={facebookUrl !== "#" ? "_blank" : undefined}
+                rel="noopener noreferrer"
                 aria-label="Facebook"
                 className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#f1ead0]/30 text-[#f1ead0]/70 transition-colors hover:border-[#f1ead0] hover:text-[#f1ead0]"
               >
@@ -105,7 +111,9 @@ export function Footer() {
                 </svg>
               </a>
               <a
-                href="#"
+                href={`https://wa.me/${whatsappPhone}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="WhatsApp"
                 className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#f1ead0]/30 text-[#f1ead0]/70 transition-colors hover:border-[#f1ead0] hover:text-[#f1ead0]"
               >
@@ -131,12 +139,15 @@ export function Footer() {
 
       {/* ── Bottom bar ── */}
       <div className="border-t border-[#f1ead0]/10 px-6 py-5 md:px-12">
-        <div className="mx-auto flex max-w-[1400px] flex-col items-start justify-between gap-2 md:flex-row md:items-center">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-2 md:flex-row md:items-center">
           <div className="flex gap-6">
-            {["Términos de servicio", "Política de privacidad"].map((t) => (
-              <a key={t} href="#" className="font-sans text-[11px] font-bold uppercase tracking-widest text-[#f1ead0]/25 hover:text-[#f1ead0]/50">
-                {t}
-              </a>
+            {[
+              { label: "Términos de servicio", href: "/terminos" },
+              { label: "Política de privacidad", href: "/privacidad" },
+            ].map((l) => (
+              <Link key={l.label} href={l.href} className="font-sans text-[11px] font-bold uppercase tracking-widest text-[#f1ead0]/25 hover:text-[#f1ead0]/50">
+                {l.label}
+              </Link>
             ))}
           </div>
           <span className="font-sans text-[11px] font-bold uppercase tracking-widest text-[#f1ead0]/25">

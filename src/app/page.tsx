@@ -9,12 +9,20 @@ import { NewsletterSection } from "@/components/home/NewsletterSection";
 import { MarqueeBand } from "@/components/ui/MarqueeBand";
 import { MenuSection } from "@/components/home/MenuSection";
 import { LoyaltySection } from "@/components/home/LoyaltySection";
+import { prisma } from "@/lib/prisma";
 
 // ─── Filas del texto diagonal del hero ───────────────────────────────────────
 const HERO_TEXT_SOLID = "POLLO FRESCO · SAAVEDRA · BUENOS AIRES · CALIDAD · DELIVERY ·";
 const HERO_TEXT_GHOST = "POLLERÍA DE BARRIO · CORTES FRESCOS · HUEVOS · DESPENSA · CABA ·";
 
 export default async function HomePage() {
+
+  // Promos activas desde BD (con fechas vigentes)
+  const now = new Date();
+  const dbPromos = await prisma.promotion.findMany({
+    where: { active: true, startDate: { lte: now }, endDate: { gte: now } },
+    orderBy: { startDate: "desc" },
+  });
 
   // 4 filas alternadas sólido/ghost, dirección alterna
   const bgRows = Array.from({ length: 4 }, (_, i) => ({
@@ -66,7 +74,7 @@ export default async function HomePage() {
         {/* ── Mobile: heading limpio ── */}
         <h1
           className="relative z-10 mb-8 text-center font-display font-black uppercase text-[#08234e] leading-[0.88] md:hidden"
-          style={{ fontSize: "clamp(2.4rem, 10vw, 4rem)", letterSpacing: "-0.04em", maxWidth: "14ch" }}
+          style={{ fontSize: "clamp(2rem, 9vw, 4rem)", letterSpacing: "-0.04em", maxWidth: "14ch" }}
         >
           TU POLLERÍA DE BARRIO EN SAAVEDRA
         </h1>
@@ -74,12 +82,12 @@ export default async function HomePage() {
         {/* ── Centro: forma arco/puerta + CTA ── */}
         <div className="relative z-10 flex flex-col items-center">
           <Image
-            src="/IMGhero2.png"
+            src="/imghero2.png"
             alt="Pollo Rey"
             width={520}
             height={640}
             className="object-contain -mt-8"
-            style={{ width: "clamp(300px, 38vw, 520px)", height: "auto" }}
+            style={{ width: "clamp(240px, 55vw, 520px)", height: "auto" }}
             priority
           />
 
@@ -98,11 +106,11 @@ export default async function HomePage() {
         <div className="mx-auto max-w-[1400px]">
           <h2
             className="mb-14 text-center font-display font-black uppercase text-[#08234e] leading-none"
-            style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)", letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "center" }}
+            style={{ fontSize: "clamp(2rem, 6vw, 6.5rem)", letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "center" }}
           >
             NUESTRAS PROMOS<span className="text-[#CC1414]">.</span>
           </h2>
-          <PromoCarousel />
+          <PromoCarousel dbPromos={dbPromos} />
         </div>
       </section>
 
@@ -156,7 +164,7 @@ export default async function HomePage() {
                 width={520}
                 height={640}
                 className="object-contain -mt-8"
-                style={{ width: "clamp(200px, 28vw, 420px)", height: "auto" }}
+                style={{ width: "clamp(160px, 40vw, 420px)", height: "auto" }}
               />
             </div>
 
@@ -167,15 +175,15 @@ export default async function HomePage() {
               </p>
               <h2
                 className="font-display font-black uppercase text-[#08234e] leading-[0.85]"
-                style={{ fontSize: "clamp(2.8rem, 5.5vw, 5.5rem)", letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "left" }}
+                style={{ fontSize: "clamp(1.8rem, 5vw, 5.5rem)", letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "left" }}
               >
                 TU POLLERÍA DE BARRIO EN SAAVEDRA<span className="text-[#CC1414]">.</span>
               </h2>
               <p className="mt-6 text-sm leading-relaxed text-[#08234e]/55">
-                Somos una pollería familiar con más de 15 años en Saavedra, CABA.
-                Trabajamos con proveedores locales de confianza para traerte pollo fresco
-                cada día, sin congelado. Cortes a medida, los mejores precios y
-                ahora con delivery a tu puerta en CABA y Vicente López.
+                Pollo Rey es una pollería nueva en Saavedra, pero detrás hay años de oficio
+                y mucho amor por el barrio. Trabajamos con proveedores locales de confianza
+                para traerte pollo fresco cada día, sin congelado. Cortes a medida, los
+                mejores precios y ahora con delivery a tu puerta en CABA y Vicente López.
               </p>
               <Link
                 href="/nosotros"
@@ -243,7 +251,7 @@ export default async function HomePage() {
         <div className="mx-auto max-w-[1400px]">
           <h2
             className="mb-10 text-center font-display font-black uppercase text-[#08234e] leading-none"
-            style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)", letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "center" }}
+            style={{ fontSize: "clamp(2rem, 6vw, 6.5rem)", letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "center" }}
           >
             TODO LO QUE NECESITÁS<span className="text-[#CC1414]">.</span>
           </h2>
