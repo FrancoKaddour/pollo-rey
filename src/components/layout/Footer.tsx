@@ -21,7 +21,7 @@ export function Footer() {
                 alt="Pollo Rey"
                 width={300}
                 height={185}
-                className="h-20 w-auto object-contain brightness-0 invert md:h-28 lg:h-36"
+                className="h-28 w-auto object-contain brightness-0 invert md:h-36 lg:h-44"
               />
             </Link>
             <p className="mt-4 font-sans text-sm leading-relaxed text-[#f1ead0]/40">

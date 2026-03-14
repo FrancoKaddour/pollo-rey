@@ -79,7 +79,7 @@ export function Navbar() {
                   alt="Pollo Rey"
                   width={300}
                   height={185}
-                  className="h-16 w-auto object-contain [mix-blend-mode:multiply]"
+                  className="h-20 w-auto object-contain [mix-blend-mode:multiply]"
                   priority
                 />
               </motion.div>
@@ -123,7 +123,7 @@ export function Navbar() {
                 alt="Pollo Rey"
                 width={300}
                 height={185}
-                className="h-10 w-auto object-contain [mix-blend-mode:multiply] sm:h-12"
+                className="h-14 w-auto object-contain [mix-blend-mode:multiply] sm:h-16"
                 priority
               />
             </motion.div>
