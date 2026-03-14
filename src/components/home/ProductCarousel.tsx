@@ -17,8 +17,8 @@ export function ProductCarousel({ products }: Props) {
 
   if (products.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#08234e]/15 py-24 text-center">
-        <p className="font-display font-black uppercase text-[#08234e]/30">
+      <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#4467a9]/15 py-24 text-center">
+        <p className="font-display font-black uppercase text-[#4467a9]/30">
           Ejecutá <code className="font-mono text-sm">npm run db:seed</code> para ver los productos
         </p>
       </div>
@@ -53,7 +53,7 @@ export function ProductCarousel({ products }: Props) {
       >
         <ProductCircle product={prevItem} size="sm" />
         <p
-          className="font-display font-black uppercase text-[#08234e] text-center"
+          className="font-display font-black uppercase text-[#4467a9] text-center"
           style={{ fontSize: "0.85rem", letterSpacing: "-0.02em" }}
         >
           {prevItem.name}
@@ -70,13 +70,13 @@ export function ProductCarousel({ products }: Props) {
         </Link>
         <div className="max-w-[280px] text-center">
           <h3
-            className="font-display font-black uppercase text-[#08234e]"
+            className="font-display font-black uppercase text-[#4467a9]"
             style={{ fontSize: "clamp(1.3rem, 3vw, 2rem)", letterSpacing: "-0.03em" }}
           >
             {activeItem.name}
           </h3>
           {activeItem.description && (
-            <p className="mt-1.5 text-xs font-bold uppercase tracking-wider text-[#08234e]/50">
+            <p className="mt-1.5 text-xs font-bold uppercase tracking-wider text-[#4467a9]/50">
               {activeItem.description}
             </p>
           )}
@@ -85,7 +85,7 @@ export function ProductCarousel({ products }: Props) {
             style={{ fontSize: "1.3rem" }}
           >
             {formatPrice(activeItem.price)}
-            <span className="ml-2 text-sm text-[#08234e]/40 font-sans font-normal normal-case">
+            <span className="ml-2 text-sm text-[#4467a9]/40 font-sans font-normal normal-case">
               / {activeItem.unit}
             </span>
           </p>
@@ -103,7 +103,7 @@ export function ProductCarousel({ products }: Props) {
                 1
               )
             }
-            className="mt-4 w-full rounded-full bg-[#08234e] py-3 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-opacity hover:opacity-80"
+            className="mt-4 w-full rounded-full bg-[#4467a9] py-3 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-opacity hover:opacity-80"
           >
             AGREGAR AL CARRITO
           </button>
@@ -117,7 +117,7 @@ export function ProductCarousel({ products }: Props) {
       >
         <ProductCircle product={nextItem} size="sm" />
         <p
-          className="font-display font-black uppercase text-[#08234e] text-center"
+          className="font-display font-black uppercase text-[#4467a9] text-center"
           style={{ fontSize: "0.85rem", letterSpacing: "-0.02em" }}
         >
           {nextItem.name}
@@ -143,7 +143,7 @@ export function ProductCarousel({ products }: Props) {
             key={i}
             onClick={() => setActiveIdx(i)}
             className={`h-1.5 rounded-full transition-all ${
-              i === activeIdx ? "w-6 bg-[#08234e]" : "w-1.5 bg-[#08234e]/25"
+              i === activeIdx ? "w-6 bg-[#4467a9]" : "w-1.5 bg-[#4467a9]/25"
             }`}
           />
         ))}
@@ -166,7 +166,7 @@ function ProductCircle({
 
   return (
     <div
-      className="relative overflow-hidden rounded-full bg-[#08234e]"
+      className="relative overflow-hidden rounded-full bg-[#4467a9]"
       style={{ width: dim, height: dim }}
     >
       {product.imageUrl ? (

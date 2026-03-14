@@ -29,7 +29,7 @@ export function ExperienceForm() {
         }}
       >
         {/* Card interior — navy */}
-        <div className="bg-[#08234e] p-8 md:p-10">
+        <div className="bg-[#4467a9] p-8 md:p-10">
           {submitted ? (
             /* ── Success state ── */
             <div className="flex flex-col items-center gap-6 py-10 text-center">
@@ -171,7 +171,7 @@ export function ExperienceForm() {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="flex items-center gap-2 rounded-full bg-[#f1ead0] px-8 py-3 font-display text-sm font-black uppercase tracking-widest text-[#08234e] transition-opacity hover:opacity-85"
+                  className="flex items-center gap-2 rounded-full bg-[#f1ead0] px-8 py-3 font-display text-sm font-black uppercase tracking-widest text-[#4467a9] transition-opacity hover:opacity-85"
                 >
                   ENVIAR
                   <ChevronRight className="h-4 w-4" />

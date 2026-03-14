@@ -95,7 +95,7 @@ export function ProductForm({ categories, product }: Props) {
         <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-xl mb-3">
           ✓
         </div>
-        <p className="font-bold text-[#08234e]">
+        <p className="font-bold text-[#4467a9]">
           {product ? "Producto actualizado" : "Producto creado"} con éxito
         </p>
         <p className="text-xs text-slate-400 mt-1">Redirigiendo…</p>
@@ -122,7 +122,7 @@ export function ProductForm({ categories, product }: Props) {
               value={form.name}
               onChange={(e) => handleNameChange(e.target.value)}
               placeholder="Pollo Entero"
-              className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-4 py-2.5 text-sm text-[#08234e] outline-none focus:border-[#08234e] focus:bg-white transition-all"
+              className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-4 py-2.5 text-sm text-[#4467a9] outline-none focus:border-[#4467a9] focus:bg-white transition-all"
             />
           </div>
           <div>
@@ -134,7 +134,7 @@ export function ProductForm({ categories, product }: Props) {
               value={form.slug}
               onChange={(e) => setForm((p) => ({ ...p, slug: e.target.value }))}
               placeholder="pollo-entero"
-              className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-4 py-2.5 text-sm font-mono text-slate-600 outline-none focus:border-[#08234e] focus:bg-white transition-all"
+              className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-4 py-2.5 text-sm font-mono text-slate-600 outline-none focus:border-[#4467a9] focus:bg-white transition-all"
             />
           </div>
         </div>
@@ -148,7 +148,7 @@ export function ProductForm({ categories, product }: Props) {
             value={form.description}
             onChange={(e) => setForm((p) => ({ ...p, description: e.target.value }))}
             placeholder="Descripción corta del producto…"
-            className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-4 py-2.5 text-sm text-[#08234e] outline-none focus:border-[#08234e] focus:bg-white transition-all resize-none"
+            className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-4 py-2.5 text-sm text-[#4467a9] outline-none focus:border-[#4467a9] focus:bg-white transition-all resize-none"
           />
         </div>
       </div>
@@ -174,7 +174,7 @@ export function ProductForm({ categories, product }: Props) {
                 value={form.price}
                 onChange={(e) => setForm((p) => ({ ...p, price: e.target.value }))}
                 placeholder="1500"
-                className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 pl-7 pr-4 py-2.5 text-sm text-[#08234e] outline-none focus:border-[#08234e] focus:bg-white transition-all"
+                className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 pl-7 pr-4 py-2.5 text-sm text-[#4467a9] outline-none focus:border-[#4467a9] focus:bg-white transition-all"
               />
             </div>
           </div>
@@ -192,7 +192,7 @@ export function ProductForm({ categories, product }: Props) {
                 value={form.comparePrice}
                 onChange={(e) => setForm((p) => ({ ...p, comparePrice: e.target.value }))}
                 placeholder="2000"
-                className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 pl-7 pr-4 py-2.5 text-sm text-[#08234e] outline-none focus:border-[#08234e] focus:bg-white transition-all"
+                className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 pl-7 pr-4 py-2.5 text-sm text-[#4467a9] outline-none focus:border-[#4467a9] focus:bg-white transition-all"
               />
             </div>
           </div>
@@ -204,7 +204,7 @@ export function ProductForm({ categories, product }: Props) {
             <select
               value={form.unit}
               onChange={(e) => setForm((p) => ({ ...p, unit: e.target.value }))}
-              className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-4 py-2.5 text-sm text-[#08234e] outline-none focus:border-[#08234e] focus:bg-white transition-all"
+              className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-4 py-2.5 text-sm text-[#4467a9] outline-none focus:border-[#4467a9] focus:bg-white transition-all"
             >
               {UNITS.map((u) => (
                 <option key={u} value={u}>{u}</option>
@@ -221,7 +221,7 @@ export function ProductForm({ categories, product }: Props) {
             required
             value={form.categoryId}
             onChange={(e) => setForm((p) => ({ ...p, categoryId: e.target.value }))}
-            className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-4 py-2.5 text-sm text-[#08234e] outline-none focus:border-[#08234e] focus:bg-white transition-all"
+            className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-4 py-2.5 text-sm text-[#4467a9] outline-none focus:border-[#4467a9] focus:bg-white transition-all"
           >
             <option value="">Seleccioná una categoría</option>
             {categories.map((cat) => (
@@ -245,7 +245,7 @@ export function ProductForm({ categories, product }: Props) {
             value={form.imageUrl}
             onChange={(e) => setForm((p) => ({ ...p, imageUrl: e.target.value }))}
             placeholder="https://..."
-            className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-4 py-2.5 text-sm text-[#08234e] outline-none focus:border-[#08234e] focus:bg-white transition-all"
+            className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-4 py-2.5 text-sm text-[#4467a9] outline-none focus:border-[#4467a9] focus:bg-white transition-all"
           />
           <p className="mt-1.5 text-xs text-slate-400">
             Pegá la URL de la imagen (CDN, Cloudinary, etc.)
@@ -267,13 +267,13 @@ export function ProductForm({ categories, product }: Props) {
         <div className="space-y-4">
           <label className="flex items-center justify-between gap-4 cursor-pointer">
             <div>
-              <p className="text-sm font-bold text-[#08234e]">Activo</p>
+              <p className="text-sm font-bold text-[#4467a9]">Activo</p>
               <p className="text-xs text-slate-400">Visible en el catálogo de la tienda</p>
             </div>
             <button
               type="button"
               onClick={() => setForm((p) => ({ ...p, active: !p.active }))}
-              className={`relative h-6 w-11 rounded-full transition-colors ${form.active ? "bg-[#08234e]" : "bg-slate-200"}`}
+              className={`relative h-6 w-11 rounded-full transition-colors ${form.active ? "bg-[#4467a9]" : "bg-slate-200"}`}
             >
               <span
                 className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform ${form.active ? "translate-x-5.5" : "translate-x-0.5"}`}
@@ -284,7 +284,7 @@ export function ProductForm({ categories, product }: Props) {
 
           <label className="flex items-center justify-between gap-4 cursor-pointer">
             <div>
-              <p className="text-sm font-bold text-[#08234e]">Destacado</p>
+              <p className="text-sm font-bold text-[#4467a9]">Destacado</p>
               <p className="text-xs text-slate-400">Aparece en el carrusel de la home</p>
             </div>
             <button
@@ -313,7 +313,7 @@ export function ProductForm({ categories, product }: Props) {
         <button
           type="submit"
           disabled={isPending}
-          className="rounded-xl bg-[#08234e] px-8 py-3 font-display text-sm font-black uppercase tracking-widest text-white hover:bg-[#0d3a80] transition-all disabled:opacity-50 shadow-sm"
+          className="rounded-xl bg-[#4467a9] px-8 py-3 font-display text-sm font-black uppercase tracking-widest text-white hover:bg-[#0d3a80] transition-all disabled:opacity-50 shadow-sm"
         >
           {isPending ? "Guardando…" : product ? "Guardar cambios" : "Crear producto"}
         </button>

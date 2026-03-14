@@ -3,7 +3,7 @@
 /* ─── POLLO REY — Design Tokens ─────────────────────────────────────────── */
 @theme {
   /* Colores de marca */
-  --color-brand-navy:   #08234e;
+  --color-brand-navy:   #4467a9;
   --color-brand-cream:  #f1ead0;
   --color-brand-gold:   #c9a84c;
   --color-brand-red:    #c0392b;
@@ -152,7 +152,7 @@ h1, h2, h3, h4, h5, h6 {
 .card-mission:hover {
   transform: translateY(-5px);
   box-shadow: 6px 6px 0px 0px var(--color-brand-yellow);
-  border-color: #08234e;
+  border-color: #4467a9;
 }
 
 /* ─── Scrollbar custom (solo desktop) ────────────────────────────────────── */

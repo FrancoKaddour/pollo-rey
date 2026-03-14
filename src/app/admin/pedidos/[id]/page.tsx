@@ -52,14 +52,14 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
       <div className="flex items-start gap-4">
         <Link
           href="/admin/pedidos"
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-400 hover:text-[#08234e] hover:border-[#08234e] transition-all shadow-sm"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-400 hover:text-[#4467a9] hover:border-[#4467a9] transition-all shadow-sm"
         >
           <ArrowLeft size={16} />
         </Link>
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-3">
             <h1
-              className="font-display font-black uppercase text-[#08234e] leading-none"
+              className="font-display font-black uppercase text-[#4467a9] leading-none"
               style={{ fontSize: "clamp(1.3rem, 3vw, 2rem)", letterSpacing: "-0.04em" }}
             >
               PEDIDO #{order.id.slice(-6).toUpperCase()}
@@ -96,16 +96,16 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
                     <div
                       className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-black transition-all ${
                         i <= currentStep
-                          ? "bg-[#08234e] text-white"
+                          ? "bg-[#4467a9] text-white"
                           : "bg-slate-100 text-slate-400"
-                      } ${i === currentStep ? "ring-4 ring-[#08234e]/20 scale-110" : ""}`}
+                      } ${i === currentStep ? "ring-4 ring-[#4467a9]/20 scale-110" : ""}`}
                     >
                       {i + 1}
                     </div>
                     <div className="flex-1 flex flex-col items-center last:hidden">
                       <div
                         className={`h-0.5 w-full transition-all ${
-                          i < currentStep ? "bg-[#08234e]" : "bg-slate-100"
+                          i < currentStep ? "bg-[#4467a9]" : "bg-slate-100"
                         }`}
                       />
                       <span className="mt-2 text-[0.6rem] font-bold uppercase tracking-wider text-slate-400 whitespace-nowrap">
@@ -133,20 +133,20 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
             <div className="divide-y divide-slate-50">
               {order.items.map((item) => (
                 <div key={item.id} className="flex items-center gap-4 px-6 py-4">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#08234e]/5 text-xs font-black text-[#08234e]">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#4467a9]/5 text-xs font-black text-[#4467a9]">
                     {item.quantity}x
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-bold text-[#08234e] truncate">{item.product.name}</p>
+                    <p className="text-sm font-bold text-[#4467a9] truncate">{item.product.name}</p>
                     <p className="text-xs text-slate-400">
                       {formatPrice(item.unitPrice)} / {item.product.unit}
                     </p>
                   </div>
-                  <p className="text-sm font-bold text-[#08234e]">{formatPrice(item.subtotal)}</p>
+                  <p className="text-sm font-bold text-[#4467a9]">{formatPrice(item.subtotal)}</p>
                 </div>
               ))}
             </div>
-            <div className="flex items-center justify-between px-6 py-4 bg-[#08234e] rounded-b-2xl">
+            <div className="flex items-center justify-between px-6 py-4 bg-[#4467a9] rounded-b-2xl">
               <span className="text-sm font-bold text-[#f1ead0]/70">Total</span>
               <span className="text-xl font-black text-[#CC1414]">{formatPrice(order.total)}</span>
             </div>
@@ -176,7 +176,7 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
             <div className="space-y-3">
               <div>
                 <p className="text-[0.65rem] text-slate-400 uppercase tracking-wider">Nombre</p>
-                <p className="text-sm font-bold text-[#08234e]">{order.customerName}</p>
+                <p className="text-sm font-bold text-[#4467a9]">{order.customerName}</p>
               </div>
               <div className="flex items-center gap-2">
                 <Phone size={13} className="text-slate-400" />
@@ -184,7 +184,7 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-bold text-[#08234e] hover:text-[#CC1414] transition-colors"
+                  className="text-sm font-bold text-[#4467a9] hover:text-[#CC1414] transition-colors"
                 >
                   {order.phone}
                 </a>

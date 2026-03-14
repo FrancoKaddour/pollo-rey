@@ -121,7 +121,7 @@ export function PromocionesClient({ promotions: initial }: { promotions: Promoti
           value={values.title}
           onChange={(e) => onChange({ title: e.target.value })}
           placeholder="2x1 en pollos los viernes"
-          className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#08234e] transition-colors"
+          className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#4467a9] transition-colors"
         />
       </div>
       <div className="sm:col-span-2">
@@ -133,7 +133,7 @@ export function PromocionesClient({ promotions: initial }: { promotions: Promoti
           value={values.description}
           onChange={(e) => onChange({ description: e.target.value })}
           placeholder="Descripción de la promo…"
-          className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#08234e] transition-colors resize-none"
+          className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#4467a9] transition-colors resize-none"
         />
       </div>
       <div>
@@ -145,7 +145,7 @@ export function PromocionesClient({ promotions: initial }: { promotions: Promoti
           onChange={(e) => onChange({ badgeText: e.target.value })}
           placeholder="-20%"
           maxLength={30}
-          className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#08234e] transition-colors"
+          className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#4467a9] transition-colors"
         />
       </div>
       <div>
@@ -157,7 +157,7 @@ export function PromocionesClient({ promotions: initial }: { promotions: Promoti
           value={values.imageUrl}
           onChange={(e) => onChange({ imageUrl: e.target.value })}
           placeholder="https://…"
-          className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#08234e] transition-colors"
+          className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#4467a9] transition-colors"
         />
       </div>
       <div>
@@ -169,7 +169,7 @@ export function PromocionesClient({ promotions: initial }: { promotions: Promoti
           type="date"
           value={values.startDate}
           onChange={(e) => onChange({ startDate: e.target.value })}
-          className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#08234e] transition-colors"
+          className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#4467a9] transition-colors"
         />
       </div>
       <div>
@@ -181,7 +181,7 @@ export function PromocionesClient({ promotions: initial }: { promotions: Promoti
           type="date"
           value={values.endDate}
           onChange={(e) => onChange({ endDate: e.target.value })}
-          className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#08234e] transition-colors"
+          className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#4467a9] transition-colors"
         />
       </div>
       <div className="sm:col-span-2">
@@ -190,7 +190,7 @@ export function PromocionesClient({ promotions: initial }: { promotions: Promoti
             type="checkbox"
             checked={values.active}
             onChange={(e) => onChange({ active: e.target.checked })}
-            className="h-4 w-4 rounded accent-[#08234e]"
+            className="h-4 w-4 rounded accent-[#4467a9]"
           />
           <span className="text-sm font-bold text-slate-600">Activa (visible en el sitio)</span>
         </label>
@@ -210,10 +210,10 @@ export function PromocionesClient({ promotions: initial }: { promotions: Promoti
       {showCreate ? (
         <form
           onSubmit={handleCreate}
-          className="rounded-2xl bg-white p-6 shadow-sm border-2 border-[#08234e]/10 space-y-4"
+          className="rounded-2xl bg-white p-6 shadow-sm border-2 border-[#4467a9]/10 space-y-4"
         >
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-bold text-[#08234e]">Nueva promoción</h2>
+            <h2 className="text-sm font-bold text-[#4467a9]">Nueva promoción</h2>
             <button type="button" onClick={() => setShowCreate(false)} className="text-slate-400">
               <X size={16} />
             </button>
@@ -223,7 +223,7 @@ export function PromocionesClient({ promotions: initial }: { promotions: Promoti
             <button
               type="submit"
               disabled={isPending}
-              className="rounded-xl bg-[#08234e] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#0d3a80] transition-colors disabled:opacity-50"
+              className="rounded-xl bg-[#4467a9] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#0d3a80] transition-colors disabled:opacity-50"
             >
               {isPending ? "Creando…" : "Crear promoción"}
             </button>
@@ -272,7 +272,7 @@ export function PromocionesClient({ promotions: initial }: { promotions: Promoti
                     <button
                       onClick={() => handleUpdate(promo.id)}
                       disabled={isPending}
-                      className="rounded-xl bg-[#08234e] px-4 py-2 text-xs font-bold text-white disabled:opacity-50"
+                      className="rounded-xl bg-[#4467a9] px-4 py-2 text-xs font-bold text-white disabled:opacity-50"
                     >
                       {isPending ? "Guardando…" : "Guardar"}
                     </button>
@@ -298,7 +298,7 @@ export function PromocionesClient({ promotions: initial }: { promotions: Promoti
                   <div className="p-5">
                     <div className="flex items-start justify-between gap-2 mb-2">
                       <div>
-                        <p className="text-sm font-black text-[#08234e]">{promo.title}</p>
+                        <p className="text-sm font-black text-[#4467a9]">{promo.title}</p>
                         {promo.description && (
                           <p className="text-xs text-slate-400 mt-0.5">{promo.description}</p>
                         )}
@@ -330,7 +330,7 @@ export function PromocionesClient({ promotions: initial }: { promotions: Promoti
                       </button>
                       <button
                         onClick={() => startEdit(promo)}
-                        className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-100 text-slate-400 hover:bg-[#08234e] hover:text-white transition-all"
+                        className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-100 text-slate-400 hover:bg-[#4467a9] hover:text-white transition-all"
                       >
                         <Pencil size={13} />
                       </button>

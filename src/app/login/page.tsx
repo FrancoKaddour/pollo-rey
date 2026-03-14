@@ -35,7 +35,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#08234e] flex items-center justify-center px-4">
+    <div className="relative min-h-screen bg-[#4467a9] flex items-center justify-center px-4">
       {/* Checkered background */}
       <div
         aria-hidden
@@ -54,7 +54,7 @@ export default function LoginPage() {
         {/* Card */}
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
           {/* Header */}
-          <div className="bg-[#08234e] px-8 pt-10 pb-8 text-center">
+          <div className="bg-[#4467a9] px-8 pt-10 pb-8 text-center">
             <Link href="/" className="inline-block">
               <Image
                 src="/Logo-crop.png"
@@ -89,7 +89,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="admin@pollorey.com.ar"
-                className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-4 py-3 text-sm text-slate-800 placeholder-slate-300 outline-none transition-all focus:border-[#08234e] focus:bg-white"
+                className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-4 py-3 text-sm text-slate-800 placeholder-slate-300 outline-none transition-all focus:border-[#4467a9] focus:bg-white"
               />
             </div>
 
@@ -104,7 +104,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-4 py-3 text-sm text-slate-800 placeholder-slate-300 outline-none transition-all focus:border-[#08234e] focus:bg-white"
+                className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-4 py-3 text-sm text-slate-800 placeholder-slate-300 outline-none transition-all focus:border-[#4467a9] focus:bg-white"
               />
             </div>
 
@@ -117,7 +117,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-xl bg-[#08234e] py-3.5 font-display text-sm font-black uppercase tracking-widest text-white transition-all hover:bg-[#0d3a80] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full rounded-xl bg-[#4467a9] py-3.5 font-display text-sm font-black uppercase tracking-widest text-white transition-all hover:bg-[#0d3a80] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? "Ingresando…" : "Entrar al panel →"}
             </button>

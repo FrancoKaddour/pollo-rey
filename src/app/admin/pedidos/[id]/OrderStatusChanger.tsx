@@ -80,7 +80,7 @@ export function OrderStatusChanger({ orderId, currentStatus }: Props) {
             disabled={isPending || currentStatus === s}
             className={`rounded-xl py-2 px-3 text-xs font-bold transition-all ${
               currentStatus === s
-                ? "bg-[#08234e] text-white cursor-default"
+                ? "bg-[#4467a9] text-white cursor-default"
                 : "bg-slate-50 text-slate-500 hover:bg-slate-100 disabled:opacity-40"
             }`}
           >

@@ -24,13 +24,13 @@ export default async function EditarProductoPage({ params }: { params: Promise<{
       <div className="flex items-center gap-4">
         <Link
           href="/admin/productos"
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-400 hover:text-[#08234e] hover:border-[#08234e] transition-all shadow-sm"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white border border-slate-200 text-slate-400 hover:text-[#4467a9] hover:border-[#4467a9] transition-all shadow-sm"
         >
           <ArrowLeft size={16} />
         </Link>
         <div>
           <h1
-            className="font-display font-black uppercase text-[#08234e] leading-none"
+            className="font-display font-black uppercase text-[#4467a9] leading-none"
             style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", letterSpacing: "-0.04em" }}
           >
             EDITAR PRODUCTO

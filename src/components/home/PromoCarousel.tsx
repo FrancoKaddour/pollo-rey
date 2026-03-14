@@ -203,14 +203,14 @@ export function PromoCarousel({ dbPromos }: Props) {
         <button
           onClick={prev}
           aria-label="Anterior"
-          className="absolute left-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border-2 border-[#08234e] bg-transparent text-[#08234e] transition-colors hover:bg-[#08234e] hover:text-[#f1ead0] md:h-12 md:w-12"
+          className="absolute left-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border-2 border-[#4467a9] bg-transparent text-[#4467a9] transition-colors hover:bg-[#4467a9] hover:text-[#f1ead0] md:h-12 md:w-12"
         >
           <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
         </button>
         <button
           onClick={next}
           aria-label="Siguiente"
-          className="absolute right-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border-2 border-[#08234e] bg-transparent text-[#08234e] transition-colors hover:bg-[#08234e] hover:text-[#f1ead0] md:h-12 md:w-12"
+          className="absolute right-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border-2 border-[#4467a9] bg-transparent text-[#4467a9] transition-colors hover:bg-[#4467a9] hover:text-[#f1ead0] md:h-12 md:w-12"
         >
           <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
         </button>
@@ -224,7 +224,7 @@ export function PromoCarousel({ dbPromos }: Props) {
             onClick={() => goTo(i)}
             aria-label={`Ir a promo ${i + 1}`}
             className={`h-1.5 rounded-full transition-all ${
-              i === activeCardIdx ? "w-6 bg-[#08234e]" : "w-1.5 bg-[#08234e]/25"
+              i === activeCardIdx ? "w-6 bg-[#4467a9]" : "w-1.5 bg-[#4467a9]/25"
             }`}
           />
         ))}
@@ -234,7 +234,7 @@ export function PromoCarousel({ dbPromos }: Props) {
       <div className="mt-10 flex justify-center">
         <Link
           href="/productos"
-          className="rounded-full border-2 border-[#08234e] bg-transparent px-10 py-3.5 font-display text-sm font-black uppercase tracking-widest text-[#08234e] transition-colors hover:bg-[#08234e] hover:text-[#f1ead0]"
+          className="rounded-full border-2 border-[#4467a9] bg-transparent px-10 py-3.5 font-display text-sm font-black uppercase tracking-widest text-[#4467a9] transition-colors hover:bg-[#4467a9] hover:text-[#f1ead0]"
         >
           VER TODAS LAS PROMOS
         </Link>
@@ -261,7 +261,7 @@ function PromoCard({ promo }: { promo: UnifiedPromo }) {
         />
       ) : (
         <div
-          className="flex items-center justify-center rounded-full bg-[#08234e] font-display font-black text-[#f1ead0]"
+          className="flex items-center justify-center rounded-full bg-[#4467a9] font-display font-black text-[#f1ead0]"
           style={{
             width: 118,
             height: 118,
@@ -276,7 +276,7 @@ function PromoCard({ promo }: { promo: UnifiedPromo }) {
 
       {/* Name */}
       <h3
-        className="font-display font-black uppercase text-[#08234e]"
+        className="font-display font-black uppercase text-[#4467a9]"
         style={{ fontSize: "clamp(1.3rem, 4vw, 1.85rem)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: "0.45rem" }}
       >
         {promo.name}
@@ -285,20 +285,20 @@ function PromoCard({ promo }: { promo: UnifiedPromo }) {
       {/* Note */}
       {promo.note && (
         <p
-          className="font-display font-black uppercase text-[#08234e]/40"
+          className="font-display font-black uppercase text-[#4467a9]/40"
           style={{ fontSize: "0.63rem", letterSpacing: "0.18em", marginBottom: "0.75rem" }}
         >
           {promo.note}
         </p>
       )}
 
-      <div className="w-10 border-t-2 border-[#08234e]/15" style={{ marginBottom: "0.75rem" }} />
+      <div className="w-10 border-t-2 border-[#4467a9]/15" style={{ marginBottom: "0.75rem" }} />
 
       {/* Includes list (hardcoded promos) */}
       {promo.includes && promo.includes.length > 0 && (
         <div style={{ marginBottom: "0.9rem", width: "100%" }}>
           <p
-            className="font-black uppercase tracking-wider text-[#08234e]"
+            className="font-black uppercase tracking-wider text-[#4467a9]"
             style={{ fontSize: "0.78rem", letterSpacing: "0.12em", marginBottom: "0.4rem" }}
           >
             INCLUYE
@@ -307,7 +307,7 @@ function PromoCard({ promo }: { promo: UnifiedPromo }) {
             {promo.includes.map((item, i) => (
               <li
                 key={i}
-                className="flex items-baseline gap-1.5 text-[#08234e]"
+                className="flex items-baseline gap-1.5 text-[#4467a9]"
                 style={{ fontSize: "0.82rem", lineHeight: 1.45 }}
               >
                 <span className="shrink-0 font-black text-[#CC1414]" style={{ fontSize: "0.5rem" }}>
@@ -334,7 +334,7 @@ function PromoCard({ promo }: { promo: UnifiedPromo }) {
       {!promo.price && !promo.includes && (
         <Link
           href="/productos"
-          className="rounded-full border-2 border-[#08234e] bg-transparent px-5 py-2 font-display text-xs font-black uppercase tracking-widest text-[#08234e] transition-colors hover:bg-[#08234e] hover:text-[#f1ead0]"
+          className="rounded-full border-2 border-[#4467a9] bg-transparent px-5 py-2 font-display text-xs font-black uppercase tracking-widest text-[#4467a9] transition-colors hover:bg-[#4467a9] hover:text-[#f1ead0]"
         >
           VER PROMO →
         </Link>

@@ -39,12 +39,12 @@ export function NewsletterSection() {
               ¡LISTO, ESTÁS DENTRO!
             </p>
             <h2
-              className="font-display font-black uppercase text-[#08234e] leading-none"
+              className="font-display font-black uppercase text-[#4467a9] leading-none"
               style={{ fontSize: "clamp(2rem, 6vw, 6.5rem)", letterSpacing: "-0.055em" }}
             >
               BIENVENIDO<br />AL BARRIO.
             </h2>
-            <p className="mt-2 text-sm font-medium text-[#08234e]/40 max-w-[32ch]">
+            <p className="mt-2 text-sm font-medium text-[#4467a9]/40 max-w-[32ch]">
               Cada semana te avisamos antes que a nadie: promos, novedades y descuentos.
             </p>
           </div>
@@ -61,7 +61,7 @@ export function NewsletterSection() {
               </div>
 
               <h2 className="font-display font-black uppercase leading-none" style={{ letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "left" }}>
-                <span className="block text-[#08234e]" style={{ fontSize: "clamp(2rem, 6vw, 6.5rem)" }}>
+                <span className="block text-[#4467a9]" style={{ fontSize: "clamp(2rem, 6vw, 6.5rem)" }}>
                   ¿SABÉS LO
                 </span>
                 <span className="block text-[#CC1414]" style={{ fontSize: "clamp(2rem, 6vw, 6.5rem)" }}>
@@ -69,7 +69,7 @@ export function NewsletterSection() {
                 </span>
               </h2>
 
-              <p className="mt-5 max-w-[38ch] text-sm leading-relaxed text-[#08234e]/50">
+              <p className="mt-5 max-w-[38ch] text-sm leading-relaxed text-[#4467a9]/50">
                 Promos exclusivas, novedades de temporada y descuentos de barrio —
                 directo a tu casilla antes que a nadie.
               </p>
@@ -78,7 +78,7 @@ export function NewsletterSection() {
                 {["Promos antes que nadie", "Sin spam", "Podés darte de baja"].map((chip) => (
                   <span
                     key={chip}
-                    className="rounded-full border border-[#08234e]/15 px-3.5 py-1 font-sans text-[0.68rem] font-medium uppercase tracking-wider text-[#08234e]/40"
+                    className="rounded-full border border-[#4467a9]/15 px-3.5 py-1 font-sans text-[0.68rem] font-medium uppercase tracking-wider text-[#4467a9]/40"
                   >
                     {chip}
                   </span>
@@ -89,7 +89,7 @@ export function NewsletterSection() {
             {/* ── Right: form ── */}
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <p
-                className="font-display font-black uppercase text-[#08234e] leading-none"
+                className="font-display font-black uppercase text-[#4467a9] leading-none"
                 style={{ fontSize: "1.1rem", letterSpacing: "-0.03em" }}
               >
                 SUSCRIBITE GRATIS
@@ -101,17 +101,17 @@ export function NewsletterSection() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="tu@email.com"
-                className="w-full rounded-full border-2 border-[#08234e]/20 bg-white px-4 py-3 text-sm text-[#08234e] placeholder-[#08234e]/25 outline-none transition-colors focus:border-[#08234e] md:px-6 md:py-3.5"
+                className="w-full rounded-full border-2 border-[#4467a9]/20 bg-white px-4 py-3 text-sm text-[#4467a9] placeholder-[#4467a9]/25 outline-none transition-colors focus:border-[#4467a9] md:px-6 md:py-3.5"
               />
 
               <button
                 type="submit"
-                className="w-full rounded-full bg-[#08234e] py-3.5 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#CC1414]"
+                className="w-full rounded-full bg-[#4467a9] py-3.5 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#CC1414]"
               >
                 QUIERO SER EL PRIMERO →
               </button>
 
-              <p className="text-center text-[0.65rem] font-medium uppercase tracking-wider text-[#08234e]/25">
+              <p className="text-center text-[0.65rem] font-medium uppercase tracking-wider text-[#4467a9]/25">
                 Cero spam · Solo lo que importa · Cancelás cuando querés
               </p>
             </form>

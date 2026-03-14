@@ -99,7 +99,7 @@ export function SEOCarousel() {
       {/* Heading */}
       <div className="mx-auto max-w-[1400px] px-6 md:px-12">
         <h2
-          className="mb-2 text-center font-display font-black uppercase text-[#08234e] leading-none"
+          className="mb-2 text-center font-display font-black uppercase text-[#4467a9] leading-none"
           style={{
             fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
             letterSpacing: "-0.045em",
@@ -185,7 +185,7 @@ export function SEOCarousel() {
                 >
                   {/* Imagen */}
                   <div
-                    className="relative overflow-hidden bg-[#08234e]/[0.06]"
+                    className="relative overflow-hidden bg-[#4467a9]/[0.06]"
                     style={{ height: 240 }}
                   >
                     {card.img ? (
@@ -197,7 +197,7 @@ export function SEOCarousel() {
                       />
                     ) : (
                       <span
-                        className="absolute bottom-4 right-6 select-none font-display font-black italic uppercase text-[#08234e]/10"
+                        className="absolute bottom-4 right-6 select-none font-display font-black italic uppercase text-[#4467a9]/10"
                         style={{ fontSize: "7rem", lineHeight: 1 }}
                       >
                         PR
@@ -207,11 +207,11 @@ export function SEOCarousel() {
 
                   {/* Contenido */}
                   <div className="flex flex-col p-7">
-                    <div className="font-display text-[0.6rem] font-black uppercase tracking-widest text-[#08234e]/50">
+                    <div className="font-display text-[0.6rem] font-black uppercase tracking-widest text-[#4467a9]/50">
                       {card.tag}
                     </div>
                     <h3
-                      className="mt-4 font-display font-black uppercase text-[#08234e] leading-tight"
+                      className="mt-4 font-display font-black uppercase text-[#4467a9] leading-tight"
                       style={{ fontSize: "1.05rem", letterSpacing: "-0.025em" }}
                     >
                       &ldquo;{card.title}&rdquo;
@@ -226,7 +226,7 @@ export function SEOCarousel() {
           <button
             onClick={prev}
             aria-label="Anterior"
-            className="absolute left-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-[#08234e] text-[#f1ead0] shadow-lg transition-transform hover:scale-105 active:scale-95 md:left-5"
+            className="absolute left-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-[#4467a9] text-[#f1ead0] shadow-lg transition-transform hover:scale-105 active:scale-95 md:left-5"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
               <path d="M19 12H5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -238,7 +238,7 @@ export function SEOCarousel() {
           <button
             onClick={next}
             aria-label="Siguiente"
-            className="absolute right-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-[#08234e] text-[#f1ead0] shadow-lg transition-transform hover:scale-105 active:scale-95 md:right-5"
+            className="absolute right-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-[#4467a9] text-[#f1ead0] shadow-lg transition-transform hover:scale-105 active:scale-95 md:right-5"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
               <path d="M5 12H19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -255,7 +255,7 @@ export function SEOCarousel() {
               onClick={() => goTo(i)}
               aria-label={`Ir a artículo ${i + 1}`}
               className={`h-1.5 rounded-full transition-all ${
-                i === activeCardIdx ? "w-6 bg-[#08234e]" : "w-1.5 bg-[#08234e]/25"
+                i === activeCardIdx ? "w-6 bg-[#4467a9]" : "w-1.5 bg-[#4467a9]/25"
               }`}
             />
           ))}

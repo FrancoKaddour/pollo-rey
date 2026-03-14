@@ -104,10 +104,10 @@ export function CategoriesClient({ categories: initial }: Props) {
       {showCreate ? (
         <form
           onSubmit={handleCreate}
-          className="rounded-2xl bg-white p-6 shadow-sm border-2 border-[#08234e]/10 space-y-4"
+          className="rounded-2xl bg-white p-6 shadow-sm border-2 border-[#4467a9]/10 space-y-4"
         >
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-bold text-[#08234e]">Nueva categoría</h2>
+            <h2 className="text-sm font-bold text-[#4467a9]">Nueva categoría</h2>
             <button
               type="button"
               onClick={() => { setShowCreate(false); setForm(emptyForm); }}
@@ -131,7 +131,7 @@ export function CategoriesClient({ categories: initial }: Props) {
                   slug: p.slug === "" ? slugify(e.target.value) : p.slug,
                 }))}
                 placeholder="Pollo"
-                className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#08234e] transition-colors"
+                className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#4467a9] transition-colors"
               />
             </div>
             <div>
@@ -142,7 +142,7 @@ export function CategoriesClient({ categories: initial }: Props) {
                 value={form.slug}
                 onChange={(e) => setForm((p) => ({ ...p, slug: e.target.value }))}
                 placeholder="pollo"
-                className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm font-mono outline-none focus:border-[#08234e] transition-colors"
+                className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm font-mono outline-none focus:border-[#4467a9] transition-colors"
               />
             </div>
             <div>
@@ -153,7 +153,7 @@ export function CategoriesClient({ categories: initial }: Props) {
                 value={form.description}
                 onChange={(e) => setForm((p) => ({ ...p, description: e.target.value }))}
                 placeholder="Descripción opcional"
-                className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#08234e] transition-colors"
+                className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#4467a9] transition-colors"
               />
             </div>
             <div>
@@ -164,7 +164,7 @@ export function CategoriesClient({ categories: initial }: Props) {
                 type="number"
                 value={form.order}
                 onChange={(e) => setForm((p) => ({ ...p, order: parseInt(e.target.value) || 0 }))}
-                className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#08234e] transition-colors"
+                className="w-full rounded-xl border-2 border-slate-100 bg-slate-50 px-3.5 py-2.5 text-sm outline-none focus:border-[#4467a9] transition-colors"
               />
             </div>
           </div>
@@ -173,7 +173,7 @@ export function CategoriesClient({ categories: initial }: Props) {
             <button
               type="submit"
               disabled={isPending}
-              className="rounded-xl bg-[#08234e] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#0d3a80] transition-colors disabled:opacity-50"
+              className="rounded-xl bg-[#4467a9] px-5 py-2.5 text-sm font-bold text-white hover:bg-[#0d3a80] transition-colors disabled:opacity-50"
             >
               {isPending ? "Creando…" : "Crear categoría"}
             </button>
@@ -189,7 +189,7 @@ export function CategoriesClient({ categories: initial }: Props) {
       ) : (
         <button
           onClick={() => setShowCreate(true)}
-          className="flex items-center gap-2 rounded-xl bg-white border-2 border-dashed border-slate-200 px-5 py-3 text-sm font-bold text-slate-400 hover:border-[#08234e] hover:text-[#08234e] transition-all w-full"
+          className="flex items-center gap-2 rounded-xl bg-white border-2 border-dashed border-slate-200 px-5 py-3 text-sm font-bold text-slate-400 hover:border-[#4467a9] hover:text-[#4467a9] transition-all w-full"
         >
           <Plus size={16} />
           Agregar categoría
@@ -205,13 +205,13 @@ export function CategoriesClient({ categories: initial }: Props) {
                 <input
                   value={editForm.name}
                   onChange={(e) => setEditForm((p) => ({ ...p, name: e.target.value }))}
-                  className="w-full rounded-lg border-2 border-slate-100 bg-slate-50 px-3 py-2 text-sm font-bold outline-none focus:border-[#08234e] transition-colors"
+                  className="w-full rounded-lg border-2 border-slate-100 bg-slate-50 px-3 py-2 text-sm font-bold outline-none focus:border-[#4467a9] transition-colors"
                 />
                 <input
                   value={editForm.description}
                   onChange={(e) => setEditForm((p) => ({ ...p, description: e.target.value }))}
                   placeholder="Descripción"
-                  className="w-full rounded-lg border-2 border-slate-100 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-[#08234e] transition-colors"
+                  className="w-full rounded-lg border-2 border-slate-100 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-[#4467a9] transition-colors"
                 />
                 <div className="grid grid-cols-2 gap-2">
                   <div>
@@ -220,7 +220,7 @@ export function CategoriesClient({ categories: initial }: Props) {
                       type="number"
                       value={editForm.order}
                       onChange={(e) => setEditForm((p) => ({ ...p, order: parseInt(e.target.value) || 0 }))}
-                      className="w-full rounded-lg border-2 border-slate-100 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-[#08234e] transition-colors"
+                      className="w-full rounded-lg border-2 border-slate-100 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-[#4467a9] transition-colors"
                     />
                   </div>
                   <div className="flex items-end">
@@ -229,7 +229,7 @@ export function CategoriesClient({ categories: initial }: Props) {
                         type="checkbox"
                         checked={editForm.active}
                         onChange={(e) => setEditForm((p) => ({ ...p, active: e.target.checked }))}
-                        className="h-4 w-4 rounded accent-[#08234e]"
+                        className="h-4 w-4 rounded accent-[#4467a9]"
                       />
                       <span className="text-xs font-bold text-slate-500">Activa</span>
                     </label>
@@ -256,7 +256,7 @@ export function CategoriesClient({ categories: initial }: Props) {
                 <div className="flex items-start justify-between gap-2 mb-3">
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
-                      <p className="text-sm font-black text-[#08234e] truncate">{cat.name}</p>
+                      <p className="text-sm font-black text-[#4467a9] truncate">{cat.name}</p>
                       {!cat.active && (
                         <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[0.6rem] font-bold text-slate-400">
                           Inactiva
@@ -267,7 +267,7 @@ export function CategoriesClient({ categories: initial }: Props) {
                       <p className="text-xs text-slate-400 mt-0.5 truncate">{cat.description}</p>
                     )}
                   </div>
-                  <span className="shrink-0 rounded-full bg-[#08234e]/5 px-2.5 py-1 text-xs font-black text-[#08234e]">
+                  <span className="shrink-0 rounded-full bg-[#4467a9]/5 px-2.5 py-1 text-xs font-black text-[#4467a9]">
                     {cat._count.products}
                   </span>
                 </div>
@@ -277,7 +277,7 @@ export function CategoriesClient({ categories: initial }: Props) {
                   <div className="flex gap-1.5">
                     <button
                       onClick={() => startEdit(cat)}
-                      className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-50 text-slate-400 hover:bg-[#08234e] hover:text-white transition-all"
+                      className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-50 text-slate-400 hover:bg-[#4467a9] hover:text-white transition-all"
                     >
                       <Pencil size={12} />
                     </button>

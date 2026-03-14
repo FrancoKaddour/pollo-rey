@@ -111,9 +111,9 @@ export default async function AdminDashboard() {
       label: "Ingresos esta semana",
       value: formatPrice(weekRevenue),
       icon: TrendingUp,
-      color: "text-[#08234e]",
+      color: "text-[#4467a9]",
       bg: "bg-slate-50",
-      border: "border-l-[#08234e]",
+      border: "border-l-[#4467a9]",
       href: "/admin/pedidos",
     },
     {
@@ -142,7 +142,7 @@ export default async function AdminDashboard() {
       <div className="flex items-center justify-between">
         <div>
           <h1
-            className="font-display font-black uppercase text-[#08234e] leading-none"
+            className="font-display font-black uppercase text-[#4467a9] leading-none"
             style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)", letterSpacing: "-0.04em" }}
           >
             DASHBOARD
@@ -158,7 +158,7 @@ export default async function AdminDashboard() {
         </div>
         <Link
           href="/admin/productos/nuevo"
-          className="flex items-center gap-2 rounded-xl bg-[#08234e] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#0d3a80] transition-colors shadow-sm"
+          className="flex items-center gap-2 rounded-xl bg-[#4467a9] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#0d3a80] transition-colors shadow-sm"
         >
           <Plus size={15} />
           Nuevo producto
@@ -181,7 +181,7 @@ export default async function AdminDashboard() {
             <div className={`inline-flex h-9 w-9 items-center justify-center rounded-xl ${stat.bg} mb-3`}>
               <stat.icon size={17} className={stat.color} />
             </div>
-            <p className="text-2xl font-black text-[#08234e] leading-none">
+            <p className="text-2xl font-black text-[#4467a9] leading-none">
               {stat.value}
             </p>
             <p className="mt-1 text-xs font-medium text-slate-400">{stat.label}</p>
@@ -197,14 +197,14 @@ export default async function AdminDashboard() {
       <div className="rounded-2xl bg-white shadow-sm overflow-hidden">
         <div className="flex items-center justify-between px-6 py-5 border-b border-slate-100">
           <div className="flex items-center gap-3">
-            <Clock size={16} className="text-[#08234e]" />
-            <h2 className="font-display font-black uppercase text-[#08234e] text-sm tracking-wide">
+            <Clock size={16} className="text-[#4467a9]" />
+            <h2 className="font-display font-black uppercase text-[#4467a9] text-sm tracking-wide">
               ÚLTIMOS PEDIDOS
             </h2>
           </div>
           <Link
             href="/admin/pedidos"
-            className="text-xs font-bold text-[#08234e]/40 hover:text-[#08234e] transition-colors"
+            className="text-xs font-bold text-[#4467a9]/40 hover:text-[#4467a9] transition-colors"
           >
             Ver todos →
           </Link>
@@ -249,13 +249,13 @@ export default async function AdminDashboard() {
                   return (
                     <tr key={order.id} className="hover:bg-slate-50/50 transition-colors">
                       <td className="px-6 py-4">
-                        <span className="text-sm font-bold text-[#08234e]">
+                        <span className="text-sm font-bold text-[#4467a9]">
                           {order.customerName}
                         </span>
                       </td>
                       <td className="px-4 py-4 text-sm text-slate-500">{order.phone}</td>
                       <td className="px-4 py-4 text-sm text-slate-500">{totalItems} ítem{totalItems !== 1 ? "s" : ""}</td>
-                      <td className="px-4 py-4 text-sm font-bold text-[#08234e]">
+                      <td className="px-4 py-4 text-sm font-bold text-[#4467a9]">
                         {formatPrice(order.total)}
                       </td>
                       <td className="px-4 py-4">
@@ -276,7 +276,7 @@ export default async function AdminDashboard() {
                       <td className="px-6 py-4">
                         <Link
                           href={`/admin/pedidos/${order.id}`}
-                          className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-100 text-slate-400 hover:bg-[#08234e] hover:text-white transition-all"
+                          className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-100 text-slate-400 hover:bg-[#4467a9] hover:text-white transition-all"
                         >
                           <CheckCircle size={13} />
                         </Link>
@@ -294,7 +294,7 @@ export default async function AdminDashboard() {
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         {[
           { href: "/admin/pedidos", label: "Ver pedidos", icon: ShoppingCart, color: "bg-blue-500" },
-          { href: "/admin/productos/nuevo", label: "Nuevo producto", icon: Plus, color: "bg-[#08234e]" },
+          { href: "/admin/productos/nuevo", label: "Nuevo producto", icon: Plus, color: "bg-[#4467a9]" },
           { href: "/admin/promociones", label: "Promociones", icon: AlertCircle, color: "bg-[#CC1414]" },
           { href: "/admin/newsletter", label: "Newsletter", icon: Mail, color: "bg-teal-500" },
         ].map((action) => (
@@ -306,7 +306,7 @@ export default async function AdminDashboard() {
             <div className={`h-10 w-10 rounded-xl ${action.color} flex items-center justify-center`}>
               <action.icon size={18} className="text-white" />
             </div>
-            <span className="text-xs font-bold text-slate-600 group-hover:text-[#08234e] transition-colors">
+            <span className="text-xs font-bold text-slate-600 group-hover:text-[#4467a9] transition-colors">
               {action.label}
             </span>
           </Link>

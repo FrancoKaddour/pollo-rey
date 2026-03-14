@@ -41,11 +41,11 @@ export function LoyaltySection() {
                 }}
               >
                 {/* Relleno navy */}
-                <circle cx="250" cy="250" r="235" fill="#08234e" />
+                <circle cx="250" cy="250" r="235" fill="#4467a9" />
                 {/* Borde cream */}
                 <circle cx="250" cy="250" r="235" fill="none" stroke="#f1ead0" strokeWidth="8" />
                 {/* Borde navy exterior */}
-                <circle cx="250" cy="250" r="248" fill="none" stroke="#08234e" strokeWidth="6" />
+                <circle cx="250" cy="250" r="248" fill="none" stroke="#4467a9" strokeWidth="6" />
               </svg>
               <Image
                 src="/app-phone.png"
@@ -73,7 +73,7 @@ export function LoyaltySection() {
 
             {/* Heading */}
             <h2
-              className="font-display font-black uppercase text-[#08234e] leading-[0.88]"
+              className="font-display font-black uppercase text-[#4467a9] leading-[0.88]"
               style={{
                 fontSize: "clamp(1.9rem, 5vw, 5.2rem)",
                 letterSpacing: "-0.055em",
@@ -89,7 +89,7 @@ export function LoyaltySection() {
             </h2>
 
             {/* Sub */}
-            <p className="mt-5 max-w-[38ch] text-sm leading-relaxed text-[#08234e]/50">
+            <p className="mt-5 max-w-[38ch] text-sm leading-relaxed text-[#4467a9]/50">
               Creá tu cuenta, comprá como siempre y acumulá puntos que podés
               canjear por envíos gratis, descuentos y productos de la pollería.
             </p>
@@ -99,19 +99,19 @@ export function LoyaltySection() {
               {BENEFITS.map((b) => (
                 <div key={b.number} className="flex items-start gap-5">
                   <span
-                    className="shrink-0 font-display font-black text-[#08234e]/15"
+                    className="shrink-0 font-display font-black text-[#4467a9]/15"
                     style={{ fontSize: "1.5rem", lineHeight: 1, letterSpacing: "-0.04em" }}
                   >
                     {b.number}
                   </span>
                   <div>
                     <p
-                      className="font-display font-black uppercase text-[#08234e]"
+                      className="font-display font-black uppercase text-[#4467a9]"
                       style={{ fontSize: "0.85rem", letterSpacing: "-0.01em" }}
                     >
                       {b.title}
                     </p>
-                    <p className="text-xs leading-relaxed text-[#08234e]/45 mt-0.5">
+                    <p className="text-xs leading-relaxed text-[#4467a9]/45 mt-0.5">
                       {b.desc}
                     </p>
                   </div>
@@ -120,9 +120,9 @@ export function LoyaltySection() {
             </div>
 
             {/* Próximamente badge */}
-            <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#08234e]/15 bg-white px-4 py-1.5">
+            <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#4467a9]/15 bg-white px-4 py-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-[#CC1414] animate-pulse" />
-              <span className="text-[0.65rem] font-black uppercase tracking-widest text-[#08234e]/40">
+              <span className="text-[0.65rem] font-black uppercase tracking-widest text-[#4467a9]/40">
                 PRÓXIMAMENTE
               </span>
             </div>
@@ -131,13 +131,13 @@ export function LoyaltySection() {
             <div className="mt-4 flex flex-wrap gap-3 sm:flex-nowrap">
               <Link
                 href="/#newsletter"
-                className="rounded-full bg-[#08234e] px-8 py-3.5 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#CC1414]"
+                className="rounded-full bg-[#4467a9] px-8 py-3.5 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#CC1414]"
               >
                 QUIERO SER EL PRIMERO
               </Link>
               <Link
                 href="/contacto"
-                className="rounded-full border-2 border-[#08234e]/30 bg-transparent px-8 py-3.5 font-display text-sm font-black uppercase tracking-widest text-[#08234e] transition-colors hover:border-[#08234e] hover:bg-[#08234e] hover:text-[#f1ead0]"
+                className="rounded-full border-2 border-[#4467a9]/30 bg-transparent px-8 py-3.5 font-display text-sm font-black uppercase tracking-widest text-[#4467a9] transition-colors hover:border-[#4467a9] hover:bg-[#4467a9] hover:text-[#f1ead0]"
               >
                 CONTACTANOS
               </Link>

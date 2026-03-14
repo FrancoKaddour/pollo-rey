@@ -43,13 +43,13 @@ export function ProductDetailClient({ product, related }: Props) {
   return (
     <div className="min-h-screen bg-white">
       {/* Breadcrumb */}
-      <div className="border-b border-[#08234e]/8 bg-[#f1ead0]/50 px-6 py-3 md:px-12">
-        <div className="mx-auto flex max-w-[1400px] items-center gap-1.5 text-xs text-[#08234e]/45">
-          <Link href="/" className="hover:text-[#08234e]">
+      <div className="border-b border-[#4467a9]/8 bg-[#f1ead0]/50 px-6 py-3 md:px-12">
+        <div className="mx-auto flex max-w-[1400px] items-center gap-1.5 text-xs text-[#4467a9]/45">
+          <Link href="/" className="hover:text-[#4467a9]">
             Inicio
           </Link>
           <ChevronRight className="h-3 w-3" />
-          <Link href="/productos" className="hover:text-[#08234e]">
+          <Link href="/productos" className="hover:text-[#4467a9]">
             Productos
           </Link>
           {product.category && (
@@ -57,14 +57,14 @@ export function ProductDetailClient({ product, related }: Props) {
               <ChevronRight className="h-3 w-3" />
               <Link
                 href={`/productos?cat=${product.category.slug}`}
-                className="hover:text-[#08234e]"
+                className="hover:text-[#4467a9]"
               >
                 {product.category.name}
               </Link>
             </>
           )}
           <ChevronRight className="h-3 w-3" />
-          <span className="text-[#08234e]">{product.name}</span>
+          <span className="text-[#4467a9]">{product.name}</span>
         </div>
       </div>
 
@@ -85,7 +85,7 @@ export function ProductDetailClient({ product, related }: Props) {
             ) : (
               <div className="flex h-full w-full items-center justify-center">
                 <span
-                  className="font-display font-black text-[#08234e]/8 select-none"
+                  className="font-display font-black text-[#4467a9]/8 select-none"
                   style={{ fontSize: "clamp(6rem, 15vw, 12rem)" }}
                 >
                   PR
@@ -93,7 +93,7 @@ export function ProductDetailClient({ product, related }: Props) {
               </div>
             )}
             {product.featured && (
-              <span className="absolute left-4 top-4 rounded-full bg-[#08234e] px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#f1ead0]">
+              <span className="absolute left-4 top-4 rounded-full bg-[#4467a9] px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#f1ead0]">
                 Destacado
               </span>
             )}
@@ -109,34 +109,34 @@ export function ProductDetailClient({ product, related }: Props) {
             {product.category && (
               <Link
                 href={`/productos?cat=${product.category.slug}`}
-                className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#08234e]/40 hover:text-[#08234e]"
+                className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#4467a9]/40 hover:text-[#4467a9]"
               >
                 {product.category.name}
               </Link>
             )}
 
             <h1
-              className="font-display font-black text-[#08234e] leading-none"
+              className="font-display font-black text-[#4467a9] leading-none"
               style={{ fontSize: "clamp(1.5rem, 4vw, 3rem)", letterSpacing: "-0.03em" }}
             >
               {product.name}
             </h1>
 
-            <p className="mt-1 text-sm text-[#08234e]/40">{product.unit}</p>
+            <p className="mt-1 text-sm text-[#4467a9]/40">{product.unit}</p>
 
             {product.description && (
-              <p className="mt-4 text-sm leading-relaxed text-[#08234e]/60">
+              <p className="mt-4 text-sm leading-relaxed text-[#4467a9]/60">
                 {product.description}
               </p>
             )}
 
             {/* Precio */}
             <div className="mt-6 flex items-baseline gap-3">
-              <span className="font-display text-2xl font-black text-[#08234e] sm:text-3xl md:text-4xl">
+              <span className="font-display text-2xl font-black text-[#4467a9] sm:text-3xl md:text-4xl">
                 {formatPrice(product.price)}
               </span>
               {hasDiscount && (
-                <span className="text-lg text-[#08234e]/30 line-through">
+                <span className="text-lg text-[#4467a9]/30 line-through">
                   {formatPrice(product.comparePrice!)}
                 </span>
               )}
@@ -145,20 +145,20 @@ export function ProductDetailClient({ product, related }: Props) {
             {/* Cantidad + CTA */}
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
               {/* Cantidad */}
-              <div className="flex items-center gap-3 rounded-full border border-[#08234e]/15 px-2 py-1">
+              <div className="flex items-center gap-3 rounded-full border border-[#4467a9]/15 px-2 py-1">
                 <button
                   onClick={() => setQty((v) => Math.max(1, v - 1))}
-                  className="flex h-8 w-8 items-center justify-center rounded-full text-[#08234e]/50 transition-colors hover:bg-[#08234e]/8 hover:text-[#08234e]"
+                  className="flex h-8 w-8 items-center justify-center rounded-full text-[#4467a9]/50 transition-colors hover:bg-[#4467a9]/8 hover:text-[#4467a9]"
                   aria-label="Reducir"
                 >
                   <Minus className="h-3.5 w-3.5" />
                 </button>
-                <span className="min-w-[24px] text-center font-display text-lg font-black text-[#08234e]">
+                <span className="min-w-[24px] text-center font-display text-lg font-black text-[#4467a9]">
                   {qty}
                 </span>
                 <button
                   onClick={() => setQty((v) => v + 1)}
-                  className="flex h-8 w-8 items-center justify-center rounded-full text-[#08234e]/50 transition-colors hover:bg-[#08234e]/8 hover:text-[#08234e]"
+                  className="flex h-8 w-8 items-center justify-center rounded-full text-[#4467a9]/50 transition-colors hover:bg-[#4467a9]/8 hover:text-[#4467a9]"
                   aria-label="Aumentar"
                 >
                   <Plus className="h-3.5 w-3.5" />
@@ -167,7 +167,7 @@ export function ProductDetailClient({ product, related }: Props) {
 
               <button
                 onClick={handleAdd}
-                className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#08234e] py-3.5 text-sm font-semibold text-[#f1ead0] transition-opacity hover:opacity-80"
+                className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#4467a9] py-3.5 text-sm font-semibold text-[#f1ead0] transition-opacity hover:opacity-80"
               >
                 <ShoppingBag className="h-4 w-4" strokeWidth={1.8} />
                 Agregar al carrito — {formatPrice(product.price * qty)}
@@ -175,7 +175,7 @@ export function ProductDetailClient({ product, related }: Props) {
             </div>
 
             {/* Info extra */}
-            <div className="mt-8 space-y-2 rounded-2xl bg-[#f1ead0]/60 p-4 text-xs text-[#08234e]/50">
+            <div className="mt-8 space-y-2 rounded-2xl bg-[#f1ead0]/60 p-4 text-xs text-[#4467a9]/50">
               <p>Cobertura: CABA y Vicente López</p>
               <p>Retiro en local: Saavedra, Buenos Aires</p>
               <p>Lun–Sáb: 8:00 – 20:00</p>
@@ -184,7 +184,7 @@ export function ProductDetailClient({ product, related }: Props) {
             {/* Back link */}
             <Link
               href="/productos"
-              className="mt-6 flex items-center gap-1.5 text-xs text-[#08234e]/40 hover:text-[#08234e]"
+              className="mt-6 flex items-center gap-1.5 text-xs text-[#4467a9]/40 hover:text-[#4467a9]"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               Volver al catálogo
@@ -195,7 +195,7 @@ export function ProductDetailClient({ product, related }: Props) {
         {/* Related products */}
         {related.length > 0 && (
           <div className="mt-20 pb-16 md:pb-24">
-            <h2 className="mb-6 font-display text-xl font-black text-[#08234e]">
+            <h2 className="mb-6 font-display text-xl font-black text-[#4467a9]">
               También te puede interesar
             </h2>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">

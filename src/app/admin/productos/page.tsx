@@ -25,7 +25,7 @@ export default async function ProductosPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1
-            className="font-display font-black uppercase text-[#08234e] leading-none"
+            className="font-display font-black uppercase text-[#4467a9] leading-none"
             style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", letterSpacing: "-0.04em" }}
           >
             PRODUCTOS
@@ -39,7 +39,7 @@ export default async function ProductosPage() {
         </div>
         <Link
           href="/admin/productos/nuevo"
-          className="flex items-center gap-2 rounded-xl bg-[#08234e] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#0d3a80] transition-colors shadow-sm"
+          className="flex items-center gap-2 rounded-xl bg-[#4467a9] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#0d3a80] transition-colors shadow-sm"
         >
           <Plus size={15} />
           Nuevo producto
@@ -53,7 +53,7 @@ export default async function ProductosPage() {
           return (
             <div key={cat.id} className="rounded-full bg-white border border-slate-100 px-3.5 py-1.5 text-xs font-bold shadow-sm">
               <span className="text-slate-400">{cat.name}</span>
-              <span className="ml-2 text-[#08234e]">{count}</span>
+              <span className="ml-2 text-[#4467a9]">{count}</span>
             </div>
           );
         })}
@@ -66,7 +66,7 @@ export default async function ProductosPage() {
           <p className="text-sm font-bold text-slate-400">No hay productos</p>
           <Link
             href="/admin/productos/nuevo"
-            className="mt-4 rounded-xl bg-[#08234e] px-4 py-2.5 text-sm font-bold text-white"
+            className="mt-4 rounded-xl bg-[#4467a9] px-4 py-2.5 text-sm font-bold text-white"
           >
             + Crear primer producto
           </Link>

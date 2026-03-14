@@ -7,7 +7,7 @@ const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_URL ?? "#";
 
 export function Footer() {
   return (
-    <footer className="bg-[#08234e]">
+    <footer className="bg-[#4467a9]">
 
       {/* ── Main footer row (PP-style: logo izq | nav centro | acciones der) ── */}
       <div className="mx-auto max-w-[1400px] px-6 py-10 md:px-12 md:py-16 lg:py-20">
@@ -129,7 +129,7 @@ export function Footer() {
               href={`https://wa.me/${whatsappPhone}?text=${encodeURIComponent("Hola! Quiero hacer un pedido a Pollo Rey.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border-2 border-[#f1ead0] px-7 py-3 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#f1ead0] hover:text-[#08234e]"
+              className="rounded-full border-2 border-[#f1ead0] px-7 py-3 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#f1ead0] hover:text-[#4467a9]"
             >
               HACER PEDIDO
             </a>

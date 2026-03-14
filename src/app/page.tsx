@@ -53,8 +53,8 @@ export default async function HomePage() {
                 className="flex w-max font-display font-black uppercase"
                 style={{
                   animation: `${row.reverse ? "marquee-reverse" : "marquee"} 180s linear infinite`,
-                  color: row.solid ? "#08234e" : "transparent",
-                  WebkitTextStroke: row.solid ? "0px" : "1.5px #08234e",
+                  color: row.solid ? "#4467a9" : "transparent",
+                  WebkitTextStroke: row.solid ? "0px" : "1.5px #4467a9",
                   fontSize: "clamp(2rem, 3.6vw, 4.2rem)",
                   letterSpacing: "-0.02em",
                   lineHeight: "1",
@@ -73,7 +73,7 @@ export default async function HomePage() {
 
         {/* ── Mobile: heading limpio ── */}
         <h1
-          className="relative z-10 mb-8 text-center font-display font-black uppercase text-[#08234e] leading-[0.88] md:hidden"
+          className="relative z-10 mb-8 text-center font-display font-black uppercase text-[#4467a9] leading-[0.88] md:hidden"
           style={{ fontSize: "clamp(2rem, 9vw, 4rem)", letterSpacing: "-0.04em", maxWidth: "14ch" }}
         >
           TU POLLERÍA DE BARRIO EN SAAVEDRA
@@ -94,7 +94,7 @@ export default async function HomePage() {
           {/* Pill CTA */}
           <Link
             href="/productos"
-            className="mt-8 rounded-full bg-[#08234e] px-12 py-4 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] shadow-lg transition-opacity hover:opacity-80"
+            className="mt-8 rounded-full bg-[#4467a9] px-12 py-4 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] shadow-lg transition-opacity hover:opacity-80"
           >
             HACER PEDIDO
           </Link>
@@ -105,7 +105,7 @@ export default async function HomePage() {
       <section className="overflow-hidden bg-[#f1ead0] px-6 py-20 md:px-12">
         <div className="mx-auto max-w-[1400px]">
           <h2
-            className="mb-14 text-center font-display font-black uppercase text-[#08234e] leading-none"
+            className="mb-14 text-center font-display font-black uppercase text-[#4467a9] leading-none"
             style={{ fontSize: "clamp(2rem, 6vw, 6.5rem)", letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "center" }}
           >
             NUESTRAS PROMOS<span className="text-[#CC1414]">.</span>
@@ -170,16 +170,16 @@ export default async function HomePage() {
 
             {/* Texto */}
             <div>
-              <p className="mb-4 font-display text-xs font-black uppercase tracking-[0.25em] text-[#08234e]/40">
+              <p className="mb-4 font-display text-xs font-black uppercase tracking-[0.25em] text-[#4467a9]/40">
                 Sobre nosotros
               </p>
               <h2
-                className="font-display font-black uppercase text-[#08234e] leading-[0.85]"
+                className="font-display font-black uppercase text-[#4467a9] leading-[0.85]"
                 style={{ fontSize: "clamp(1.8rem, 5vw, 5.5rem)", letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "left" }}
               >
                 TU POLLERÍA DE BARRIO EN SAAVEDRA<span className="text-[#CC1414]">.</span>
               </h2>
-              <p className="mt-6 text-sm leading-relaxed text-[#08234e]/55">
+              <p className="mt-6 text-sm leading-relaxed text-[#4467a9]/55">
                 Pollo Rey es una pollería nueva en Saavedra, pero detrás hay años de oficio
                 y mucho amor por el barrio. Trabajamos con proveedores locales de confianza
                 para traerte pollo fresco cada día, sin congelado. Cortes a medida, los
@@ -187,7 +187,7 @@ export default async function HomePage() {
               </p>
               <Link
                 href="/nosotros"
-                className="mt-8 inline-block rounded-full border-2 border-[#08234e] bg-transparent px-8 py-3.5 font-display text-sm font-black uppercase tracking-widest text-[#08234e] transition-colors hover:bg-[#08234e] hover:text-[#f1ead0]"
+                className="mt-8 inline-block rounded-full border-2 border-[#4467a9] bg-transparent px-8 py-3.5 font-display text-sm font-black uppercase tracking-widest text-[#4467a9] transition-colors hover:bg-[#4467a9] hover:text-[#f1ead0]"
               >
                 CONOCENOS
               </Link>
@@ -202,7 +202,7 @@ export default async function HomePage() {
         style={{
           width: "100%",
           height: "clamp(140px, 16vw, 200px)",
-          backgroundImage: "repeating-conic-gradient(#08234e 0% 25%, #f1ead0 0% 50%)",
+          backgroundImage: "repeating-conic-gradient(#4467a9 0% 25%, #f1ead0 0% 50%)",
           /* tile = height/3 → always exactly 3 complete rows at any viewport */
           backgroundSize: "clamp(47px, 5.33vw, 67px) clamp(47px, 5.33vw, 67px)",
         }}
@@ -215,7 +215,7 @@ export default async function HomePage() {
       <MarqueeBand
         direction="right"
         speed={90}
-        className="bg-[#08234e]"
+        className="bg-[#4467a9]"
         style={{ height: "clamp(140px, 16vw, 200px)" }}
       >
         <span
@@ -226,7 +226,7 @@ export default async function HomePage() {
         </span>
         <Link
           href="/productos?cat=pollo"
-          className="shrink-0 rounded-full border-2 border-[#f1ead0] bg-transparent px-7 py-3 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#f1ead0] hover:text-[#08234e]"
+          className="shrink-0 rounded-full border-2 border-[#f1ead0] bg-transparent px-7 py-3 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#f1ead0] hover:text-[#4467a9]"
           style={{ whiteSpace: "nowrap", marginRight: "clamp(2rem, 3vw, 3.5rem)" }}
         >
           VER CATÁLOGO
@@ -239,7 +239,7 @@ export default async function HomePage() {
         </span>
         <Link
           href="/productos?cat=pollo"
-          className="shrink-0 rounded-full border-2 border-[#f1ead0] bg-transparent px-7 py-3 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#f1ead0] hover:text-[#08234e]"
+          className="shrink-0 rounded-full border-2 border-[#f1ead0] bg-transparent px-7 py-3 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#f1ead0] hover:text-[#4467a9]"
           style={{ whiteSpace: "nowrap", marginRight: "clamp(2rem, 3vw, 3.5rem)" }}
         >
           VER CATÁLOGO
@@ -250,7 +250,7 @@ export default async function HomePage() {
       <section className="overflow-hidden bg-[#f1ead0] px-6 py-20 md:px-12">
         <div className="mx-auto max-w-[1400px]">
           <h2
-            className="mb-10 text-center font-display font-black uppercase text-[#08234e] leading-none"
+            className="mb-10 text-center font-display font-black uppercase text-[#4467a9] leading-none"
             style={{ fontSize: "clamp(2rem, 6vw, 6.5rem)", letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "center" }}
           >
             TODO LO QUE NECESITÁS<span className="text-[#CC1414]">.</span>
@@ -265,16 +265,16 @@ export default async function HomePage() {
               <Link
                 key={cat.name}
                 href={cat.href}
-                className="group relative overflow-hidden rounded-2xl border-2 border-[#08234e]/10 bg-white p-6 transition-all duration-200 hover:-translate-y-1.5 hover:border-[#08234e] hover:shadow-[6px_6px_0px_0px_#08234e]"
+                className="group relative overflow-hidden rounded-2xl border-2 border-[#4467a9]/10 bg-white p-6 transition-all duration-200 hover:-translate-y-1.5 hover:border-[#4467a9] hover:shadow-[6px_6px_0px_0px_#4467a9]"
               >
                 <h3
-                  className="font-display font-black uppercase text-[#08234e]"
+                  className="font-display font-black uppercase text-[#4467a9]"
                   style={{ letterSpacing: "-0.02em", fontSize: "1.1rem" }}
                 >
                   {cat.name}
                 </h3>
-                <p className="mt-1 font-sans text-xs text-[#08234e]/40">{cat.sub}</p>
-                <span className="mt-4 block font-display text-xs font-black uppercase tracking-widest text-[#08234e]/25 transition-colors group-hover:text-[#08234e]">
+                <p className="mt-1 font-sans text-xs text-[#4467a9]/40">{cat.sub}</p>
+                <span className="mt-4 block font-display text-xs font-black uppercase tracking-widest text-[#4467a9]/25 transition-colors group-hover:text-[#4467a9]">
                   VER →
                 </span>
               </Link>
@@ -292,7 +292,7 @@ export default async function HomePage() {
         style={{
           width: "100%",
           height: "clamp(140px, 16vw, 200px)",
-          backgroundImage: "repeating-conic-gradient(#08234e 0% 25%, #f1ead0 0% 50%)",
+          backgroundImage: "repeating-conic-gradient(#4467a9 0% 25%, #f1ead0 0% 50%)",
           backgroundSize: "clamp(47px, 5.33vw, 67px) clamp(47px, 5.33vw, 67px)",
         }}
       />

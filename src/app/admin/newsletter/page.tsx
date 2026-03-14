@@ -17,7 +17,7 @@ export default async function NewsletterPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1
-            className="font-display font-black uppercase text-[#08234e] leading-none"
+            className="font-display font-black uppercase text-[#4467a9] leading-none"
             style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", letterSpacing: "-0.04em" }}
           >
             NEWSLETTER
@@ -34,7 +34,7 @@ export default async function NewsletterPage() {
       {/* Stats */}
       <div className="grid grid-cols-3 gap-4">
         <div className="rounded-2xl bg-white p-5 shadow-sm border-l-4 border-l-teal-500">
-          <p className="text-2xl font-black text-[#08234e]">{subscribers.length}</p>
+          <p className="text-2xl font-black text-[#4467a9]">{subscribers.length}</p>
           <p className="text-xs font-medium text-slate-400 mt-1">Total</p>
         </div>
         <div className="rounded-2xl bg-white p-5 shadow-sm border-l-4 border-l-green-500">

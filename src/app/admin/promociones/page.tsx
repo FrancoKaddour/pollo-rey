@@ -16,7 +16,7 @@ export default async function PromocionesPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1
-            className="font-display font-black uppercase text-[#08234e] leading-none"
+            className="font-display font-black uppercase text-[#4467a9] leading-none"
             style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", letterSpacing: "-0.04em" }}
           >
             PROMOCIONES

@@ -4,8 +4,8 @@
 
   <!-- Checkered bottom band -->
   <pattern id="check" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-    <rect width="30" height="30" fill="#08234e"/>
-    <rect x="30" y="30" width="30" height="30" fill="#08234e"/>
+    <rect width="30" height="30" fill="#4467a9"/>
+    <rect x="30" y="30" width="30" height="30" fill="#4467a9"/>
   </pattern>
   <rect y="570" width="1200" height="60" fill="url(#check)"/>
 
@@ -19,7 +19,7 @@
     font-family="Arial Black, sans-serif"
     font-weight="900"
     font-size="160"
-    fill="#08234e"
+    fill="#4467a9"
     letter-spacing="-8"
     transform="scale(1.12, 1) translate(-48, 0)"
   >POLLO REY</text>
@@ -34,7 +34,7 @@
     font-family="Arial, sans-serif"
     font-weight="700"
     font-size="36"
-    fill="#08234e"
+    fill="#4467a9"
     letter-spacing="6"
     opacity="0.5"
   >POLLERÍA DE BARRIO · SAAVEDRA · BUENOS AIRES</text>
@@ -49,7 +49,7 @@
     font-family="Arial, sans-serif"
     font-weight="400"
     font-size="28"
-    fill="#08234e"
+    fill="#4467a9"
     opacity="0.55"
   >Pollo fresco todos los días · Precios justos · Delivery</text>
 
@@ -60,7 +60,7 @@
     font-family="Arial, sans-serif"
     font-weight="700"
     font-size="22"
-    fill="#08234e"
+    fill="#4467a9"
     opacity="0.35"
     letter-spacing="2"
   >pollorey.com.ar</text>

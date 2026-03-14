@@ -46,7 +46,7 @@ export default async function ArticlePage({
       <div className="mx-auto max-w-[900px] px-6 pt-12 pb-0 md:px-12">
         <Link
           href="/blog"
-          className="mb-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#08234e]/40 hover:text-[#08234e] transition-colors"
+          className="mb-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#4467a9]/40 hover:text-[#4467a9] transition-colors"
         >
           <ArrowLeft size={12} />
           Volver al blog
@@ -65,7 +65,7 @@ export default async function ArticlePage({
 
         {/* Title */}
         <h1
-          className="font-display font-black uppercase text-[#08234e] leading-[0.9]"
+          className="font-display font-black uppercase text-[#4467a9] leading-[0.9]"
           style={{
             fontSize: "clamp(2rem, 5vw, 4rem)",
             letterSpacing: "-0.045em",
@@ -75,7 +75,7 @@ export default async function ArticlePage({
         </h1>
 
         {/* Meta */}
-        <div className="mt-5 flex items-center gap-4 text-xs font-medium text-[#08234e]/30">
+        <div className="mt-5 flex items-center gap-4 text-xs font-medium text-[#4467a9]/30">
           <time dateTime={article.date}>
             {new Date(article.date).toLocaleDateString("es-AR", {
               year: "numeric",
@@ -96,14 +96,14 @@ export default async function ArticlePage({
       {/* Article content */}
       <article className="mx-auto max-w-[900px] px-6 py-12 md:px-12">
         <div
-          className="prose-article space-y-5 text-[#08234e]/70 leading-relaxed"
+          className="prose-article space-y-5 text-[#4467a9]/70 leading-relaxed"
           style={{ fontSize: "1rem", lineHeight: "1.8" }}
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
       </article>
 
       {/* CTA band */}
-      <div className="bg-[#08234e] px-6 py-12 text-center">
+      <div className="bg-[#4467a9] px-6 py-12 text-center">
         <p
           className="font-display font-black uppercase text-[#f1ead0] leading-none mb-6"
           style={{ fontSize: "clamp(1.5rem, 4vw, 3rem)", letterSpacing: "-0.04em" }}
@@ -122,7 +122,7 @@ export default async function ArticlePage({
       {otherArticles.length > 0 && (
         <div className="mx-auto max-w-[1400px] px-6 py-16 md:px-12">
           <h2
-            className="mb-8 font-display font-black uppercase text-[#08234e]"
+            className="mb-8 font-display font-black uppercase text-[#4467a9]"
             style={{ fontSize: "1.5rem", letterSpacing: "-0.04em" }}
           >
             MÁS ARTÍCULOS
@@ -132,18 +132,18 @@ export default async function ArticlePage({
               <Link
                 key={a.slug}
                 href={`/blog/${a.slug}`}
-                className="group rounded-2xl bg-white border border-[#08234e]/8 p-6 hover:border-[#08234e] hover:-translate-y-1 transition-all duration-200"
+                className="group rounded-2xl bg-white border border-[#4467a9]/8 p-6 hover:border-[#4467a9] hover:-translate-y-1 transition-all duration-200"
               >
                 <span className="text-[0.6rem] font-black uppercase tracking-widest text-[#CC1414]">
                   {a.tag}
                 </span>
                 <h3
-                  className="mt-2 font-display font-black uppercase text-[#08234e] leading-tight group-hover:text-[#CC1414] transition-colors"
+                  className="mt-2 font-display font-black uppercase text-[#4467a9] leading-tight group-hover:text-[#CC1414] transition-colors"
                   style={{ fontSize: "0.9rem", letterSpacing: "-0.02em" }}
                 >
                   {a.title}
                 </h3>
-                <p className="mt-3 text-xs text-[#08234e]/40 line-clamp-2">{a.excerpt}</p>
+                <p className="mt-3 text-xs text-[#4467a9]/40 line-clamp-2">{a.excerpt}</p>
               </Link>
             ))}
           </div>

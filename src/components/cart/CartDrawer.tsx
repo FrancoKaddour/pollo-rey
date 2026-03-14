@@ -56,21 +56,21 @@ export function CartDrawer() {
             className="fixed right-0 top-0 z-50 flex h-full w-full max-w-[95vw] flex-col bg-[#f1ead0] shadow-[-12px_0_40px_rgba(8,35,78,0.12)] sm:max-w-[420px]"
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-[#08234e]/10 px-6 py-5">
+            <div className="flex items-center justify-between border-b border-[#4467a9]/10 px-6 py-5">
               <div className="flex items-center gap-2">
-                <ShoppingBag className="h-5 w-5 text-[#08234e]" strokeWidth={1.6} />
-                <span className="font-display text-base font-bold text-[#08234e]">
+                <ShoppingBag className="h-5 w-5 text-[#4467a9]" strokeWidth={1.6} />
+                <span className="font-display text-base font-bold text-[#4467a9]">
                   Tu carrito
                 </span>
                 {items.length > 0 && (
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#08234e] text-[10px] font-black text-[#f1ead0]">
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#4467a9] text-[10px] font-black text-[#f1ead0]">
                     {items.length}
                   </span>
                 )}
               </div>
               <button
                 onClick={closeCart}
-                className="flex h-8 w-8 items-center justify-center rounded-lg text-[#08234e]/40 transition-colors hover:bg-[#08234e]/8 hover:text-[#08234e]"
+                className="flex h-8 w-8 items-center justify-center rounded-lg text-[#4467a9]/40 transition-colors hover:bg-[#4467a9]/8 hover:text-[#4467a9]"
                 aria-label="Cerrar carrito"
               >
                 <X className="h-4 w-4" />
@@ -80,20 +80,20 @@ export function CartDrawer() {
             {/* Content */}
             {items.length === 0 ? (
               <div className="flex flex-1 flex-col items-center justify-center gap-4 px-6 text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#08234e]/6">
-                  <ShoppingBag className="h-7 w-7 text-[#08234e]/30" strokeWidth={1.4} />
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#4467a9]/6">
+                  <ShoppingBag className="h-7 w-7 text-[#4467a9]/30" strokeWidth={1.4} />
                 </div>
                 <div>
-                  <p className="font-display text-sm font-bold text-[#08234e]">
+                  <p className="font-display text-sm font-bold text-[#4467a9]">
                     Tu carrito está vacío
                   </p>
-                  <p className="mt-1 text-xs text-[#08234e]/40">
+                  <p className="mt-1 text-xs text-[#4467a9]/40">
                     Agregá productos para hacer tu pedido
                   </p>
                 </div>
                 <button
                   onClick={closeCart}
-                  className="mt-2 rounded-full border border-[#08234e]/20 px-5 py-2 text-sm font-medium text-[#08234e] transition-colors hover:bg-[#08234e]/5"
+                  className="mt-2 rounded-full border border-[#4467a9]/20 px-5 py-2 text-sm font-medium text-[#4467a9] transition-colors hover:bg-[#4467a9]/5"
                 >
                   Ver productos
                 </button>
@@ -106,10 +106,10 @@ export function CartDrawer() {
                     {items.map(({ product, quantity }) => (
                       <li
                         key={product.id}
-                        className="flex gap-4 border-b border-[#08234e]/8 pb-4 last:border-0"
+                        className="flex gap-4 border-b border-[#4467a9]/8 pb-4 last:border-0"
                       >
                         {/* Imagen placeholder */}
-                        <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-[#08234e]/6">
+                        <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-[#4467a9]/6">
                           {product.imageUrl ? (
                             <Image
                               src={product.imageUrl}
@@ -119,7 +119,7 @@ export function CartDrawer() {
                               sizes="64px"
                             />
                           ) : (
-                            <div className="flex h-full w-full items-center justify-center text-[#08234e]/20 text-xs font-bold">
+                            <div className="flex h-full w-full items-center justify-center text-[#4467a9]/20 text-xs font-bold">
                               PR
                             </div>
                           )}
@@ -129,14 +129,14 @@ export function CartDrawer() {
                         <div className="flex flex-1 flex-col justify-between">
                           <div className="flex items-start justify-between gap-2">
                             <div>
-                              <p className="text-sm font-semibold text-[#08234e] leading-tight">
+                              <p className="text-sm font-semibold text-[#4467a9] leading-tight">
                                 {product.name}
                               </p>
-                              <p className="text-xs text-[#08234e]/40">{product.unit}</p>
+                              <p className="text-xs text-[#4467a9]/40">{product.unit}</p>
                             </div>
                             <button
                               onClick={() => removeItem(product.id)}
-                              className="shrink-0 text-[#08234e]/25 transition-colors hover:text-red-500"
+                              className="shrink-0 text-[#4467a9]/25 transition-colors hover:text-red-500"
                               aria-label="Eliminar"
                             >
                               <Trash2 className="h-3.5 w-3.5" />
@@ -145,27 +145,27 @@ export function CartDrawer() {
 
                           <div className="flex items-center justify-between">
                             {/* Quantity controls */}
-                            <div className="flex items-center gap-2 rounded-lg border border-[#08234e]/15 bg-white/50 px-1 py-0.5">
+                            <div className="flex items-center gap-2 rounded-lg border border-[#4467a9]/15 bg-white/50 px-1 py-0.5">
                               <button
                                 onClick={() => updateQuantity(product.id, quantity - 1)}
-                                className="flex h-6 w-6 items-center justify-center rounded text-[#08234e]/50 transition-colors hover:bg-[#08234e]/8 hover:text-[#08234e]"
+                                className="flex h-6 w-6 items-center justify-center rounded text-[#4467a9]/50 transition-colors hover:bg-[#4467a9]/8 hover:text-[#4467a9]"
                                 aria-label="Reducir"
                               >
                                 <Minus className="h-3 w-3" />
                               </button>
-                              <span className="min-w-[16px] text-center text-sm font-semibold text-[#08234e]">
+                              <span className="min-w-[16px] text-center text-sm font-semibold text-[#4467a9]">
                                 {quantity}
                               </span>
                               <button
                                 onClick={() => updateQuantity(product.id, quantity + 1)}
-                                className="flex h-6 w-6 items-center justify-center rounded text-[#08234e]/50 transition-colors hover:bg-[#08234e]/8 hover:text-[#08234e]"
+                                className="flex h-6 w-6 items-center justify-center rounded text-[#4467a9]/50 transition-colors hover:bg-[#4467a9]/8 hover:text-[#4467a9]"
                                 aria-label="Aumentar"
                               >
                                 <Plus className="h-3 w-3" />
                               </button>
                             </div>
 
-                            <p className="text-sm font-bold text-[#08234e]">
+                            <p className="text-sm font-bold text-[#4467a9]">
                               {formatPrice(product.price * quantity)}
                             </p>
                           </div>
@@ -176,15 +176,15 @@ export function CartDrawer() {
                 </div>
 
                 {/* Footer */}
-                <div className="border-t border-[#08234e]/10 px-6 py-5 space-y-4">
+                <div className="border-t border-[#4467a9]/10 px-6 py-5 space-y-4">
                   {/* Subtotal */}
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-[#08234e]/60">Subtotal</span>
-                    <span className="font-display text-lg font-black text-[#08234e]">
+                    <span className="text-sm text-[#4467a9]/60">Subtotal</span>
+                    <span className="font-display text-lg font-black text-[#4467a9]">
                       {formatPrice(total)}
                     </span>
                   </div>
-                  <p className="text-xs text-[#08234e]/35 leading-relaxed">
+                  <p className="text-xs text-[#4467a9]/35 leading-relaxed">
                     El costo de envío se calcula al confirmar el pedido por WhatsApp.
                   </p>
 
@@ -192,7 +192,7 @@ export function CartDrawer() {
                   <Link
                     href="/checkout"
                     onClick={closeCart}
-                    className="flex w-full items-center justify-center gap-2 rounded-full bg-[#08234e] py-3.5 text-sm font-semibold text-[#f1ead0] transition-opacity hover:opacity-80"
+                    className="flex w-full items-center justify-center gap-2 rounded-full bg-[#4467a9] py-3.5 text-sm font-semibold text-[#f1ead0] transition-opacity hover:opacity-80"
                   >
                     Continuar al pedido
                   </Link>

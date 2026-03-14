@@ -89,7 +89,7 @@ export default function CheckoutPage() {
         <div className="mb-8 flex items-center gap-3">
           <Link
             href="/productos"
-            className="flex items-center gap-1.5 font-sans text-xs font-bold uppercase tracking-widest text-[#08234e]/40 transition-colors hover:text-[#08234e]"
+            className="flex items-center gap-1.5 font-sans text-xs font-bold uppercase tracking-widest text-[#4467a9]/40 transition-colors hover:text-[#4467a9]"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             Volver al catálogo
@@ -99,13 +99,13 @@ export default function CheckoutPage() {
         {/* Heading */}
         <div className="mb-10">
           <p
-            className="font-display font-black uppercase text-[#08234e]/20 leading-none"
+            className="font-display font-black uppercase text-[#4467a9]/20 leading-none"
             style={{ fontSize: "0.65rem", letterSpacing: "0.2em" }}
           >
             PASO FINAL
           </p>
           <h1
-            className="mt-2 font-display font-black uppercase text-[#08234e] leading-none"
+            className="mt-2 font-display font-black uppercase text-[#4467a9] leading-none"
             style={{
               fontSize: "clamp(1.8rem, 5vw, 4.5rem)",
               letterSpacing: "-0.05em",
@@ -115,7 +115,7 @@ export default function CheckoutPage() {
           >
             CONFIRMÁ TU PEDIDO<span className="text-[#CC1414]">.</span>
           </h1>
-          <p className="mt-3 font-sans text-sm text-[#08234e]/50">
+          <p className="mt-3 font-sans text-sm text-[#4467a9]/50">
             Completá tus datos y te redirigimos a WhatsApp con el pedido listo.
           </p>
         </div>
@@ -123,9 +123,9 @@ export default function CheckoutPage() {
         <div className="grid gap-6 md:gap-8 lg:grid-cols-[1fr_minmax(300px,420px)]">
 
           {/* ── FORMULARIO ── */}
-          <div className="rounded-2xl border-2 border-[#08234e]/10 bg-white p-5 sm:p-8 md:p-10">
+          <div className="rounded-2xl border-2 border-[#4467a9]/10 bg-white p-5 sm:p-8 md:p-10">
             <h2
-              className="mb-7 font-display font-black uppercase text-[#08234e]"
+              className="mb-7 font-display font-black uppercase text-[#4467a9]"
               style={{ fontSize: "1.1rem", letterSpacing: "-0.02em" }}
             >
               TUS DATOS
@@ -136,7 +136,7 @@ export default function CheckoutPage() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="customerName"
-                  className="flex items-center gap-2 font-display text-[0.6rem] font-black uppercase tracking-[0.18em] text-[#08234e]/40"
+                  className="flex items-center gap-2 font-display text-[0.6rem] font-black uppercase tracking-[0.18em] text-[#4467a9]/40"
                 >
                   <User className="h-3.5 w-3.5" />
                   Nombre completo *
@@ -149,7 +149,7 @@ export default function CheckoutPage() {
                   value={form.customerName}
                   onChange={handleChange}
                   placeholder="Juan García"
-                  className="w-full rounded-xl border-2 border-[#08234e]/12 bg-[#f8f6ef] px-4 py-3 font-sans text-sm text-[#08234e] placeholder-[#08234e]/25 outline-none transition-colors focus:border-[#08234e] focus:bg-white"
+                  className="w-full rounded-xl border-2 border-[#4467a9]/12 bg-[#f8f6ef] px-4 py-3 font-sans text-sm text-[#4467a9] placeholder-[#4467a9]/25 outline-none transition-colors focus:border-[#4467a9] focus:bg-white"
                 />
               </div>
 
@@ -157,7 +157,7 @@ export default function CheckoutPage() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="phone"
-                  className="flex items-center gap-2 font-display text-[0.6rem] font-black uppercase tracking-[0.18em] text-[#08234e]/40"
+                  className="flex items-center gap-2 font-display text-[0.6rem] font-black uppercase tracking-[0.18em] text-[#4467a9]/40"
                 >
                   <Phone className="h-3.5 w-3.5" />
                   Teléfono / WhatsApp *
@@ -170,7 +170,7 @@ export default function CheckoutPage() {
                   value={form.phone}
                   onChange={handleChange}
                   placeholder="11 1234-5678"
-                  className="w-full rounded-xl border-2 border-[#08234e]/12 bg-[#f8f6ef] px-4 py-3 font-sans text-sm text-[#08234e] placeholder-[#08234e]/25 outline-none transition-colors focus:border-[#08234e] focus:bg-white"
+                  className="w-full rounded-xl border-2 border-[#4467a9]/12 bg-[#f8f6ef] px-4 py-3 font-sans text-sm text-[#4467a9] placeholder-[#4467a9]/25 outline-none transition-colors focus:border-[#4467a9] focus:bg-white"
                 />
               </div>
 
@@ -178,7 +178,7 @@ export default function CheckoutPage() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="zone"
-                  className="font-display text-[0.6rem] font-black uppercase tracking-[0.18em] text-[#08234e]/40"
+                  className="font-display text-[0.6rem] font-black uppercase tracking-[0.18em] text-[#4467a9]/40"
                 >
                   Barrio / Zona (opcional)
                 </label>
@@ -189,7 +189,7 @@ export default function CheckoutPage() {
                   value={form.zone}
                   onChange={handleChange}
                   placeholder="Ej: Saavedra, Coghlan, Núñez..."
-                  className="w-full rounded-xl border-2 border-[#08234e]/12 bg-[#f8f6ef] px-4 py-3 font-sans text-sm text-[#08234e] placeholder-[#08234e]/25 outline-none transition-colors focus:border-[#08234e] focus:bg-white"
+                  className="w-full rounded-xl border-2 border-[#4467a9]/12 bg-[#f8f6ef] px-4 py-3 font-sans text-sm text-[#4467a9] placeholder-[#4467a9]/25 outline-none transition-colors focus:border-[#4467a9] focus:bg-white"
                 />
               </div>
 
@@ -197,7 +197,7 @@ export default function CheckoutPage() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="notes"
-                  className="flex items-center gap-2 font-display text-[0.6rem] font-black uppercase tracking-[0.18em] text-[#08234e]/40"
+                  className="flex items-center gap-2 font-display text-[0.6rem] font-black uppercase tracking-[0.18em] text-[#4467a9]/40"
                 >
                   <FileText className="h-3.5 w-3.5" />
                   Notas adicionales (opcional)
@@ -209,19 +209,19 @@ export default function CheckoutPage() {
                   value={form.notes}
                   onChange={handleChange}
                   placeholder="Corte especial, franja horaria, algún detalle..."
-                  className="w-full resize-none rounded-xl border-2 border-[#08234e]/12 bg-[#f8f6ef] px-4 py-3 font-sans text-sm text-[#08234e] placeholder-[#08234e]/25 outline-none transition-colors focus:border-[#08234e] focus:bg-white"
+                  className="w-full resize-none rounded-xl border-2 border-[#4467a9]/12 bg-[#f8f6ef] px-4 py-3 font-sans text-sm text-[#4467a9] placeholder-[#4467a9]/25 outline-none transition-colors focus:border-[#4467a9] focus:bg-white"
                 />
               </div>
 
               {/* Aviso */}
-              <p className="text-xs text-[#08234e]/35 leading-relaxed">
+              <p className="text-xs text-[#4467a9]/35 leading-relaxed">
                 Al confirmar, se abrirá WhatsApp con tu pedido pre-cargado. El pago se coordina con el local.
               </p>
 
               <button
                 type="submit"
                 disabled={sending}
-                className="flex items-center justify-center gap-3 rounded-full border-2 border-[#08234e] bg-[#08234e] px-8 py-4 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#f1ead0] hover:text-[#08234e] disabled:opacity-50 disabled:pointer-events-none"
+                className="flex items-center justify-center gap-3 rounded-full border-2 border-[#4467a9] bg-[#4467a9] px-8 py-4 font-display text-sm font-black uppercase tracking-widest text-[#f1ead0] transition-colors hover:bg-[#f1ead0] hover:text-[#4467a9] disabled:opacity-50 disabled:pointer-events-none"
               >
                 {sending ? (
                   <>
@@ -239,7 +239,7 @@ export default function CheckoutPage() {
           </div>
 
           {/* ── RESUMEN DEL PEDIDO ── */}
-          <div className="rounded-2xl border-2 border-[#08234e] bg-[#08234e] p-8 text-[#f1ead0]">
+          <div className="rounded-2xl border-2 border-[#4467a9] bg-[#4467a9] p-8 text-[#f1ead0]">
             <div className="mb-6 flex items-center gap-3">
               <ShoppingBag className="h-5 w-5 text-[#f1ead0]/60" strokeWidth={1.8} />
               <h2

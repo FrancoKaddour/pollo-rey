@@ -70,7 +70,7 @@ export function ProductsTableClient({ products: initial }: Props) {
           placeholder="Buscar producto o categoría…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 min-w-[180px] max-w-xs rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-sm outline-none focus:border-[#08234e] transition-colors"
+          className="flex-1 min-w-[180px] max-w-xs rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-sm outline-none focus:border-[#4467a9] transition-colors"
         />
         <div className="flex gap-1.5">
           {(["all", "active", "inactive", "featured"] as const).map((f) => (
@@ -79,7 +79,7 @@ export function ProductsTableClient({ products: initial }: Props) {
               onClick={() => setFilter(f)}
               className={`rounded-lg px-3 py-1.5 text-xs font-bold transition-all ${
                 filter === f
-                  ? "bg-[#08234e] text-white"
+                  ? "bg-[#4467a9] text-white"
                   : "bg-white border border-slate-200 text-slate-500 hover:border-slate-400"
               }`}
             >
@@ -124,7 +124,7 @@ export function ProductsTableClient({ products: initial }: Props) {
                   <td className="px-5 py-4">
                     <div className="flex items-center gap-3">
                       {/* Image placeholder */}
-                      <div className="h-10 w-10 shrink-0 rounded-lg bg-[#f1ead0] flex items-center justify-center text-[0.6rem] font-black text-[#08234e]/30 overflow-hidden">
+                      <div className="h-10 w-10 shrink-0 rounded-lg bg-[#f1ead0] flex items-center justify-center text-[0.6rem] font-black text-[#4467a9]/30 overflow-hidden">
                         {product.imageUrl ? (
                           // eslint-disable-next-line @next/next/no-img-element
                           <img src={product.imageUrl} alt="" className="h-full w-full object-cover" />
@@ -133,7 +133,7 @@ export function ProductsTableClient({ products: initial }: Props) {
                         )}
                       </div>
                       <div>
-                        <p className="text-sm font-bold text-[#08234e]">{product.name}</p>
+                        <p className="text-sm font-bold text-[#4467a9]">{product.name}</p>
                         <p className="text-[0.65rem] text-slate-400 font-mono">{product.unit}</p>
                       </div>
                     </div>
@@ -143,7 +143,7 @@ export function ProductsTableClient({ products: initial }: Props) {
                       {product.category.name}
                     </span>
                   </td>
-                  <td className="px-4 py-4 text-sm font-bold text-[#08234e]">
+                  <td className="px-4 py-4 text-sm font-bold text-[#4467a9]">
                     {formatPrice(product.price)}
                   </td>
                   <td className="px-4 py-4 text-center">
@@ -178,7 +178,7 @@ export function ProductsTableClient({ products: initial }: Props) {
                     <div className="flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                       <Link
                         href={`/admin/productos/${product.id}/editar`}
-                        className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-slate-500 hover:bg-[#08234e] hover:text-white transition-all"
+                        className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-slate-500 hover:bg-[#4467a9] hover:text-white transition-all"
                       >
                         <Pencil size={13} />
                       </Link>

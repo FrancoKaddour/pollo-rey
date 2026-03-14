@@ -135,7 +135,7 @@ export function Sidebar({ userName, userEmail, pendingOrders = 0 }: SidebarProps
       {/* Mobile hamburger */}
       <button
         onClick={() => setMobileOpen(true)}
-        className="fixed top-4 left-4 z-50 flex h-10 w-10 items-center justify-center rounded-xl bg-[#08234e] text-white shadow-lg lg:hidden"
+        className="fixed top-4 left-4 z-50 flex h-10 w-10 items-center justify-center rounded-xl bg-[#4467a9] text-white shadow-lg lg:hidden"
       >
         <Menu size={18} />
       </button>
@@ -150,7 +150,7 @@ export function Sidebar({ userName, userEmail, pendingOrders = 0 }: SidebarProps
 
       {/* Mobile sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-[#08234e] transition-transform duration-300 lg:hidden ${
+        className={`fixed inset-y-0 left-0 z-50 w-64 bg-[#4467a9] transition-transform duration-300 lg:hidden ${
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -164,7 +164,7 @@ export function Sidebar({ userName, userEmail, pendingOrders = 0 }: SidebarProps
       </div>
 
       {/* Desktop sidebar */}
-      <aside className="hidden lg:flex fixed inset-y-0 left-0 w-60 flex-col bg-[#08234e] shadow-2xl">
+      <aside className="hidden lg:flex fixed inset-y-0 left-0 w-60 flex-col bg-[#4467a9] shadow-2xl">
         <SidebarContent />
       </aside>
     </>

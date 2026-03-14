@@ -59,7 +59,7 @@ export function NewsletterClient({ subscribers }: Props) {
           placeholder="Buscar email…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 min-w-[180px] max-w-xs rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-sm outline-none focus:border-[#08234e] transition-colors"
+          className="flex-1 min-w-[180px] max-w-xs rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-sm outline-none focus:border-[#4467a9] transition-colors"
         />
         <div className="flex gap-1.5">
           {(["all", "active", "inactive"] as const).map((f) => (
@@ -68,7 +68,7 @@ export function NewsletterClient({ subscribers }: Props) {
               onClick={() => setFilter(f)}
               className={`rounded-lg px-3 py-1.5 text-xs font-bold transition-all ${
                 filter === f
-                  ? "bg-[#08234e] text-white"
+                  ? "bg-[#4467a9] text-white"
                   : "bg-white border border-slate-200 text-slate-500 hover:border-slate-400"
               }`}
             >
@@ -79,14 +79,14 @@ export function NewsletterClient({ subscribers }: Props) {
         <div className="flex gap-2 ml-auto">
           <button
             onClick={copyEmails}
-            className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-500 hover:border-slate-400 hover:text-[#08234e] transition-all"
+            className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-500 hover:border-slate-400 hover:text-[#4467a9] transition-all"
           >
             <Mail size={12} />
             Copiar emails activos
           </button>
           <button
             onClick={exportCSV}
-            className="flex items-center gap-2 rounded-lg bg-[#08234e] px-3 py-1.5 text-xs font-bold text-white hover:bg-[#0d3a80] transition-colors"
+            className="flex items-center gap-2 rounded-lg bg-[#4467a9] px-3 py-1.5 text-xs font-bold text-white hover:bg-[#0d3a80] transition-colors"
           >
             <Download size={12} />
             Exportar CSV
@@ -118,7 +118,7 @@ export function NewsletterClient({ subscribers }: Props) {
             <tbody className="divide-y divide-slate-50">
               {filtered.map((sub) => (
                 <tr key={sub.id} className="hover:bg-slate-50/50 transition-colors">
-                  <td className="px-6 py-3.5 text-sm font-medium text-[#08234e]">{sub.email}</td>
+                  <td className="px-6 py-3.5 text-sm font-medium text-[#4467a9]">{sub.email}</td>
                   <td className="px-4 py-3.5">
                     <span
                       className={`inline-flex rounded-full px-2.5 py-0.5 text-[0.65rem] font-bold ${

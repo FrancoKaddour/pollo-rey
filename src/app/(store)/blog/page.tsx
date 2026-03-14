@@ -29,7 +29,7 @@ export default function BlogPage() {
           </p>
         </div>
         <h1
-          className="font-display font-black uppercase text-[#08234e] leading-none"
+          className="font-display font-black uppercase text-[#4467a9] leading-none"
           style={{
             fontSize: "clamp(3rem, 8vw, 7rem)",
             letterSpacing: "-0.055em",
@@ -40,7 +40,7 @@ export default function BlogPage() {
           POLLO REY<br />
           EN SAAVEDRA<span className="text-[#CC1414]">.</span>
         </h1>
-        <p className="mt-5 max-w-[46ch] text-sm leading-relaxed text-[#08234e]/50">
+        <p className="mt-5 max-w-[46ch] text-sm leading-relaxed text-[#4467a9]/50">
           Todo sobre nuestra pollería: cómo garantizamos frescura, por qué nacimos
           en Saavedra, y cómo podés comer bien sin gastar de más.
         </p>
@@ -56,12 +56,12 @@ export default function BlogPage() {
             <Link
               key={article.slug}
               href={`/blog/${article.slug}`}
-              className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-[#08234e]/8 hover:border-[#08234e] hover:-translate-y-1.5 hover:shadow-[6px_6px_0px_0px_#08234e] transition-all duration-200"
+              className="group flex flex-col overflow-hidden rounded-2xl bg-white border border-[#4467a9]/8 hover:border-[#4467a9] hover:-translate-y-1.5 hover:shadow-[6px_6px_0px_0px_#4467a9] transition-all duration-200"
             >
               {/* Image placeholder */}
-              <div className="relative h-44 overflow-hidden bg-[#08234e]/5 flex items-end justify-end p-5">
+              <div className="relative h-44 overflow-hidden bg-[#4467a9]/5 flex items-end justify-end p-5">
                 <span
-                  className="select-none font-display font-black italic uppercase text-[#08234e]/10"
+                  className="select-none font-display font-black italic uppercase text-[#4467a9]/10"
                   style={{ fontSize: "6rem", lineHeight: 1 }}
                 >
                   PR
@@ -74,16 +74,16 @@ export default function BlogPage() {
               {/* Content */}
               <div className="flex flex-1 flex-col p-6">
                 <h2
-                  className="font-display font-black uppercase text-[#08234e] leading-tight group-hover:text-[#CC1414] transition-colors"
+                  className="font-display font-black uppercase text-[#4467a9] leading-tight group-hover:text-[#CC1414] transition-colors"
                   style={{ fontSize: "1rem", letterSpacing: "-0.02em" }}
                 >
                   {article.title}
                 </h2>
-                <p className="mt-3 flex-1 text-xs leading-relaxed text-[#08234e]/50">
+                <p className="mt-3 flex-1 text-xs leading-relaxed text-[#4467a9]/50">
                   {article.excerpt}
                 </p>
                 <div className="mt-5 flex items-center justify-between">
-                  <p className="text-[0.65rem] font-medium text-[#08234e]/30">
+                  <p className="text-[0.65rem] font-medium text-[#4467a9]/30">
                     {new Date(article.date).toLocaleDateString("es-AR", {
                       year: "numeric",
                       month: "long",
@@ -91,7 +91,7 @@ export default function BlogPage() {
                     })}
                     {" · "}{article.readTime} min
                   </p>
-                  <span className="text-xs font-black uppercase tracking-widest text-[#08234e]/30 group-hover:text-[#CC1414] transition-colors">
+                  <span className="text-xs font-black uppercase tracking-widest text-[#4467a9]/30 group-hover:text-[#CC1414] transition-colors">
                     LEER →
                   </span>
                 </div>

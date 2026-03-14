@@ -58,7 +58,7 @@ export function Navbar() {
                 className={cn(
                   "rounded-full px-4 py-2 font-sans text-sm font-medium uppercase tracking-[0.12em] transition-colors hover:text-[#CC1414]",
                   pathname === link.href || pathname.startsWith(link.href + "/")
-                    ? "font-bold text-[#08234e] underline underline-offset-4 decoration-[#CC1414] decoration-2"
+                    ? "font-bold text-[#4467a9] underline underline-offset-4 decoration-[#CC1414] decoration-2"
                     : "text-black/70"
                 )}
               >
@@ -104,7 +104,7 @@ export function Navbar() {
             {/* CTA pill */}
             <Link
               href="/productos"
-              className="rounded-full border-2 border-[#08234e] bg-transparent px-5 py-2.5 font-sans text-xs font-bold uppercase tracking-[0.12em] text-[#08234e] transition-colors hover:bg-[#08234e] hover:text-[#f1ead0]"
+              className="rounded-full border-2 border-[#4467a9] bg-transparent px-5 py-2.5 font-sans text-xs font-bold uppercase tracking-[0.12em] text-[#4467a9] transition-colors hover:bg-[#4467a9] hover:text-[#f1ead0]"
             >
               Hacer pedido
             </Link>
@@ -132,7 +132,7 @@ export function Navbar() {
             <CartIcon />
             <button
               onClick={() => setMobileOpen((v) => !v)}
-              className="flex h-9 w-9 items-center justify-center text-[#08234e]"
+              className="flex h-9 w-9 items-center justify-center text-[#4467a9]"
               aria-label="Menú"
             >
               {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -161,7 +161,7 @@ export function Navbar() {
             >
               <button
                 onClick={() => setMobileOpen(false)}
-                className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center text-[#08234e]/60"
+                className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center text-[#4467a9]/60"
                 aria-label="Cerrar"
               >
                 <X className="h-5 w-5" />
@@ -175,8 +175,8 @@ export function Navbar() {
                     className={cn(
                       "rounded-xl px-4 py-3 font-display text-xl font-black",
                       pathname === link.href
-                        ? "text-[#08234e]"
-                        : "text-[#08234e]/50"
+                        ? "text-[#4467a9]"
+                        : "text-[#4467a9]/50"
                     )}
                   >
                     {link.label}
@@ -187,7 +187,7 @@ export function Navbar() {
               <div className="mt-auto">
                 <Link
                   href="/productos"
-                  className="block rounded-full border-2 border-[#08234e] bg-transparent py-4 text-center font-sans text-sm font-bold uppercase tracking-[0.12em] text-[#08234e] transition-colors hover:bg-[#08234e] hover:text-[#f1ead0]"
+                  className="block rounded-full border-2 border-[#4467a9] bg-transparent py-4 text-center font-sans text-sm font-bold uppercase tracking-[0.12em] text-[#4467a9] transition-colors hover:bg-[#4467a9] hover:text-[#f1ead0]"
                 >
                   Hacer pedido
                 </Link>

@@ -44,26 +44,26 @@ function ProductosContent() {
   return (
     <>
       {/* ── PAGE HEADER ───────────────────────────────────────────────────────── */}
-      <div className="overflow-hidden border-b border-[#08234e]/10 bg-[#f1ead0] px-6 py-14 md:px-12 md:py-20">
+      <div className="overflow-hidden border-b border-[#4467a9]/10 bg-[#f1ead0] px-6 py-14 md:px-12 md:py-20">
         <div className="mx-auto max-w-[1400px] text-center">
 
           {/* Breadcrumb */}
           <div className="mb-5 flex items-center justify-center gap-2">
             <Link
               href="/"
-              className="font-sans text-[0.65rem] font-bold uppercase tracking-widest text-[#08234e]/35 transition-colors hover:text-[#08234e]"
+              className="font-sans text-[0.65rem] font-bold uppercase tracking-widest text-[#4467a9]/35 transition-colors hover:text-[#4467a9]"
             >
               Inicio
             </Link>
-            <span className="text-[#08234e]/20">→</span>
-            <span className="font-sans text-[0.65rem] font-black uppercase tracking-widest text-[#08234e]">
+            <span className="text-[#4467a9]/20">→</span>
+            <span className="font-sans text-[0.65rem] font-black uppercase tracking-widest text-[#4467a9]">
               Productos
             </span>
           </div>
 
           {/* Heading */}
           <h1
-            className="font-display font-black uppercase text-[#08234e] leading-none"
+            className="font-display font-black uppercase text-[#4467a9] leading-none"
             style={{
               fontSize: "clamp(2.8rem, 6vw, 5.5rem)",
               letterSpacing: "-0.055em",
@@ -77,7 +77,7 @@ function ProductosContent() {
           {/* Count */}
           {!loading && (
             <p
-              className="mt-4 font-display font-black uppercase text-[#08234e]/25"
+              className="mt-4 font-display font-black uppercase text-[#4467a9]/25"
               style={{ fontSize: "0.7rem", letterSpacing: "0.2em" }}
             >
               {products.length} PRODUCTO{products.length !== 1 ? "S" : ""}
@@ -100,13 +100,13 @@ function ProductosContent() {
                   onClick={() => handleCat(tab.id)}
                   className={`flex shrink-0 items-center gap-2 rounded-full border-2 px-4 py-2.5 font-display text-xs font-black uppercase tracking-widest transition-colors ${
                     active
-                      ? "border-[#08234e] bg-[#08234e] text-[#f1ead0]"
-                      : "border-[#08234e]/20 bg-transparent text-[#08234e]/50 hover:border-[#08234e]/40 hover:text-[#08234e]"
+                      ? "border-[#4467a9] bg-[#4467a9] text-[#f1ead0]"
+                      : "border-[#4467a9]/20 bg-transparent text-[#4467a9]/50 hover:border-[#4467a9]/40 hover:text-[#4467a9]"
                   }`}
                 >
                   <span
                     className={`flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-black ${
-                      active ? "bg-[#f1ead0]/20 text-[#f1ead0]" : "bg-[#08234e]/10 text-[#08234e]/50"
+                      active ? "bg-[#f1ead0]/20 text-[#f1ead0]" : "bg-[#4467a9]/10 text-[#4467a9]/50"
                     }`}
                   >
                     {tab.name.charAt(0)}
@@ -127,14 +127,14 @@ function ProductosContent() {
           ) : products.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-24 text-center">
               <p
-                className="font-display font-black uppercase text-[#08234e]/25"
+                className="font-display font-black uppercase text-[#4467a9]/25"
                 style={{ fontSize: "clamp(1.2rem, 3vw, 1.8rem)", letterSpacing: "-0.03em" }}
               >
                 Sin productos aquí
               </p>
               <button
                 onClick={() => handleCat("todos")}
-                className="mt-5 rounded-full border-2 border-[#08234e] px-7 py-2.5 font-display text-xs font-black uppercase tracking-widest text-[#08234e] transition-colors hover:bg-[#08234e] hover:text-[#f1ead0]"
+                className="mt-5 rounded-full border-2 border-[#4467a9] px-7 py-2.5 font-display text-xs font-black uppercase tracking-widest text-[#4467a9] transition-colors hover:bg-[#4467a9] hover:text-[#f1ead0]"
               >
                 Ver todos
               </button>
@@ -156,7 +156,7 @@ function ProductosContent() {
         style={{
           width: "100%",
           height: "clamp(140px, 16vw, 200px)",
-          backgroundImage: "repeating-conic-gradient(#08234e 0% 25%, #f1ead0 0% 50%)",
+          backgroundImage: "repeating-conic-gradient(#4467a9 0% 25%, #f1ead0 0% 50%)",
           backgroundSize: "clamp(47px, 5.33vw, 67px) clamp(47px, 5.33vw, 67px)",
         }}
       />

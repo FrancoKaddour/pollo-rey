@@ -58,7 +58,7 @@ export default async function PedidosPage({
       <div className="flex items-center justify-between">
         <div>
           <h1
-            className="font-display font-black uppercase text-[#08234e] leading-none"
+            className="font-display font-black uppercase text-[#4467a9] leading-none"
             style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", letterSpacing: "-0.04em" }}
           >
             PEDIDOS
@@ -74,7 +74,7 @@ export default async function PedidosPage({
           href="/admin/pedidos"
           className={`rounded-full border px-3.5 py-1.5 text-xs font-bold transition-all ${
             !statusFilter
-              ? "bg-[#08234e] text-white border-[#08234e]"
+              ? "bg-[#4467a9] text-white border-[#4467a9]"
               : "border-slate-200 text-slate-500 hover:border-slate-400"
           }`}
         >
@@ -86,7 +86,7 @@ export default async function PedidosPage({
             href={`/admin/pedidos?status=${s}`}
             className={`rounded-full border px-3.5 py-1.5 text-xs font-bold transition-all ${
               statusFilter === s
-                ? "bg-[#08234e] text-white border-[#08234e]"
+                ? "bg-[#4467a9] text-white border-[#4467a9]"
                 : "border-slate-200 text-slate-500 hover:border-slate-400"
             }`}
           >
@@ -141,7 +141,7 @@ export default async function PedidosPage({
                   return (
                     <tr key={order.id} className="hover:bg-slate-50/50 transition-colors group">
                       <td className="px-6 py-4">
-                        <p className="text-sm font-bold text-[#08234e]">{order.customerName}</p>
+                        <p className="text-sm font-bold text-[#4467a9]">{order.customerName}</p>
                         <p className="text-[0.65rem] text-slate-400 font-mono">
                           #{order.id.slice(-6).toUpperCase()}
                         </p>
@@ -153,7 +153,7 @@ export default async function PedidosPage({
                           {order.items.map((i) => `${i.quantity}x ${i.product.name}`).join(", ")}
                         </p>
                       </td>
-                      <td className="px-4 py-4 text-sm font-bold text-[#08234e]">
+                      <td className="px-4 py-4 text-sm font-bold text-[#4467a9]">
                         {formatPrice(order.total)}
                       </td>
                       <td className="px-4 py-4">
@@ -173,7 +173,7 @@ export default async function PedidosPage({
                       <td className="px-6 py-4">
                         <Link
                           href={`/admin/pedidos/${order.id}`}
-                          className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-bold text-slate-500 hover:border-[#08234e] hover:text-[#08234e] transition-all opacity-0 group-hover:opacity-100"
+                          className="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-bold text-slate-500 hover:border-[#4467a9] hover:text-[#4467a9] transition-all opacity-0 group-hover:opacity-100"
                         >
                           Ver →
                         </Link>
