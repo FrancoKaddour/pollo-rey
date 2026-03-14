@@ -47,7 +47,7 @@ export function Navbar() {
         )}
       >
         {/* ── Desktop nav (3-column grid: left links | center logo | right actions) ── */}
-        <div className="mx-auto hidden h-[84px] max-w-[1400px] grid-cols-3 items-center px-8 md:grid">
+        <div className="mx-auto hidden h-[100px] max-w-[1400px] grid-cols-3 items-center px-8 md:grid">
 
           {/* LEFT — nav links */}
           <nav className="flex items-center gap-1">
@@ -79,7 +79,7 @@ export function Navbar() {
                   alt="Pollo Rey"
                   width={300}
                   height={185}
-                  className="h-[76px] w-auto object-contain [mix-blend-mode:multiply]"
+                  className="h-[92px] w-auto object-contain [mix-blend-mode:multiply]"
                   priority
                 />
               </motion.div>
@@ -112,7 +112,7 @@ export function Navbar() {
         </div>
 
         {/* ── Mobile nav (logo left, burger right) ── */}
-        <div className="flex h-[68px] items-center justify-between px-5 md:hidden">
+        <div className="flex h-[80px] items-center justify-between px-5 md:hidden">
           <Link href="/">
             <motion.div
               whileHover={{ scale: 1.07 }}
@@ -123,7 +123,7 @@ export function Navbar() {
                 alt="Pollo Rey"
                 width={300}
                 height={185}
-                className="h-[58px] w-auto object-contain [mix-blend-mode:multiply] sm:h-[64px]"
+                className="h-[72px] w-auto object-contain [mix-blend-mode:multiply] sm:h-[76px]"
                 priority
               />
             </motion.div>

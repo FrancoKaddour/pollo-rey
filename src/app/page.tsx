@@ -38,7 +38,7 @@ export default async function HomePage() {
 
       {/* ── 1. HERO ───────────────────────────────────────────────────────────── */}
       <section
-        className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#f1ead0] pt-[84px]"
+        className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#f1ead0] pt-[100px]"
         aria-label="Hero"
       >
         {/* ── Background: marquees inclinados (desktop) ── */}
