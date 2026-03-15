@@ -159,7 +159,7 @@ export function PromoCarousel({ dbPromos }: Props) {
       <div
         ref={viewportRef}
         className="relative overflow-hidden"
-        style={{ height: "clamp(300px, 55vh, 430px)" }}
+        style={{ height: "clamp(460px, 65vh, 560px)" }}
         onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
         onTouchEnd={(e) => {
           if (touchStartX.current === null) return;
