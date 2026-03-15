@@ -79,10 +79,22 @@ export default async function HomePage() {
           TU POLLERÍA DE BARRIO EN SAAVEDRA
         </h1>
 
+        {/* ── Starburst badge giratorio ── */}
+        <div className="pointer-events-none absolute bottom-10 right-6 z-20 md:bottom-14 md:right-14" aria-hidden>
+          <Image
+            src="/images/6.png"
+            alt=""
+            width={110}
+            height={110}
+            className="animate-spin [animation-duration:22s] opacity-80 md:w-[140px]"
+            style={{ width: "clamp(80px, 12vw, 140px)", height: "auto" }}
+          />
+        </div>
+
         {/* ── Centro: forma arco/puerta + CTA ── */}
         <div className="relative z-10 flex flex-col items-center">
           <Image
-            src="/imghero2.png"
+            src="/images/logohero2.png"
             alt="Pollo Rey"
             width={520}
             height={640}
@@ -102,8 +114,19 @@ export default async function HomePage() {
       </section>
 
       {/* ── 3. PROMOCIONES — carrusel 3 items estilo PP ───────────────────────── */}
-      <section className="overflow-hidden bg-[#f1ead0] px-6 py-20 md:px-12">
-        <div className="mx-auto max-w-[1400px]">
+      <section className="relative overflow-hidden bg-[#f1ead0] px-6 py-20 md:px-12">
+        {/* Mascota asomándose */}
+        <div className="pointer-events-none absolute -right-8 bottom-0 z-0 hidden lg:block" aria-hidden>
+          <Image
+            src="/images/carapj.png"
+            alt=""
+            width={220}
+            height={220}
+            className="opacity-20"
+            style={{ height: "auto" }}
+          />
+        </div>
+        <div className="relative z-10 mx-auto max-w-[1400px]">
           <h2
             className="mb-14 text-center font-display font-black uppercase text-[#4467a9] leading-none"
             style={{ fontSize: "clamp(2rem, 6vw, 6.5rem)", letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "center" }}
@@ -159,7 +182,7 @@ export default async function HomePage() {
             {/* Imagen hero */}
             <div className="flex justify-center">
               <Image
-                src="/IMGhero.png"
+                src="/images/logohero.png"
                 alt="Pollo Rey"
                 width={520}
                 height={640}
@@ -247,8 +270,19 @@ export default async function HomePage() {
       </MarqueeBand>
 
       {/* ── 7. CATEGORÍAS ─────────────────────────────────────────────────────── */}
-      <section className="overflow-hidden bg-[#f1ead0] px-6 py-20 md:px-12">
-        <div className="mx-auto max-w-[1400px]">
+      <section className="relative overflow-hidden bg-[#f1ead0] px-6 py-20 md:px-12">
+        {/* Mascota personaje */}
+        <div className="pointer-events-none absolute -left-4 bottom-0 z-0 hidden xl:block" aria-hidden>
+          <Image
+            src="/images/pjcompleto.png"
+            alt=""
+            width={260}
+            height={260}
+            className="opacity-15"
+            style={{ height: "auto" }}
+          />
+        </div>
+        <div className="relative z-10 mx-auto max-w-[1400px]">
           <h2
             className="mb-10 text-center font-display font-black uppercase text-[#4467a9] leading-none"
             style={{ fontSize: "clamp(2rem, 6vw, 6.5rem)", letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "center" }}
