@@ -127,7 +127,9 @@ export function PromoCarousel({ dbPromos }: Props) {
 
   const [rawIdx, setRawIdx] = useState(0);
   const viewportRef = useRef<HTMLDivElement>(null);
+  const activePanelRef = useRef<HTMLDivElement>(null);
   const [cx, setCx] = useState(0);
+  const [viewportH, setViewportH] = useState(480);
   const touchStartX = useRef<number | null>(null);
   const len = promos.length;
 
@@ -145,6 +147,17 @@ export function PromoCarousel({ dbPromos }: Props) {
   const next = () => setRawIdx((i) => i + 1);
   const activeCardIdx = ((rawIdx % len) + len) % len;
 
+  // Medir la tarjeta activa y ajustar el viewport exactamente a su altura
+  useEffect(() => {
+    const el = activePanelRef.current;
+    if (!el) return;
+    const update = () => setViewportH(el.scrollHeight);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [activeCardIdx]);
+
   const goTo = (target: number) => {
     const current = ((rawIdx % len) + len) % len;
     let diff = target - current;
@@ -159,7 +172,7 @@ export function PromoCarousel({ dbPromos }: Props) {
       <div
         ref={viewportRef}
         className="relative overflow-hidden"
-        style={{ height: "clamp(460px, 65vh, 560px)" }}
+        style={{ height: viewportH, transition: "height 0.4s ease" }}
         onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
         onTouchEnd={(e) => {
           if (touchStartX.current === null) return;
@@ -182,6 +195,7 @@ export function PromoCarousel({ dbPromos }: Props) {
           return (
             <div
               key={cardIdx}
+              ref={isActive ? activePanelRef : undefined}
               style={{
                 position: "absolute",
                 bottom: 0,
