@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+
 
 export function NewsletterSection() {
   const [email, setEmail] = useState("");
@@ -28,17 +28,6 @@ export function NewsletterSection() {
       className="relative flex flex-col overflow-hidden bg-[#f1ead0]"
       style={{ minHeight: "calc(100vh - 80px)" }}
     >
-      {/* Ilustración mascota — desktop derecha */}
-      <div className="pointer-events-none absolute bottom-0 right-0 z-0 hidden lg:block" aria-hidden>
-        <Image
-          src="/images/5.png"
-          alt=""
-          width={340}
-          height={340}
-          className="opacity-20"
-          style={{ height: "auto" }}
-        />
-      </div>
       {/* Content — vertically centered */}
       <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-1 items-center px-6 py-12 md:px-12">
         {done ? (

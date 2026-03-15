@@ -82,16 +82,6 @@ export function Footer() {
 
           {/* RIGHT — Social circles + CTA pill */}
           <div className="flex flex-col items-center gap-5 md:items-end">
-            {/* Mascota decorativa */}
-            <Image
-              src="/images/4.png"
-              alt=""
-              width={90}
-              height={90}
-              className="opacity-40"
-              style={{ height: "auto" }}
-              aria-hidden
-            />
             {/* Social icon circles */}
             <div className="flex gap-3">
               <a
@@ -150,15 +140,6 @@ export function Footer() {
       {/* ── Bottom bar ── */}
       <div className="border-t border-[#f1ead0]/10 px-6 py-5 md:px-12">
         <div className="mx-auto flex max-w-[1400px] flex-col items-center justify-between gap-2 md:flex-row md:items-center">
-          {/* Oval badge */}
-          <Image
-            src="/images/7.png"
-            alt="Pollo Rey"
-            width={80}
-            height={52}
-            className="opacity-30 brightness-0 invert"
-            style={{ height: "auto" }}
-          />
           <div className="flex gap-6">
             {[
               { label: "Términos de servicio", href: "/terminos" },

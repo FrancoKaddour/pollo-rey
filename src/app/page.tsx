@@ -114,19 +114,8 @@ export default async function HomePage() {
       </section>
 
       {/* ── 3. PROMOCIONES — carrusel 3 items estilo PP ───────────────────────── */}
-      <section className="relative overflow-hidden bg-[#f1ead0] px-6 py-20 md:px-12">
-        {/* Mascota asomándose */}
-        <div className="pointer-events-none absolute -right-8 bottom-0 z-0 hidden lg:block" aria-hidden>
-          <Image
-            src="/images/carapj.png"
-            alt=""
-            width={220}
-            height={220}
-            className="opacity-20"
-            style={{ height: "auto" }}
-          />
-        </div>
-        <div className="relative z-10 mx-auto max-w-[1400px]">
+      <section className="overflow-hidden bg-[#f1ead0] px-6 py-20 md:px-12">
+        <div className="mx-auto max-w-[1400px]">
           <h2
             className="mb-14 text-center font-display font-black uppercase text-[#4467a9] leading-none"
             style={{ fontSize: "clamp(2rem, 6vw, 6.5rem)", letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "center" }}
@@ -182,7 +171,7 @@ export default async function HomePage() {
             {/* Imagen hero */}
             <div className="flex justify-center">
               <Image
-                src="/images/logohero.png"
+                src="/IMGhero.png"
                 alt="Pollo Rey"
                 width={520}
                 height={640}
@@ -270,19 +259,8 @@ export default async function HomePage() {
       </MarqueeBand>
 
       {/* ── 7. CATEGORÍAS ─────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#f1ead0] px-6 py-20 md:px-12">
-        {/* Mascota personaje */}
-        <div className="pointer-events-none absolute -left-4 bottom-0 z-0 hidden xl:block" aria-hidden>
-          <Image
-            src="/images/pjcompleto.png"
-            alt=""
-            width={260}
-            height={260}
-            className="opacity-15"
-            style={{ height: "auto" }}
-          />
-        </div>
-        <div className="relative z-10 mx-auto max-w-[1400px]">
+      <section className="overflow-hidden bg-[#f1ead0] px-6 py-20 md:px-12">
+        <div className="mx-auto max-w-[1400px]">
           <h2
             className="mb-10 text-center font-display font-black uppercase text-[#4467a9] leading-none"
             style={{ fontSize: "clamp(2rem, 6vw, 6.5rem)", letterSpacing: "-0.055em", transform: "scaleX(1.18)", transformOrigin: "center" }}
