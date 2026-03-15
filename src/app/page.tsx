@@ -81,7 +81,7 @@ export default async function HomePage() {
 
         {/* ── Starburst badge giratorio + logo fijo ── */}
         <div
-          className="pointer-events-none absolute bottom-10 right-6 z-20 md:bottom-14 md:right-14"
+          className="pointer-events-none absolute bottom-4 right-6 z-20 md:bottom-6 md:right-14"
           style={{ width: "clamp(130px, 16vw, 190px)", height: "clamp(130px, 16vw, 190px)" }}
           aria-hidden
         >
@@ -99,7 +99,7 @@ export default async function HomePage() {
               alt="Pollo Rey"
               width={300}
               height={185}
-              className="w-[52%] h-auto object-contain [mix-blend-mode:multiply]"
+              className="w-[68%] h-auto object-contain [mix-blend-mode:multiply]"
             />
           </div>
         </div>
