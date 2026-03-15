@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { formatPrice } from "@/lib/utils";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -167,6 +168,14 @@ export function MenuSection() {
 
           {/* ── Left: heading ── */}
           <div className="flex flex-col justify-center">
+            <Image
+              src="/images/7.png"
+              alt=""
+              width={120}
+              height={78}
+              className="mb-5 w-28 h-auto"
+              aria-hidden
+            />
             <div className="mb-5 flex items-center gap-3">
               <span className="h-px w-8 bg-[#CC1414]" />
               <p

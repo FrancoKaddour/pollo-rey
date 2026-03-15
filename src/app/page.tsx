@@ -184,7 +184,7 @@ export default async function HomePage() {
             {/* Imagen hero */}
             <div className="flex justify-center">
               <Image
-                src="/IMGhero.png"
+                src="/images/pjcompleto.png"
                 alt="Pollo Rey"
                 width={520}
                 height={640}
