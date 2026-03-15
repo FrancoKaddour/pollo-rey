@@ -174,7 +174,9 @@ export function PromoCarousel({ dbPromos }: Props) {
           const promo = promos[cardIdx];
           const isActive = offset === 0;
           const absOff = Math.abs(offset);
-          const opacity = cx > 0 ? (absOff >= 3 ? 0 : isActive ? 1 : 0.42) : 0;
+          // Responsive: <800px → 3 cards (±1), ≥800px → 5 cards (±2)
+          const maxVisible = cx * 2 < 800 ? 1 : 2;
+          const opacity = cx > 0 ? (absOff > maxVisible ? 0 : isActive ? 1 : 0.42) : 0;
           const scale = SCALE[absOff] ?? 0.55;
 
           return (
