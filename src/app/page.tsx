@@ -79,16 +79,29 @@ export default async function HomePage() {
           TU POLLERÍA DE BARRIO EN SAAVEDRA
         </h1>
 
-        {/* ── Starburst badge giratorio ── */}
-        <div className="pointer-events-none absolute bottom-10 right-6 z-20 md:bottom-14 md:right-14" aria-hidden>
+        {/* ── Starburst badge giratorio + logo fijo ── */}
+        <div
+          className="pointer-events-none absolute bottom-10 right-6 z-20 md:bottom-14 md:right-14"
+          style={{ width: "clamp(130px, 16vw, 190px)", height: "clamp(130px, 16vw, 190px)" }}
+          aria-hidden
+        >
+          {/* Starburst gira */}
           <Image
-            src="/images/6.png"
+            src="/images/promo.png"
             alt=""
-            width={110}
-            height={110}
-            className="animate-spin [animation-duration:22s] opacity-80 md:w-[140px]"
-            style={{ width: "clamp(80px, 12vw, 140px)", height: "auto" }}
+            fill
+            className="animate-spin object-contain [animation-duration:22s]"
           />
+          {/* Logo estático centrado */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Image
+              src="/logo.png"
+              alt="Pollo Rey"
+              width={300}
+              height={185}
+              className="w-[52%] h-auto object-contain [mix-blend-mode:multiply]"
+            />
+          </div>
         </div>
 
         {/* ── Centro: forma arco/puerta + CTA ── */}
